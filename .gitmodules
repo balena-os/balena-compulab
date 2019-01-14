@@ -10,3 +10,6 @@
 [submodule "layers/meta-compulab"]
 	path = layers/meta-compulab
 	url = https://github.com/compulab-yokneam/meta-compulab
+[submodule "layers/meta-freescale"]
+	path = layers/meta-freescale
+	url = https://github.com/Freescale/meta-freescale.git
