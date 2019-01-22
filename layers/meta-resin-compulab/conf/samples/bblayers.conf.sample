@@ -14,8 +14,8 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-openembedded/meta-python \
     ${TOPDIR}/../layers/meta-freescale \
     ${TOPDIR}/../layers/meta-compulab \
-    ${TOPDIR}/../layers/meta-balena/meta-resin-common \
-    ${TOPDIR}/../layers/meta-balena/meta-resin-sumo \
+    ${TOPDIR}/../layers/meta-resin/meta-resin-common \
+    ${TOPDIR}/../layers/meta-resin/meta-resin-sumo \
     ${TOPDIR}/../layers/meta-resin-compulab \
     ${TOPDIR}/../layers/meta-rust \
     "
