@@ -1,0 +1,5 @@
+- version: 2.29.2+rev1
+  date: 2019-01-22T15:05:31.743Z
+  commits:
+    - subject: "Add hostapp-update hooks for cl-som-imx8 [Alexandru Costache]"
+    - subject: "resin-image: Added resin-image support for mx8 [Alexandru Costache]"
