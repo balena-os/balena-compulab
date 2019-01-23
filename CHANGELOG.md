@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.29.2+rev2
+## (2019-01-23)
+
+* Add parsable changelog [Giovanni Garufi]
+
 # v2.29.2+rev1
 ## (2019-01-22)
 

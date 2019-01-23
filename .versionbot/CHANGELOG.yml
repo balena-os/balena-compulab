@@ -1,5 +1,20 @@
+- commits:
+    - subject: Add parsable changelog
+      hash: 4955be470e94d52c6f427ec1d4cf44125411aec4
+      body: |
+        Also fixes the format of CHANGELOG.md
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-Entry: Add parsable changelog
+        changelog-entry: Add parsable changelog
+        Signed-off-by: Giovanni Garufi <giovanni@balena.io>
+        signed-off-by: Giovanni Garufi <giovanni@balena.io>
+      author: Giovanni Garufi
+  version: 2.29.2+rev2
+  date: 2019-01-23T09:34:55.321Z
 - version: 2.29.2+rev1
   date: 2019-01-22T15:05:31.743Z
   commits:
-    - subject: "Add hostapp-update hooks for cl-som-imx8 [Alexandru Costache]"
-    - subject: "resin-image: Added resin-image support for mx8 [Alexandru Costache]"
+    - subject: 'Add hostapp-update hooks for cl-som-imx8 [Alexandru Costache]'
+    - subject: 'resin-image: Added resin-image support for mx8 [Alexandru Costache]'
