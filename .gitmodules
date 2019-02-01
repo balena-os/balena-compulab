@@ -5,7 +5,7 @@
 	path = layers/meta-rust
 	url = https://github.com/meta-rust/meta-rust.git
 [submodule "layers/meta-resin"]
-	path = layers/meta-resin
+	path = layers/meta-balena
 	url = git@github.com:balena-os/meta-balena.git
 [submodule "layers/meta-compulab"]
 	path = layers/meta-compulab
