@@ -4,8 +4,8 @@
 [submodule "layers/meta-rust"]
 	path = layers/meta-rust
 	url = https://github.com/meta-rust/meta-rust.git
-[submodule "layers/meta-resin"]
-	path = layers/meta-resin
+[submodule "layers/meta-balena"]
+	path = layers/meta-balena
 	url = git@github.com:balena-os/meta-balena.git
 [submodule "layers/meta-compulab"]
 	path = layers/meta-compulab
@@ -18,4 +18,4 @@
 	url = https://github.com/openembedded/meta-openembedded.git
 [submodule "layers/poky"]
 	path = layers/poky
-	url = https://git.yoctoproject.org/git/poky
+	url = https://github.com/balena-os/poky
