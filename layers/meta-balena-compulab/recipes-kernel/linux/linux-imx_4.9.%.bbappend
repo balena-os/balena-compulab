@@ -18,6 +18,12 @@ RESIN_CONFIGS[80211] = " \
     CONFIG_CFG80211=y \
 "
 
+# We set this in order to have
+# the modules built with the same
+# version as the kernel, otherwise
+# it won't be possible to load them
+SCMVERSION="n"
+
 IMX_UAPI_HEADERS = "videodev2.h dma-buf.h"
 
 MORE_UAPI_HEADERS = "ion.h"
