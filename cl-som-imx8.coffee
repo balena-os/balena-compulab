@@ -31,7 +31,7 @@ module.exports =
                 osx: 'http://docs.resin.io/cl-som-imx8/getting-started/#adding-your-first-device'
                 linux: 'http://docs.resin.io/cl-som-imx8/getting-started/#adding-your-first-device'
 
-        supportsBlink: true
+        supportsBlink: false
 
         yocto:
                 machine: 'cl-som-imx8'
