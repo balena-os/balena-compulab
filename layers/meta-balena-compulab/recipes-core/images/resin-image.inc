@@ -3,6 +3,7 @@ IMAGE_FSTYPES_append_cl-som-imx8 = " resinos-img"
 RESIN_BOOT_PARTITION_FILES_cl-som-imx8 = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/Image.gz \
     ${KERNEL_IMAGETYPE}-cl-som-imx8.dtb:/cl-som-imx8.dtb \
+    ${KERNEL_IMAGETYPE}-cl-som-imx8-v1_1.dtb:/cl-som-imx8-v1_1.dtb \
     ${KERNEL_IMAGETYPE}-cl-som-imx8-4k.dtb:/cl-som-imx8-4k.dtb \ 
     ${KERNEL_IMAGETYPE}-cl-som-imx8-csi.dtb:/cl-som-imx8-csi.dtb \
     ${KERNEL_IMAGETYPE}-cl-som-imx8-dual.dtb:/cl-som-imx8-dual.dtb \ 
