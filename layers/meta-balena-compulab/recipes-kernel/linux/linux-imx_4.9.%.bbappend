@@ -13,9 +13,13 @@ inherit fsl-vivante-kernel-driver-handler
 
 inherit kernel-resin
 
-RESIN_CONFIGS_append = " 80211"
+RESIN_CONFIGS_append = " 80211 iwlwifi"
 RESIN_CONFIGS[80211] = " \
     CONFIG_CFG80211=y \
+"
+
+RESIN_CONFIGS[iwlwifi] = " \
+    CONFIG_IWLWIFI=m \
 "
 
 # We set this in order to have
