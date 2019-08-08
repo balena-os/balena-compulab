@@ -1,5 +1,6 @@
 # Supported machines
 #MACHINE ?= "cl-som-imx8"
+#MACHINE ?= "cl-imx8-v1-1"
 
 # We use the overlayfs docker storage driver
 BALENA_STORAGE = "overlay2"
