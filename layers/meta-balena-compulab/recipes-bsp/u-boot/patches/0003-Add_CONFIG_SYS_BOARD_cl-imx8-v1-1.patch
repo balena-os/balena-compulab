@@ -1,0 +1,27 @@
+From 12262e256942497c053e1419fd5492d461c4aa2a Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Mon, 12 Aug 2019 11:57:54 +0200
+Subject: [PATCH] Add device tree name for cl-imx8-v1-1 machine
+
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+Upstream-Status: Inappropriate [configuration]
+---
+ include/configs/cl-som-imx8.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/configs/cl-som-imx8.h b/include/configs/cl-som-imx8.h
+index d37bf5e34c..ee4c188505 100644
+--- a/include/configs/cl-som-imx8.h
++++ b/include/configs/cl-som-imx8.h
+@@ -94,6 +94,8 @@
+ #define CONFIG_PHY_ATHEROS
+ #endif
+ 
++#define CONFIG_SYS_BOARD "cl-imx8-v1-1"
++
+ #define CONFIG_MFG_ENV_SETTINGS \
+ 	"mfgtool_args=setenv bootargs console=${console},${baudrate} " \
+ 		"rdinit=/linuxrc " \
+-- 
+2.17.1
+
