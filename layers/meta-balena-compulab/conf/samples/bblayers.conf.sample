@@ -13,6 +13,8 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-openembedded/meta-networking \
     ${TOPDIR}/../layers/meta-openembedded/meta-python \
     ${TOPDIR}/../layers/meta-freescale \
+    ${TOPDIR}/../layers/meta-fsl-bsp-release/imx/meta-bsp \
+    ${TOPDIR}/../layers/meta-bsp-imx8mq \
     ${TOPDIR}/../layers/meta-compulab \
     ${TOPDIR}/../layers/meta-balena/meta-balena-common \
     ${TOPDIR}/../layers/meta-balena/meta-resin-sumo \
@@ -20,3 +22,6 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-rust \
     "
 
+BBMASK += "chromium/chromium_%.bbappend"
+BBMASK += "firmware-imx/firmware-imx_7.5.bb"
+BBMASK += "chromium/chromium-ozone-wayland_%.bbappend"

@@ -1,2 +1,0 @@
-RPROVIDES_${PN} = "libvpu"
-
