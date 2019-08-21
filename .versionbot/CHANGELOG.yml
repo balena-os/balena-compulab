@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update cl-som-imx8 machine to latest u-boot/kernel
+      hash: 20b82a41873da345175a9200c53400c7acd19eb8
+      body: |
+        The needed deleted recipes now are part of the
+        new bsp layers.
+      footer:
+        Changelog-entry: Update cl-som-imx8 machine to latest u-boot/kernel
+        changelog-entry: Update cl-som-imx8 machine to latest u-boot/kernel
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.38.1+rev2
+  date: 2019-08-19T09:09:32.028Z
+- commits:
     - subject: Update meta-balena from v2.38.0 to v2.38.1
       hash: f3a36fd74e088d7276f7fa43bf560f95be6d3511
       body: ''

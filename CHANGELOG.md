@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.38.1+rev2
+## (2019-08-19)
+
+* Update cl-som-imx8 machine to latest u-boot/kernel [Vicentiu Galanopulo]
+
 # v2.38.1+rev1
 ## (2019-06-21)
 
