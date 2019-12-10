@@ -1,0 +1,61 @@
+From a94f0a73a8ded69958cf088f0251ad2efffc2f6f Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Thu, 28 Nov 2019 22:17:18 +0100
+Subject: [PATCH] Let's fix the USB
+
+This patch fixes host USB3 crashing when writing to multiple
+drives. Please see https://community.nxp.com/thread/511218
+
+[  124.983731] xhci-hcd xhci-hcd.1.auto: xHCI host not responding to stop endpoint command.
+[  124.999954] xhci-hcd xhci-hcd.1.auto: xHCI host controller not responding, assume dead
+[  125.007888] xhci-hcd xhci-hcd.1.auto: xHCI host not responding to stop endpoint command.
+[  125.016265] xhci-hcd xhci-hcd.1.auto: HC died; cleaning up
+[  125.016332] usb 4-1.2.3: Failed to set U1 timeout to 0x0,error code -22
+[  125.021875] usb 3-1: USB disconnect, device number 2
+[  125.028505] usb 4-1.2.3: usb_reset_and_verify_device Failed to disable LPM
+
+Upstream-Status: Pending
+Signed-off-by: Li Jun <jun.li@nxp.com>
+Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+---
+ drivers/usb/dwc3/core.c | 11 +++++++++++
+ drivers/usb/dwc3/core.h |  1 +
+ 2 files changed, 12 insertions(+)
+
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index 95b79c7e436f..63f99e8cb272 100644
+--- a/drivers/usb/dwc3/core.c
++++ b/drivers/usb/dwc3/core.c
+@@ -894,6 +894,17 @@ static int dwc3_core_init(struct dwc3 *dwc)
+ 
+ 		if (dwc->dis_tx_ipgap_linecheck_quirk)
+ 			reg |= DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS;
++		/*
++		 * Synopsys STAR:
++		 * USB3.0 HC died when read and write at the same
++		 * time with park mode.
++		 * It has advantage only a single async EP is
++		 * active, which is meaningless for application;
++		 * So disable park mode and synopsys will change
++		 * the default value of park mode to be disabled
++		 * in next release.
++		 */
++		reg |= DWC3_GUCTL1_PARKMODE_DISABLE;
+ 
+ 		dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
+ 	}
+diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
+index 090c8645078d..23149326e8de 100644
+--- a/drivers/usb/dwc3/core.h
++++ b/drivers/usb/dwc3/core.h
+@@ -209,6 +209,7 @@
+ /* Global User Control 1 Register */
+ #define DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS	BIT(28)
+ #define DWC3_GUCTL1_DEV_L1_EXIT_BY_HW	BIT(24)
++#define DWC3_GUCTL1_PARKMODE_DISABLE	BIT(17) | BIT(16) | BIT(15)
+ 
+ /* Global USB2 PHY Configuration Register */
+ #define DWC3_GUSB2PHYCFG_PHYSOFTRST	BIT(31)
+-- 
+2.17.1
+
