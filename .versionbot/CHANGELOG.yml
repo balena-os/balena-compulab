@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'linux-imx: Fix host USB3 crashes'
+      hash: 150377fa04c720665c1335c3e2d92bdb7c2da05c
+      body: |
+        This patch fixes host USB3 crashing when writing to multiple
+        drives. Please see https://community.nxp.com/thread/511218
+      footer:
+        Changelog-entry: 'linux-imx: Fix host USB3 crashes'
+        changelog-entry: 'linux-imx: Fix host USB3 crashes'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.44.0+rev2
+  date: 2019-12-10T09:28:05.202Z
+- commits:
     - subject: Update meta-balena from v2.43.0 to v2.44.0
       hash: 7a228bbe1c4f465479a7bd7a423a6afe78a4325d
       body: |

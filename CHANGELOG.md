@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.44.0+rev2
+## (2019-12-10)
+
+* linux-imx: Fix host USB3 crashes [Sebastian Panceac]
+
 # v2.44.0+rev1
 ## (2019-10-18)
 
