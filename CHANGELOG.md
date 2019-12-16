@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.44.0+rev3
+## (2019-12-16)
+
+* linux-imx: Enable I2C4 in cl-som-imx8 dtb [Sebastian Panceac]
+
 # v2.44.0+rev2
 ## (2019-12-10)
 

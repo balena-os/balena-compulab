@@ -1,4 +1,16 @@
 - commits:
+    - subject: 'linux-imx: Enable I2C4 in cl-som-imx8 dtb'
+      hash: d424f1265ee4d8d1724b2bd86be1ec8cef52233f
+      body: ''
+      footer:
+        Changelog-entry: 'linux-imx: Enable I2C4 in cl-som-imx8 dtb'
+        changelog-entry: 'linux-imx: Enable I2C4 in cl-som-imx8 dtb'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.44.0+rev3
+  date: 2019-12-16T11:14:09.696Z
+- commits:
     - subject: 'linux-imx: Fix host USB3 crashes'
       hash: 150377fa04c720665c1335c3e2d92bdb7c2da05c
       body: |
