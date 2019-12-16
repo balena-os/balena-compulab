@@ -1,0 +1,33 @@
+From 634a31061902d47557b9f89b6ad94633d504d923 Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Mon, 16 Dec 2019 12:02:24 +0100
+Subject: [PATCH] linux-imx: Enable I2C4 in cl-som-imx8 dtb
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index 80abe3ef0b94..0cdd0ad4c83b 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -76,3 +76,14 @@
+ &wm8731 {
+     status = "okay";
+ };
++
++&pwm2 {
++    status = "disabled";
++};
++
++&i2c4 {
++    clock-frequency = <100000>;
++    pinctrl-names = "default";
++    pinctrl-0 = <&pinctrl_i2c4>;
++    status = "okay";
++};
+-- 
+2.17.1
+
