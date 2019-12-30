@@ -10,6 +10,10 @@ SRC_URI_append = " \
         file://USB3-stability-fix.patch \
 "
 
+SRC_URI_append_etcher-pro = " \
+	file://0001-linux-imx-Enable-I2C4-in-cl-som-imx8-dtb.patch \
+"
+
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 
