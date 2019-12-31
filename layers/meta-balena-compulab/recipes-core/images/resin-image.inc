@@ -22,6 +22,6 @@ IMAGE_INSTALL_append_cl-som-imx8 = " \
 "
 
 IMAGE_CMD_resinos-img_append_cl-som-imx8 () {
-    dd if=${DEPLOY_DIR_IMAGE}/imx-boot-cl-som-imx8-cfg.bin-flash_evk of=${RESIN_RAW_IMG} conv=notrunc seek=33 bs=1K
+    dd if=${DEPLOY_DIR_IMAGE}/imx-boot-${MACHINE}-cfg.bin-flash_evk of=${RESIN_RAW_IMG} conv=notrunc seek=33 bs=1K
 }
 
