@@ -1,6 +1,12 @@
 # Change Log
 -----------
 
+# v2.44.0+rev3
+## (2019-12-31)
+
+* linux-imx: Enable I2C4 for Etcher Pro in dtb [Sebastian Panceac]
+* Add etcher-pro machine support [Sebastian Panceac]
+
 # v2.44.0+rev2
 ## (2019-12-10)
 
