@@ -1,4 +1,71 @@
 - commits:
+    - subject: >-
+        linux-imx: Disable CONFIG_DEBUG_PREEMPT kernel config to prevent eMMC
+        crash at boot
+      hash: a400111b12976f95db61e801b54c04e3bfd8fedf
+      body: |
+        The CONFIG_DEBUG_PREEMPT option triggers a kernel dump
+        during boot-up:
+        [    1.935546] Call trace:
+        [    1.938001] [<ffff00000808a180>] dump_backtrace+0x0/0x410
+        [    1.943404] [<ffff00000808a5a4>] show_stack+0x14/0x20
+        [    1.948034] mmc0: new HS400 MMC card at address 0001
+        [    1.948463] [<ffff000008bef6a8>] dump_stack+0x8c/0xac
+        [    1.954034] mmcblk0: mmc0:0001 M52516 14.3 GiB
+        [    1.958469] [<ffff00000841b600>] check_preemption_disabled+0xf8/0x100
+        [    1.958475] [<ffff00000841b624>] debug_smp_processor_id+0x1c/0x28
+        [    1.958485] [<ffff00000898fb0c>] ddr_perf_probe+0x12c/0x1e8
+        [    1.963428] mmcblk0boot0: mmc0:0001 M52516 partition 1 4.00 MiB
+        [    1.969449] [<ffff00000861feb0>] platform_drv_probe+0x58/0xb8
+        [    1.969459] [<ffff00000861e148>] driver_probe_device+0x210/0x2d0
+        [    1.975967] mmcblk0boot1: mmc0:0001 M52516 partition 2 4.00 MiB
+        [    1.981115] [<ffff00000861e2c4>] __driver_attach+0xbc/0xc0
+        [    1.981121] [<ffff00000861c110>] bus_for_each_dev+0x68/0xd0
+        [    1.981127] [<ffff00000861da60>] driver_attach+0x20/0x28
+        [    1.981134] [<ffff00000861d558>] bus_add_driver+0x1b8/0x228
+        [    1.987471] mmcblk0rpmb: mmc0:0001 M52516 partition 3 4.00 MiB
+        [    1.992792] [<ffff00000861ecd0>] driver_register+0x60/0xf8
+        [    1.992799] [<ffff00000861fe00>] __platform_driver_register+0x40/0x48
+        [    1.992808] [<ffff000008fdbc20>] imx_ddr_pmu_init+0x18/0x20
+        [    1.992814] [<ffff000008083cd4>] do_one_initcall+0x4c/0x158
+        [    1.992821] [<ffff000008f90d9c>] kernel_init_freeable+0x188/0x22c
+        [    1.992829] [<ffff000008c02d58>] kernel_init+0x10/0x108
+        [    1.992835] [<ffff000008084f90>] ret_from_fork+0x10/0x18
+
+        It seems that this option is also responsible for eMMC
+        initialization crashes that happen sometimes at boot-up:
+        [   12.370770] mmc0: Timeout waiting for hardware interrupt.
+        [   12.376179] mmc0: sdhci: ============ SDHCI REGISTER DUMP ===========
+        [   12.382623] mmc0: sdhci: Sys addr:  0xba76fa00 | Version:  0x00000002
+        [   12.389066] mmc0: sdhci: Blk size:  0x00000200 | Blk cnt:  0x00000001
+        [   12.395508] mmc0: sdhci: Argument:  0x00000000 | Trn mode: 0x00000013
+        [   12.401951] mmc0: sdhci: Present:   0x01f88008 | Host ctl: 0x00000011
+        [   12.408393] mmc0: sdhci: Power:     0x00000002 | Blk gap:  0x00000080
+        [   12.414836] mmc0: sdhci: Wake-up:   0x00000008 | Clock:    0x000040af
+        [   12.421279] mmc0: sdhci: Timeout:   0x0000008f | Int stat: 0x00000000
+        [   12.427721] mmc0: sdhci: Int enab:  0x107f100b | Sig enab: 0x107f100b
+        [   12.434163] mmc0: sdhci: AC12 err:  0x00000000 | Slot int: 0x00008402
+        [   12.440606] mmc0: sdhci: Caps:      0x07eb0000 | Caps_1:   0x8000b407
+        [   12.447048] mmc0: sdhci: Cmd:       0x0000083a | Max curr: 0x00ffffff
+        [   12.453490] mmc0: sdhci: Resp[0]:   0x00000900 | Resp[1]:  0xffffffff
+        [   12.459933] mmc0: sdhci: Resp[2]:   0x320f5903 | Resp[3]:  0x00d04f01
+        [   12.466376] mmc0: sdhci: Host ctl2: 0x00000000
+        [   12.470822] mmc0: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0x5411c208
+        [   12.477261] mmc0: sdhci: ============================================
+        [   12.483843] mmc0: error -110 whilst initialising MMC card
+      footer:
+        Changelog-entry: >-
+          linux-imx: Disable CONFIG_DEBUG_PREEMPT kernel config to prevent eMMC
+          crash at boot
+        changelog-entry: >-
+          linux-imx: Disable CONFIG_DEBUG_PREEMPT kernel config to prevent eMMC
+          crash at boot
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.46.0+rev2
+  date: 2020-01-01T08:22:37.445Z
+- commits:
     - subject: Update the balena-yocto-scripts submodule to v1.5.2
       hash: 6354ca8ccccda94ff64f38794d86c089fd340aec
       body: ''

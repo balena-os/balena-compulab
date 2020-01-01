@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.46.0+rev2
+## (2020-01-01)
+
+* linux-imx: Disable CONFIG_DEBUG_PREEMPT kernel config to prevent eMMC crash at boot [Sebastian Panceac]
+
 # v2.46.0+rev1
 ## (2019-12-31)
 
