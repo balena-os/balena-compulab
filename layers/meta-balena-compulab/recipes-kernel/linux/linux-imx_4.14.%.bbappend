@@ -13,6 +13,7 @@ SRC_URI_append = " \
 
 SRC_URI_append_etcher-pro = " \
 	file://0001-linux-imx-Enable-I2C4-in-cl-som-imx8-dtb.patch \
+	file://0001-Enable-the-two-PCA9956B-LED-drivers-in-dtb.patch \
 "
 
 
@@ -33,4 +34,9 @@ RESIN_CONFIGS[iwlwifi] = " \
 
 RESIN_CONFIGS[debug_preempt_disable] = " \
     CONFIG_DEBUG_PREEMPT=n \
+"
+
+RESIN_CONFIGS_append_etcher-pro = " pca9956b"
+RESIN_CONFIGS[pca9956b] = " \
+    CONFIG_LEDS_PCA9956B=y \
 "
