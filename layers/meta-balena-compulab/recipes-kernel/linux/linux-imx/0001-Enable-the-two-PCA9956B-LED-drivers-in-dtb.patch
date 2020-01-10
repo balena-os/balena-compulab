@@ -1,0 +1,294 @@
+From 39264201c8bc6bc9cf7135374fbfadc973f13f26 Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Mon, 6 Jan 2020 16:18:41 +0100
+Subject: [PATCH] Enable the two PCA9956B LED drivers in dtb
+
+This patch enables the two PCA9956B LED drivers in dtb and
+the 48 LEDs commanded by the drivers
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 268 +++++++++++++++++++
+ 1 file changed, 268 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index 0cdd0ad4c83b..c73593387031 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -86,4 +86,272 @@
+     pinctrl-names = "default";
+     pinctrl-0 = <&pinctrl_i2c4>;
+     status = "okay";
++
++    pca9956b@0x1 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	reg = <0x01>;
++
++	compatible    = "nxp,pca9956b";
++
++	pca9956b,support_initialize = <1>;
++	pca9956b,mode1 = <0x09>;
++	pca9956b,mode2 = <0x05>;
++
++	pca9956b,defaultiref = <0x2f>;
++
++	out0@0 {
++	    label = "led1_r";
++	    reg = <0x0>;
++	};
++
++	out1@1 {
++	    label = "led1_g";
++	    reg = <0x1>;
++	};
++
++	out2@2 {
++	    label = "led1_b";
++	    reg = <0x2>;
++	};
++
++	out3@3 {
++	    label = "led2_r";
++	    reg = <0x3>;
++	};
++
++	out4@4 {
++	    label = "led2_g";
++	    reg = <0x4>;
++	};
++
++	out5@5 {
++	    label = "led2_b";
++	    reg = <0x5>;
++	};
++
++	out6@6 {
++	    label = "led3_r";
++	    reg = <0x6>;
++	};
++
++	out7@7 {
++	    label = "led3_g";
++	    reg = <0x7>;
++	};
++
++	out8@8 {
++	    label = "led3_b";
++	    reg = <0x8>;
++	};
++
++	out9@9 {
++	    label = "led4_r";
++	    reg = <0x9>;
++	};
++
++	outa@a {
++	    label = "led4_g";
++	    reg = <0xa>;
++	};
++
++	outb@b {
++	    label = "led4_b";
++	    reg = <0xb>;
++	};
++
++	outc@c {
++	    label = "led5_r";
++	    reg = <0xc>;
++	};
++
++	outd@d {
++	    label = "led5_g";
++	    reg = <0xd>;
++	};
++
++	oute@e {
++	    label = "led5_b";
++	    reg = <0xe>;
++	};
++
++	outf@f {
++	    label = "led6_r";
++	    reg = <0xf>;
++	};
++
++	out10@10 {
++	    label = "led6_g";
++	    reg = <0x10>;
++	};
++
++	out11@11 {
++	    label = "led6_b";
++	    reg = <0x11>;
++	};
++
++	out12@12 {
++	    label = "led7_r";
++	    reg = <0x12>;
++	};
++
++	out13@13 {
++	    label = "led7_g";
++	    reg = <0x13>;
++	};
++
++	out14@14 {
++	    label = "led7_b";
++	    reg = <0x14>;
++	};
++
++	out15@15 {
++	    label = "led8_r";
++	    reg = <0x15>;
++	};
++
++	out16@16 {
++	    label = "led8_g";
++	    reg = <0x16>;
++	};
++
++	out17@17 {
++	    label = "led8_b";
++	    reg = <0x17>;
++	};
++    };
++
++    pca9956b@0x5 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	reg = <0x05>;
++
++	compatible    = "nxp,pca9956b";
++
++	pca9956b,support_initialize = <1>;
++	pca9956b,mode1 = <0x09>;
++	pca9956b,mode2 = <0x05>;
++
++	pca9956b,defaultiref = <0x2f>;
++
++	out0@0 {
++	    label = "led9_r";
++	    reg = <0x0>;
++	};
++
++	out1@1 {
++	    label = "led9_g";
++	    reg = <0x1>;
++	};
++
++	out2@2 {
++	    label = "led9_b";
++	    reg = <0x2>;
++	};
++
++	out3@3 {
++	    label = "led10_r";
++	    reg = <0x3>;
++	};
++
++	out4@4 {
++	    label = "led10_g";
++	    reg = <0x4>;
++	};
++
++	out5@5 {
++	    label = "led10_b";
++	    reg = <0x5>;
++	};
++
++	out6@6 {
++	    label = "led11_r";
++	    reg = <0x6>;
++	};
++
++	out7@7 {
++	    label = "led11_g";
++	    reg = <0x7>;
++	};
++
++	out8@8 {
++	    label = "led11_b";
++	    reg = <0x8>;
++	};
++
++	out9@9 {
++	    label = "led12_r";
++	    reg = <0x9>;
++	};
++
++	outa@a {
++	    label = "led12_g";
++	    reg = <0xa>;
++	};
++
++	outb@b {
++	    label = "led12_b";
++	    reg = <0xb>;
++	};
++
++	outc@c {
++	    label = "led13_r";
++	    reg = <0xc>;
++	};
++
++	outd@d {
++	    label = "led13_g";
++	    reg = <0xd>;
++	};
++
++	oute@e {
++	    label = "led13_b";
++	    reg = <0xe>;
++	};
++
++	outf@f {
++	    label = "led14_r";
++	    reg = <0xf>;
++	};
++
++	out10@10 {
++	    label = "led14_g";
++	    reg = <0x10>;
++	};
++
++	out11@11 {
++	    label = "led14_b";
++	    reg = <0x11>;
++	};
++
++	out12@12 {
++	    label = "led15_r";
++	    reg = <0x12>;
++	};
++
++	out13@13 {
++	    label = "led15_g";
++	    reg = <0x13>;
++	};
++
++	out14@14 {
++	    label = "led15_b";
++	    reg = <0x14>;
++	};
++
++	out15@15 {
++	    label = "led16_r";
++	    reg = <0x15>;
++	};
++
++	out16@16 {
++	    label = "led16_g";
++	    reg = <0x16>;
++	};
++
++	out17@17 {
++	    label = "led16_b";
++	    reg = <0x17>;
++	};
++    };
+ };
+-- 
+2.17.1
+
