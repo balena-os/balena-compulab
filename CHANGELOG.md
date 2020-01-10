@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.46.0+rev3
+## (2020-01-10)
+
+* linux-imx: Add support for the PCA9956B LED drivers [Sebastian Panceac]
+
 # v2.46.0+rev2
 ## (2020-01-01)
 

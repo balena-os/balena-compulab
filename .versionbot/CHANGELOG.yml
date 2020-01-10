@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'linux-imx: Add support for the PCA9956B LED drivers'
+      hash: 2d67c144d09f532385ba9a208542243096bdc310
+      body: |
+        Ported and adapted kernel driver for NXP PCA9956B LED
+        drivers from revision e0bef67f62a36208637de3ffeada2061e2b07aba
+        of https://github.com/BeastRoms-Devices/kernel_realme_RMX1927/
+      footer:
+        Changelog-entry: 'linux-imx: Add support for the PCA9956B LED drivers'
+        changelog-entry: 'linux-imx: Add support for the PCA9956B LED drivers'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.46.0+rev3
+  date: 2020-01-10T12:53:52.266Z
+- commits:
     - subject: >-
         linux-imx: Disable CONFIG_DEBUG_PREEMPT kernel config to prevent eMMC
         crash at boot
