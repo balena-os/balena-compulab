@@ -15,6 +15,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0001-linux-imx-Enable-I2C4-in-cl-som-imx8-dtb.patch \
 	file://0001-Enable-the-two-PCA9956B-LED-drivers-in-dtb.patch \
 	file://0001-Set-fec1-to-fixed-link-mode.patch \
+	file://0001-Enable-pwm1-interface.patch \
 "
 
 

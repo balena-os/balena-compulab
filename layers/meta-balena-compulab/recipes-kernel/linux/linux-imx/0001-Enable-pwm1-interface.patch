@@ -1,0 +1,51 @@
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Mon, 13 Jan 2020 14:46:24 +0100
+Subject: [PATCH] Enable pwm1 interface
+
+Patch enables PWM1 interface to control
+Etcher Pro's buzzer
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts      | 6 ++++++
+ arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi | 6 ++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index c73593387031..0d32747c130d 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -81,6 +81,12 @@
+     status = "disabled";
+ };
+ 
++&pwm1 {
++    pinctrl-names = "default";
++    pinctrl-0 = <&pinctrl_pwm1>;
++    status = "okay";
++};
++
+ &i2c4 {
+     clock-frequency = <100000>;
+     pinctrl-names = "default";
+diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+index 1647c9e0005c..e47555eae170 100644
+--- a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
++++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+@@ -204,6 +204,12 @@
+ 			>;
+ 		};
+ 
++		pinctrl_pwm1: pwm1grp {
++			fsl,pins = <
++				MX8MQ_IOMUXC_SPDIF_EXT_CLK_PWM1_OUT	0x16
++			>;
++		};
++
+ 		pinctrl_pwm2: pwm2grp {
+ 			fsl,pins = <
+ 				MX8MQ_IOMUXC_I2C4_SCL_PWM2_OUT 		0x16
+-- 
+2.17.1
+
