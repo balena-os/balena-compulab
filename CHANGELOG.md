@@ -1,6 +1,12 @@
 # Change Log
 -----------
 
+# v2.46.0+rev4
+## (2020-01-13)
+
+* linux-imx: Enable PWM1 interface in Etcher Pro dtb to control buzzer [Sebastian Panceac]
+* linux-imx: Set fec1 controller to fixed-linx mode in Etcher Pro dtb [Sebastian Panceac]
+
 # v2.46.0+rev3
 ## (2020-01-10)
 

@@ -1,4 +1,29 @@
 - commits:
+    - subject: 'linux-imx: Enable PWM1 interface in Etcher Pro dtb to control buzzer'
+      hash: 8bfea29cec7c2e7357f0200623810e0a094c6e7f
+      body: |
+        Enable PWM1 interface to control Etcher Pro's buzzer
+      footer:
+        Changelog-entry: 'linux-imx: Enable PWM1 interface in Etcher Pro dtb to control buzzer'
+        changelog-entry: 'linux-imx: Enable PWM1 interface in Etcher Pro dtb to control buzzer'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'linux-imx: Set fec1 controller to fixed-linx mode in Etcher Pro dtb'
+      hash: d2d09ac198390b6070427a5e428607940d3156e7
+      body: |
+        Set the fec1 ethernet controller into fixed-link mode
+        since it will not be connected to a PHY anymore, but directly
+        to the KSZ9893R switch
+      footer:
+        Changelog-entry: 'linux-imx: Set fec1 controller to fixed-linx mode in Etcher Pro dtb'
+        changelog-entry: 'linux-imx: Set fec1 controller to fixed-linx mode in Etcher Pro dtb'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.46.0+rev4
+  date: 2020-01-13T15:05:29.431Z
+- commits:
     - subject: 'linux-imx: Add support for the PCA9956B LED drivers'
       hash: 2d67c144d09f532385ba9a208542243096bdc310
       body: |
