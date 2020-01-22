@@ -1,0 +1,87 @@
+From 1ac4149f9020898b3f50be681153137dfb0bd1c8 Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Mon, 13 Jan 2020 21:53:53 +0100
+Subject: [PATCH] Add support in dts for RPi lcd
+
+Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 65 ++++++++++++++++++++
+ 1 file changed, 65 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index 0d32747c130d..e4658b17f025 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -360,4 +360,69 @@
+ 	    reg = <0x17>;
+ 	};
+     };
++
++    rpilcd: lcd@45 {
++	reg = <0x45>;
++	compatible = "raspberrypi,touchscreen";
++    };
++};
++
++&lcdif {
++    status = "okay";
++
++    max-res = <800>, <480>;
++
++    port@0 {
++        lcdif_mipi_dsi: mipi-dsi-endpoint {
++            remote-endpoint = <&mipi_dsi_in>;
++        };
++    };
++};
++
++&mipi_dsi_phy {
++    status = "okay";
++};
++
++&mipi_dsi {
++    status = "okay";
++    as_bridge;
++    sync-pol = <1>;
++    pwr-delay = <10>;
++    port@1 {
++        mipi_dsi_in: endpoint {
++            remote-endpoint = <&lcdif_mipi_dsi>;
++        };
++    };
++};
++
++&mipi_dsi_bridge {
++    status = "okay";
++
++    panel@0 {
++	compatible = "raspberrypi,touchscreen";
++	reg = <0>;
++	raspberrypi,touchscreen-bridge = <&rpilcd>;
++	port {
++	    panel_dsi_port: endpoint {
++		remote-endpoint = <&mipi_dsi_bridge_out>;
++	    };
++	};
++    };
++    port@1 {
++        mipi_dsi_bridge_out: endpoint {
++            remote-endpoint = <&panel_dsi_port>;
++        };
++    };
++};
++
++&dcss {
++    status = "disabled";
++};
++
++&hdmi {
++    status = "disabled";
++};
++
++&irqsteer_dcss {
++    status = "disabled";
+ };
+-- 
+2.17.1
+

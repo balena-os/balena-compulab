@@ -1,0 +1,39 @@
+From 6835af6387349ddaa141fe9fb985eb498e2ede22 Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Mon, 13 Jan 2020 21:38:38 +0100
+Subject: [PATCH] don't force 2 as minimum lanes number
+
+I don't know why in one of their patches NXP forces the lanes
+number to at least 2. We need exactly 1 MIPI lane for the RPi display
+thus this patch
+
+Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+---
+ drivers/gpu/drm/bridge/nwl-dsi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/nwl-dsi.c b/drivers/gpu/drm/bridge/nwl-dsi.c
+index c86a1993140e..a34668dc1646 100644
+--- a/drivers/gpu/drm/bridge/nwl-dsi.c
++++ b/drivers/gpu/drm/bridge/nwl-dsi.c
+@@ -587,7 +587,7 @@ static struct mode_config *nwl_dsi_mode_probe(struct nwl_mipi_dsi *dsi,
+ 			break;
+ 
+ 		/* Reached the end of phyref_rates, try another lane config */
+-		if ((i++ == num_rates - 1) && (--lanes > 2)) {
++		if (i++ == num_rates - 1) {
+ 			i = 0;
+ 			continue;
+ 		}
+@@ -656,7 +656,7 @@ static bool nwl_dsi_bridge_mode_fixup(struct drm_bridge *bridge,
+ 
+ 	DRM_DEV_DEBUG_DRIVER(dsi->dev, "lanes=%u, data_rate=%lu\n",
+ 			     config->lanes, config->bitclock);
+-	if (config->lanes < 2 || config->lanes > 4)
++	if (config->lanes < 1 || config->lanes > 4)
+ 		return false;
+ 
+ 	/* Max data rate for this controller is 1.5Gbps */
+-- 
+2.17.1
+

@@ -1,0 +1,41 @@
+From fcfeef9ca5c74c3a2185b543034f323f0d5ab95e Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Wed, 29 Jan 2020 14:33:33 +0100
+Subject: [PATCH] add i2c_write retry
+
+Sometimes the display doesn't ACK to I2C commands
+and some retries are needed.
+
+Without this patch these errors show up:
+[    1.013746] raspberrypi-touchscreen 30a00000.mipi_dsi_bridge.0: I2C write failed: -6
+[    1.017194] raspberrypi-touchscreen 30a00000.mipi_dsi_bridge.0: I2C write failed: -6
+[    1.020639] raspberrypi-touchscreen 30a00000.mipi_dsi_bridge.0: I2C write failed: -6
+[    1.024076] raspberrypi-touchscreen 30a00000.mipi_dsi_bridge.0: I2C write failed: -6
+
+---
+ drivers/gpu/drm/panel/panel-raspberrypi-touchscreen.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/panel/panel-raspberrypi-touchscreen.c b/drivers/gpu/drm/panel/panel-raspberrypi-touchscreen.c
+index 5329fab2ab8c..8610db37ee0c 100644
+--- a/drivers/gpu/drm/panel/panel-raspberrypi-touchscreen.c
++++ b/drivers/gpu/drm/panel/panel-raspberrypi-touchscreen.c
+@@ -252,9 +252,12 @@ static void rpi_touchscreen_i2c_write(struct rpi_touchscreen *ts,
+ 				      u8 reg, u8 val)
+ {
+ 	int ret;
+-
+-	ret = i2c_smbus_write_byte_data(ts->bridge_i2c, reg, val);
+-	if (ret)
++	int retry = 10;
++	do{
++	    ret = i2c_smbus_write_byte_data(ts->bridge_i2c, reg, val);
++	}
++	while(ret < 0 && retry-- > 0);
++	if(ret)
+ 		dev_err(&ts->dsi->dev, "I2C write failed: %d\n", ret);
+ }
+ 
+-- 
+2.17.1
+

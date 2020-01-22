@@ -9,6 +9,14 @@ SRC_URI_append = " \
         file://0006-NFLX-2019-001-Resour-Consump-Low-MSS.patch \
         file://USB3-stability-fix.patch \
         file://0001-Add-support-for-NXP-PCA9956B-LED-controller.patch \
+        file://0001-Revert-MLK-17537-8-drm-mxsfb-Add-support-for-mode_va.patch \
+        file://0002-Revert-MLK-17537-9-gpu-imx-dcss-Add-support-for-mode.patch \
+        file://0003-Revert-MLK-17537-10-drm-imx-dcss-Add-support-for-mod.patch \
+        file://0004-Revert-MLK-17537-11-arch-arm64-fsl-imx8mq-evk-Reconf.patch \
+        file://0005-gpu-imx-dcss-Update-clocks.patch \
+        file://0006-drm-bridge-nwl-Improve-the-clock-calculation.patch \
+        file://0007-arch64-dts-fsl-imx8mq-Update-DCSS-LCDIF-and-DSI-cloc.patch \
+        file://0001-don-t-force-2-as-minimum-lanes-number.patch \
 "
 
 SRC_URI_append_etcher-pro = " \
@@ -18,6 +26,10 @@ SRC_URI_append_etcher-pro = " \
 	file://0001-Enable-pwm1-interface.patch \
 	file://0001-Add-support-for-KSZ9893R.patch \
 	file://0001-Enable-KSZ9893R-switch-in-Etcher-Pro-dtb.patch \
+	file://0001-Add-support-for-RPi-display.patch \
+	file://0001-Set-clock-to-26MHz-and-correct-bus-flags.patch \
+	file://0001-add-i2c_write-retry.patch \
+	file://0001-Add-support-in-dts-for-RPi-lcd.patch \
 "
 
 
@@ -47,4 +59,9 @@ RESIN_CONFIGS[pca9956b] = " \
 
 RESIN_CONFIGS[ksz9893r] = " \
     CONFIG_MICROCHIP_KSZ9893R=y \
+"
+
+RESIN_CONFIGS_append_etcher-pro = " rpi_display"
+RESIN_CONFIGS[rpi_display] = " \
+    CONFIG_DRM_PANEL_RASPBERRYPI_TOUCHSCREEN=y \
 "

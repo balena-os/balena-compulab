@@ -1,0 +1,78 @@
+From 6a88e53e6ba7279aa4b3cc9991664d6f2587c146 Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Fri, 31 Jan 2020 11:38:00 +0100
+Subject: [PATCH] asdasd
+
+Patch sets clock and timing according to newer versions of the driver,
+as found on the rpi-4.19y branch
+
+The new added line:
+connector->display_info.bus_flags = DRM_BUS_FLAG_PIXDATA_POSEDGE |
+	DRM_BUS_FLAG_DE_LOW;
+
+was added to make IMX8 output DSI data as a positive signal on the
+data lane. Otherwise, the signal will have negative polarity
+and the display will not work
+
+---
+ .../drm/panel/panel-raspberrypi-touchscreen.c | 34 +++++--------------
+ 1 file changed, 8 insertions(+), 26 deletions(-)
+
+diff --git a/drivers/gpu/drm/panel/panel-raspberrypi-touchscreen.c b/drivers/gpu/drm/panel/panel-raspberrypi-touchscreen.c
+index 128523d8d518..7330ac20bd76 100644
+--- a/drivers/gpu/drm/panel/panel-raspberrypi-touchscreen.c
++++ b/drivers/gpu/drm/panel/panel-raspberrypi-touchscreen.c
+@@ -205,35 +205,15 @@ struct rpi_touchscreen {
+ 
+ static const struct drm_display_mode rpi_touchscreen_modes[] = {
+ 	{
+-		/* The DSI PLL can only integer divide from the 2Ghz
+-		 * PLLD, giving us few choices.  We pick a divide by 3
+-		 * as our DSI HS clock, giving us a pixel clock of
+-		 * that divided by 24 bits.  Pad out HFP to get our
+-		 * panel to refresh at 60Hz, even if that doesn't
+-		 * match the datasheet.
+-		 */
+-#define PIXEL_CLOCK ((2000000000 / 3) / 24)
+-#define VREFRESH    60
+-#define VTOTAL      (480 + 7 + 2 + 21)
+-#define HACT        800
+-#define HSW         2
+-#define HBP         46
+-#define HFP         ((PIXEL_CLOCK / (VTOTAL * VREFRESH)) - (HACT + HSW + HBP))
+-
+-		/* Round up the pixel clock a bit (10khz), so that the
+-		 * "don't run things faster than the requested clock
+-		 * rate" rule of the clk driver doesn't reject the
+-		 * divide-by-3 mode due to rounding error.
+-		 */
+-		.clock = PIXEL_CLOCK / 1000 + 10,
+-		.hdisplay = HACT,
+-		.hsync_start = HACT + HFP,
+-		.hsync_end = HACT + HFP + HSW,
+-		.htotal = HACT + HFP + HSW + HBP,
++		.clock = 26000,
++		.hdisplay = 800,
++		.hsync_start = 800 + 1,
++		.hsync_end = 800 + 1 + 2,
++		.htotal = 800 + 1 + 2 + 46,
+ 		.vdisplay = 480,
+ 		.vsync_start = 480 + 7,
+ 		.vsync_end = 480 + 7 + 2,
+-		.vtotal = VTOTAL,
++		.vtotal = 480 + 7 + 2 +21,
+ 		.vrefresh = 60,
+ 	},
+ };
+@@ -378,6 +358,8 @@ static int rpi_touchscreen_get_modes(struct drm_panel *panel)
+ 	connector->display_info.bpc = 8;
+ 	connector->display_info.width_mm = 154;
+ 	connector->display_info.height_mm = 86;
++	connector->display_info.bus_flags = DRM_BUS_FLAG_PIXDATA_POSEDGE |
++		DRM_BUS_FLAG_DE_LOW;
+ 
+ 	return num;
+ }
+-- 
+2.17.1
+
