@@ -14,7 +14,7 @@ module.exports =
         slug: 'cl-som-imx8'
         name: 'Compulab MX8M'
         arch: 'aarch64'
-        state: 'experimental'
+        state: 'released'
  
         stateInstructions:
                 postProvisioning: postProvisioningInstructions
