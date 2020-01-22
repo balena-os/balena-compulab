@@ -1,4 +1,18 @@
 - commits:
+    - subject: Change the state to 'released' in the coffee file
+      hash: 5039adcef679293a83dc50212fb75b6fca8070ee
+      body: |
+        Change the state field to 'released'
+        instead of 'experimental'
+      footer:
+        Changelog-entry: Change the state to 'released' in the coffee file
+        changelog-entry: Change the state to 'released' in the coffee file
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.0+rev5
+  date: 2020-01-22T14:02:46.162Z
+- commits:
     - subject: 'linux-imx: Enable PWM1 interface in Etcher Pro dtb to control buzzer'
       hash: 8bfea29cec7c2e7357f0200623810e0a094c6e7f
       body: |

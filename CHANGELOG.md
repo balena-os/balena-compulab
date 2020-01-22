@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.46.0+rev5
+## (2020-01-22)
+
+* Change the state to 'released' in the coffee file [Vicentiu Galanopulo]
+
 # v2.46.0+rev4
 ## (2020-01-13)
 
