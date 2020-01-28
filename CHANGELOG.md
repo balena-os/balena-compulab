@@ -1,6 +1,16 @@
 # Change Log
 -----------
 
+# v2.46.0+rev6
+## (2020-01-22)
+
+* Remove the usb-modeswitch patch that fixes crashes on 64 bits architectures [Florin Sarbu]
+
+# v2.46.0+rev5
+## (2020-01-22)
+
+* Change the state to 'released' in the coffee file [Vicentiu Galanopulo]
+
 # v2.46.0+rev4
 ## (2020-01-13)
 

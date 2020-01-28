@@ -1,4 +1,38 @@
 - commits:
+    - subject: >-
+        Remove the usb-modeswitch patch that fixes crashes on 64 bits
+        architectures
+      hash: 0c362a66c06a0537b5013f169c8ee99121b66c12
+      body: |
+        We will be using usb-modeswitch version 2.5.2 in meta-balena
+        and this patch is not needed anymore with this newer version.
+      footer:
+        Changelog-entry: >-
+          Remove the usb-modeswitch patch that fixes crashes on 64 bits
+          architectures
+        changelog-entry: >-
+          Remove the usb-modeswitch patch that fixes crashes on 64 bits
+          architectures
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.46.0+rev6
+  date: 2020-01-22T15:20:13.094Z
+- commits:
+    - subject: Change the state to 'released' in the coffee file
+      hash: 5039adcef679293a83dc50212fb75b6fca8070ee
+      body: |
+        Change the state field to 'released'
+        instead of 'experimental'
+      footer:
+        Changelog-entry: Change the state to 'released' in the coffee file
+        changelog-entry: Change the state to 'released' in the coffee file
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.0+rev5
+  date: 2020-01-22T14:02:46.162Z
+- commits:
     - subject: 'linux-imx: Enable PWM1 interface in Etcher Pro dtb to control buzzer'
       hash: 8bfea29cec7c2e7357f0200623810e0a094c6e7f
       body: |
