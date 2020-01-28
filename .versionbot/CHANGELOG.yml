@@ -1,4 +1,29 @@
 - commits:
+    - subject: Enable KSZ9893R switch for Etcher Pro board
+      hash: af09ff33745f5d77be84db79508ccb85200b20f9
+      body: |
+        This commit enables on Etcher Pro the kernel config for KSZ9893R
+        switch and enables the switch in the device tree
+      footer:
+        Changelog-entry: Enable KSZ9893R switch for Etcher Pro board
+        changelog-entry: Enable KSZ9893R switch for Etcher Pro board
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'linux-imx: Add support for Microchip KSZ9893R switch'
+      hash: 021999016d0843ee4f8c47fd23ce6110a76c114b
+      body: |
+        This commit adds support for the Microchip KSZ9893R ethernet switch
+        used on Balena Etcher Pro board
+      footer:
+        Changelog-entry: 'linux-imx: Add support for Microchip KSZ9893R switch'
+        changelog-entry: 'linux-imx: Add support for Microchip KSZ9893R switch'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.46.0+rev7
+  date: 2020-01-28T10:55:39.023Z
+- commits:
     - subject: >-
         Remove the usb-modeswitch patch that fixes crashes on 64 bits
         architectures

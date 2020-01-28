@@ -1,6 +1,12 @@
 # Change Log
 -----------
 
+# v2.46.0+rev7
+## (2020-01-28)
+
+* Enable KSZ9893R switch for Etcher Pro board [Sebastian Panceac]
+* linux-imx: Add support for Microchip KSZ9893R switch [Sebastian Panceac]
+
 # v2.46.0+rev6
 ## (2020-01-22)
 
