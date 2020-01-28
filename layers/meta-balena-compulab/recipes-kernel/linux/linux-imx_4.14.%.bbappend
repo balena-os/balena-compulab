@@ -16,6 +16,8 @@ SRC_URI_append_etcher-pro = " \
 	file://0001-Enable-the-two-PCA9956B-LED-drivers-in-dtb.patch \
 	file://0001-Set-fec1-to-fixed-link-mode.patch \
 	file://0001-Enable-pwm1-interface.patch \
+	file://0001-Add-support-for-KSZ9893R.patch \
+	file://0001-Enable-KSZ9893R-switch-in-Etcher-Pro-dtb.patch \
 "
 
 
@@ -38,7 +40,11 @@ RESIN_CONFIGS[debug_preempt_disable] = " \
     CONFIG_DEBUG_PREEMPT=n \
 "
 
-RESIN_CONFIGS_append_etcher-pro = " pca9956b"
+RESIN_CONFIGS_append_etcher-pro = " pca9956b ksz9893r"
 RESIN_CONFIGS[pca9956b] = " \
     CONFIG_LEDS_PCA9956B=y \
+"
+
+RESIN_CONFIGS[ksz9893r] = " \
+    CONFIG_MICROCHIP_KSZ9893R=y \
 "

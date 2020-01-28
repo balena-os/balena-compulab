@@ -1,0 +1,315 @@
+From 1a8ee14770b107b0a37860d8d3a582e589b4d41c Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Fri, 24 Jan 2020 10:38:41 +0100
+Subject: [PATCH] Add support for KSZ9893R switch
+
+This patch adds support for the Microchip  KSZ9893R ethernet switch
+used on Balena Etcher Pro board
+
+Upstream-status: Pending
+Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+---
+ drivers/net/Kconfig                  |   2 +
+ drivers/net/Makefile                 |   2 +
+ drivers/net/ksz9893r/Kconfig         |   6 +
+ drivers/net/ksz9893r/Makefile        |   1 +
+ drivers/net/ksz9893r/ksz_9893r.c     | 216 +++++++++++++++++++++++++++
+ drivers/net/ksz9893r/ksz_9893r_reg.h |  18 +++
+ 6 files changed, 244 insertions(+)
+ create mode 100644 drivers/net/ksz9893r/Kconfig
+ create mode 100644 drivers/net/ksz9893r/Makefile
+ create mode 100644 drivers/net/ksz9893r/ksz_9893r.c
+ create mode 100644 drivers/net/ksz9893r/ksz_9893r_reg.h
+
+diff --git a/drivers/net/Kconfig b/drivers/net/Kconfig
+index def919501c05..2eed679ac184 100644
+--- a/drivers/net/Kconfig
++++ b/drivers/net/Kconfig
+@@ -406,6 +406,8 @@ config NET_SB1000
+ 
+ 	  If you don't have this card, of course say N.
+ 
++source "drivers/net/ksz9893r/Kconfig"
++
+ source "drivers/net/phy/Kconfig"
+ 
+ source "drivers/net/plip/Kconfig"
+diff --git a/drivers/net/Makefile b/drivers/net/Makefile
+index 40e572c08af1..da61f2f144c8 100644
+--- a/drivers/net/Makefile
++++ b/drivers/net/Makefile
+@@ -77,3 +77,5 @@ obj-$(CONFIG_NTB_NETDEV) += ntb_netdev.o
+ obj-$(CONFIG_FUJITSU_ES) += fjes/
+ 
+ obj-$(CONFIG_IVSHMEM_NET) += ivshmem-net.o
++
++obj-$(CONFIG_MICROCHIP_KSZ9893R) += ksz9893r/
+diff --git a/drivers/net/ksz9893r/Kconfig b/drivers/net/ksz9893r/Kconfig
+new file mode 100644
+index 000000000000..6823f36de7b7
+--- /dev/null
++++ b/drivers/net/ksz9893r/Kconfig
+@@ -0,0 +1,6 @@
++config MICROCHIP_KSZ9893R
++	tristate "Microchip KSZ9893R switch support"
++	depends on I2C
++	help
++	 Select to enable support for Microchip KSZ9893R switch for Etcher Pro.
++	 Driver does not implement DSA functions
+\ No newline at end of file
+diff --git a/drivers/net/ksz9893r/Makefile b/drivers/net/ksz9893r/Makefile
+new file mode 100644
+index 000000000000..99bc4aa4e355
+--- /dev/null
++++ b/drivers/net/ksz9893r/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_MICROCHIP_KSZ9893R)        += ksz_9893r.o
+diff --git a/drivers/net/ksz9893r/ksz_9893r.c b/drivers/net/ksz9893r/ksz_9893r.c
+new file mode 100644
+index 000000000000..84721a0a13ef
+--- /dev/null
++++ b/drivers/net/ksz9893r/ksz_9893r.c
+@@ -0,0 +1,216 @@
++#include <linux/module.h>
++#include <linux/string.h>
++#include <linux/err.h>
++#include <linux/i2c.h>
++#include <linux/slab.h>
++#include <linux/of.h>
++#include "ksz_9893r_reg.h"
++
++struct ksz9893r_sw {
++	struct mutex mutex;
++	struct i2c_client *client;
++};
++
++struct port_status {
++	u32 speed;
++	bool link_up;
++	bool autoneg_complete;
++};
++
++static int ksz9893r_i2c_read_reg(struct ksz9893r_sw *ksz9893r, u16 reg)
++{
++	u32 ret;
++	mutex_lock(&ksz9893r->mutex);
++	ret = i2c_smbus_write_byte_data(ksz9893r->client, reg >> 8, reg);
++	if(ret < 0)
++		goto exit;
++	ret = i2c_smbus_read_byte(ksz9893r->client);
++exit:
++	mutex_unlock(&ksz9893r->mutex);
++	return ret;
++}
++
++static int ksz9893r_i2c_write_reg(struct ksz9893r_sw *ksz9893r, u16 reg, u8 data)
++{
++	u32 ret;
++	mutex_lock(&ksz9893r->mutex);
++	ret = i2c_master_send(ksz9893r->client, (u8[]) {(reg >> 8), reg, data}, 3);
++	mutex_unlock(&ksz9893r->mutex);
++	return ret;
++}
++
++static int ksz9893r_read_port_status(struct ksz9893r_sw *ksz9893r, u8 port_nr, struct port_status *p_status)
++{
++	u32 status;
++
++	if(port_nr < 1 || port_nr > 2)
++	{
++		dev_err(&ksz9893r->client->dev, "Invalid port number %d\n", port_nr);
++		return -1;
++	}
++
++	status = ksz9893r_i2c_read_reg(ksz9893r, PORT_STATUS(port_nr));
++	if(status < 0) return status;
++
++	p_status->speed = 0;
++	p_status->link_up = false;
++	p_status->autoneg_complete = false;
++
++	if(status & LINK_UP) p_status->link_up = true;
++	if(status & AUTONEG_COMPLETE) p_status->autoneg_complete = true;
++
++	status = ksz9893r_i2c_read_reg(ksz9893r, PORT_PHY_CONTROL(port_nr));
++	if(status < 0) return status;
++
++	if(status & SPEED_1000) p_status->speed = 1000;
++	else if(status & SPEED_100) p_status->speed = 100;
++	else p_status->speed = 10;
++	return 0;
++}
++
++static ssize_t ksz9893r_port1_status_show(struct device *dev,
++		struct device_attribute *devattr, char *buf)
++{
++	struct port_status p_status;
++	struct ksz9893r_sw *ksz9893r = dev_get_drvdata(dev);
++
++	int ret = ksz9893r_read_port_status(ksz9893r, 1, &p_status);
++	if(ret < 0) goto error;
++
++	snprintf(buf, PAGE_SIZE, "Port speed: %d\nLink-up: %d\nAutonegotiation complete: %d\n", p_status.speed,
++		p_status.link_up, p_status.autoneg_complete);
++	return strlen(buf);
++
++error:
++	dev_err(&ksz9893r->client->dev, "Failed to read PORT status %d\n", ret);
++	return ret;
++}
++
++static DEVICE_ATTR(port1_status, 0664,
++				ksz9893r_port1_status_show, NULL);
++
++static ssize_t ksz9893r_port2_status_show(struct device *dev,
++		struct device_attribute *devattr, char *buf)
++{
++	struct port_status p_status;
++	struct ksz9893r_sw *ksz9893r = dev_get_drvdata(dev);
++
++	int ret = ksz9893r_read_port_status(ksz9893r, 2, &p_status);
++	if(ret < 0) goto error;
++
++	snprintf(buf, PAGE_SIZE, "Port speed: %d\nLink-up: %d\nAutonegotiation complete: %d\n", p_status.speed,
++		p_status.link_up, p_status.autoneg_complete);
++	return strlen(buf);
++
++error:
++	dev_err(&ksz9893r->client->dev, "Failed to read PORT status %d\n", ret);
++	return ret;
++}
++
++static DEVICE_ATTR(port2_status, 0664,
++				ksz9893r_port2_status_show, NULL);
++
++static struct attribute *attrs[] = {
++	&dev_attr_port1_status.attr,
++	&dev_attr_port2_status.attr,
++	NULL,
++};
++
++static struct attribute_group attr_group = {
++	.attrs = attrs,
++};
++
++static int ksz9893r_init(struct ksz9893r_sw *ksz9893r)
++{
++	u32 ret;
++	u8 reg_val;
++	/* reset all registers to default values, except strap-in options */
++	ret = ksz9893r_i2c_write_reg(ksz9893r, SW_OPERATION_REG , SOFT_HARD_RESET);
++	if(ret < 0) goto exit;
++
++	ret = ksz9893r_i2c_read_reg(ksz9893r, XMII_CTRL1_REG);
++	if(ret < 0) goto exit;
++
++	reg_val = (u8) ret;
++	reg_val |=  RGMII_OUT_DELAY | RGMII_IN_DELAY;
++
++	/* enable INGRESS and EGRESS internal delays for PORT3 */
++	ret = ksz9893r_i2c_write_reg(ksz9893r, XMII_CTRL1_REG, reg_val);
++	if(ret < 0) goto exit;
++exit:
++	return ret;
++}
++
++static int ksz9893r_probe(struct i2c_client *client,
++					const struct i2c_device_id *id)
++{
++	int ret = 0;
++	struct ksz9893r_sw *ksz9893r;
++
++	ksz9893r = devm_kzalloc(&client->dev, sizeof(struct ksz9893r_sw),
++								GFP_KERNEL);
++	if(unlikely(NULL == ksz9893r))
++	    return -ENOMEM;
++
++	mutex_init(&ksz9893r->mutex);
++	ksz9893r->client = client;
++	i2c_set_clientdata(client, ksz9893r);
++
++	ret = sysfs_create_group(&client->dev.kobj, &attr_group);
++	if (ret) {
++		dev_err(&client->dev,
++				"Failed to create sysfs group for KSZ9893R\n");
++		goto fail;
++	}
++
++	ret = ksz9893r_init(ksz9893r);
++	if(ret < 0)
++	{
++		dev_err(&client->dev, "Failed to initialize KSZ9893R %d\n", ret);
++		goto fail;
++	}
++	return 0;
++fail:
++	mutex_destroy(&ksz9893r->mutex);
++	devm_kfree(&client->dev, ksz9893r);
++	return ret;
++}
++
++static int ksz9893r_remove(struct i2c_client *client)
++{
++	struct ksz9893r_sw *ksz9893r = i2c_get_clientdata(client);
++	devm_kfree(&client->dev, ksz9893r);
++	return 0;
++}
++
++#if IS_ENABLED(CONFIG_OF)
++static const struct of_device_id of_ksz9893r_match[] = {
++	{ .compatible = "ksz9893r", },
++	{},
++};
++MODULE_DEVICE_TABLE(of, of_ksz9893r_match);
++#endif
++
++static const struct i2c_device_id ksz9893r_id[] = {
++	{ "ksz9893r", 0},
++	{},
++};
++MODULE_DEVICE_TABLE(i2c, ksz9893r_id);
++
++static struct i2c_driver ksz9893r_driver = {
++	.driver = {
++		.name	= "ksz9893r",
++#if IS_ENABLED(CONFIG_OF)
++		.of_match_table = of_match_ptr(of_ksz9893r_match),
++#endif
++	},
++	.probe	= ksz9893r_probe,
++	.remove = ksz9893r_remove,
++	.id_table = ksz9893r_id,
++};
++
++module_i2c_driver(ksz9893r_driver);
++
++MODULE_AUTHOR("Sebastian Panceac <sebastian@balena.io>");
++MODULE_DESCRIPTION("KSZ8983R switch driver");
++MODULE_LICENSE("GPL v2");
+diff --git a/drivers/net/ksz9893r/ksz_9893r_reg.h b/drivers/net/ksz9893r/ksz_9893r_reg.h
+new file mode 100644
+index 000000000000..f5ffec828138
+--- /dev/null
++++ b/drivers/net/ksz9893r/ksz_9893r_reg.h
+@@ -0,0 +1,18 @@
++/* registers address definitions */
++#define SW_OPERATION_REG 0x0300
++#define XMII_CTRL1_REG 0x3301
++#define PORT_STATUS_BASE 0x0103
++#define PORT_STATUS(PORT_NR) (PORT_STATUS_BASE | (PORT_NR << 12))
++#define PORT_PHY_CONTROL_BASE 0x013f
++#define PORT_PHY_CONTROL(PORT_NR) (PORT_PHY_CONTROL_BASE | (PORT_NR << 12))
++
++/* register bits definitions */
++#define RGMII_OUT_DELAY BIT(3)
++#define RGMII_IN_DELAY BIT(4)
++#define SOFT_HARD_RESET BIT(1)
++#define AUTONEG_COMPLETE BIT(5)
++#define LINK_UP BIT(2)
++#define SPEED_1000 BIT(6)
++#define SPEED_100 BIT(5)
++#define SPEED_10 BIT(4)
++
+-- 
+2.17.1
+
