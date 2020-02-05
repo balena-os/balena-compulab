@@ -1,0 +1,297 @@
+From 95ec33e638430ea748bf070d65edb658af42403b Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Mon, 30 Sep 2019 10:21:07 +0200
+Subject: [PATCH] debug nwl mxsfb
+
+---
+ drivers/gpu/drm/bridge/nwl-dsi.c   | 70 +++++++++++++++---------------
+ drivers/gpu/drm/mxsfb/mxsfb_crtc.c | 12 ++---
+ 2 files changed, 41 insertions(+), 41 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/nwl-dsi.c b/drivers/gpu/drm/bridge/nwl-dsi.c
+index c86a1993140e..118b31ad2311 100644
+--- a/drivers/gpu/drm/bridge/nwl-dsi.c
++++ b/drivers/gpu/drm/bridge/nwl-dsi.c
+@@ -362,7 +362,7 @@ static void nwl_dsi_config_dpi(struct nwl_mipi_dsi *dsi)
+ 
+ 	nwl_dsi_write(dsi, INTERFACE_COLOR_CODING, color_coding);
+ 	nwl_dsi_write(dsi, PIXEL_FORMAT, pixel_format);
+-	DRM_DEV_DEBUG_DRIVER(dev, "DSI format is: %d (CC=%d, PF=%d)\n",
++	dev_err(dev, "DSI format is: %d (CC=%d, PF=%d)\n",
+ 			dsi_device->format, color_coding, pixel_format);
+ 
+ 	/*TODO: need to make polarity configurable */
+@@ -405,7 +405,7 @@ static void nwl_dsi_enable_clocks(struct nwl_mipi_dsi *dsi, u32 clks)
+ 		clk_prepare_enable(dsi->phy_ref.clk);
+ 		dsi->phy_ref.enabled = true;
+ 		rate = clk_get_rate(dsi->phy_ref.clk);
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 				"Enabled phy_ref clk (rate=%lu)\n", rate);
+ 	}
+ 
+@@ -421,7 +421,7 @@ static void nwl_dsi_enable_clocks(struct nwl_mipi_dsi *dsi, u32 clks)
+ 		clk_prepare_enable(dsi->tx_esc.clk);
+ 		dsi->tx_esc.enabled = true;
+ 		rate = clk_get_rate(dsi->tx_esc.clk);
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 				"Enabled tx_esc clk (rate=%lu)\n", rate);
+ 	}
+ }
+@@ -433,7 +433,7 @@ static void nwl_dsi_disable_clocks(struct nwl_mipi_dsi *dsi, u32 clks)
+ 	if (clks & CLK_PHY_REF && dsi->phy_ref.enabled) {
+ 		clk_disable_unprepare(dsi->phy_ref.clk);
+ 		dsi->phy_ref.enabled = false;
+-		DRM_DEV_DEBUG_DRIVER(dev, "Disabled phy_ref clk\n");
++		dev_err(dev, "Disabled phy_ref clk\n");
+ 	}
+ 
+ 	if (clks & CLK_RX_ESC && dsi->rx_esc.enabled) {
+@@ -444,7 +444,7 @@ static void nwl_dsi_disable_clocks(struct nwl_mipi_dsi *dsi, u32 clks)
+ 	if (clks & CLK_TX_ESC && dsi->tx_esc.enabled) {
+ 		clk_disable_unprepare(dsi->tx_esc.clk);
+ 		dsi->tx_esc.enabled = false;
+-		DRM_DEV_DEBUG_DRIVER(dev, "Disabled tx_esc clk\n");
++		dev_err(dev, "Disabled tx_esc clk\n");
+ 	}
+ 
+ }
+@@ -594,7 +594,7 @@ static struct mode_config *nwl_dsi_mode_probe(struct nwl_mipi_dsi *dsi,
+ 	}
+ 
+ 	if (!match_rates) {
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"Cannot setup PHY for mode: %ux%u @%d kHz\n",
+ 			mode->hdisplay,
+ 			mode->vdisplay,
+@@ -620,7 +620,7 @@ static enum drm_mode_status nwl_dsi_bridge_mode_valid(struct drm_bridge *bridge,
+ 	struct mode_config *config;
+ 	unsigned long pll_rate;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "Validating mode:");
++	dev_err(dsi->dev, "Validating mode:");
+ 	drm_mode_debug_printmodeline(mode);
+ 
+ 	config = nwl_dsi_mode_probe(dsi, mode);
+@@ -647,14 +647,14 @@ static bool nwl_dsi_bridge_mode_fixup(struct drm_bridge *bridge,
+ 	struct mode_config *config;
+ 	unsigned long pll_rate;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "Fixup mode:\n");
++	dev_err(dsi->dev, "Fixup mode:\n");
+ 	drm_mode_debug_printmodeline(adjusted);
+ 
+ 	config = nwl_dsi_mode_probe(dsi, adjusted);
+ 	if (!config)
+ 		return false;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "lanes=%u, data_rate=%lu\n",
++	dev_err(dsi->dev, "lanes=%u, data_rate=%lu\n",
+ 			     config->lanes, config->bitclock);
+ 	if (config->lanes < 2 || config->lanes > 4)
+ 		return false;
+@@ -666,7 +666,7 @@ static bool nwl_dsi_bridge_mode_fixup(struct drm_bridge *bridge,
+ 	pll_rate = config->pll_rates[config->phy_rate_idx];
+ 	if (dsi->pll_clk && pll_rate) {
+ 		clk_set_rate(dsi->pll_clk, pll_rate);
+-		DRM_DEV_DEBUG_DRIVER(dsi->dev,
++		dev_err(dsi->dev,
+ 			"Video pll rate: %lu (actual: %lu)",
+ 			pll_rate, clk_get_rate(dsi->pll_clk));
+ 	}
+@@ -682,7 +682,7 @@ static void nwl_dsi_bridge_mode_set(struct drm_bridge *bridge,
+ 	struct mode_config *config;
+ 	unsigned long phy_rate, actual_phy_rate;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "Setting mode:\n");
++	dev_err(dsi->dev, "Setting mode:\n");
+ 	drm_mode_debug_printmodeline(adjusted);
+ 
+ 	config = nwl_dsi_mode_probe(dsi, adjusted);
+@@ -701,7 +701,7 @@ static void nwl_dsi_bridge_mode_set(struct drm_bridge *bridge,
+ 	clk_set_rate(dsi->phy_ref.clk, phy_rate);
+ 	actual_phy_rate = clk_get_rate(dsi->phy_ref.clk);
+ 	dsi->dsi_device->lanes = config->lanes;
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev,
++	dev_err(dsi->dev,
+ 		"Using phy_ref rate: %lu (actual: %lu), "
+ 		"bitclock: %lu, lanes: %u\n",
+ 		phy_rate, actual_phy_rate,
+@@ -746,9 +746,9 @@ static int nwl_dsi_host_attach(struct mipi_dsi_host *host,
+ 	}
+ 
+ 	if (dsi->panel)
+-		DRM_DEV_DEBUG_DRIVER(dsi->dev, "Panel attached\n");
++		dev_err(dsi->dev, "Panel attached\n");
+ 	else
+-		DRM_DEV_DEBUG_DRIVER(dsi->dev, "Bridge attached\n");
++		dev_err(dsi->dev, "Bridge attached\n");
+ 
+ 	dsi->dsi_device = device;
+ 	dsi->lanes = device->lanes;
+@@ -764,7 +764,7 @@ static int nwl_dsi_host_attach(struct mipi_dsi_host *host,
+ 		unsigned long phy_rate;
+ 		struct mode_config *config;
+ 
+-		DRM_DEV_DEBUG_DRIVER(dsi->dev, "Re-setting mode:\n");
++		dev_err(dsi->dev, "Re-setting mode:\n");
+ 		drm_mode_debug_printmodeline(dsi->curr_mode);
+ 		drm_mode_destroy(dsi->bridge.dev, dsi->curr_mode);
+ 		list_for_each_entry(config, &dsi->valid_modes, list)
+@@ -777,7 +777,7 @@ static int nwl_dsi_host_attach(struct mipi_dsi_host *host,
+ 		phy_rate = config->phy_rates[config->phy_rate_idx];
+ 		clk_set_rate(dsi->phy_ref.clk, phy_rate);
+ 		device->lanes = config->lanes;
+-		DRM_DEV_DEBUG_DRIVER(dsi->dev,
++		dev_err(dsi->dev,
+ 			"Using phy_ref rate: %lu (actual: %ld), "
+ 			"bitclock: %lu, lanes: %d\n",
+ 			phy_rate, clk_get_rate(dsi->phy_ref.clk),
+@@ -809,52 +809,52 @@ static int nwl_dsi_host_detach(struct mipi_dsi_host *host,
+ 
+ static void nwl_dsi_print_error(struct device *dev, u16 error)
+ {
+-	DRM_DEV_DEBUG_DRIVER(dev, "DSI Error Register (detailed report):\n");
++	dev_err(dev, "DSI Error Register (detailed report):\n");
+ 	if (error & BIT(0))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"SoT Error\n");
+ 	if (error & BIT(1))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"SoT Sync Error\n");
+ 	if (error & BIT(2))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"EoT Sync Error\n");
+ 	if (error & BIT(3))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"Escape Mode Entry Command Error\n");
+ 	if (error & BIT(4))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"Low-Power Transmit Sync Error\n");
+ 	if (error & BIT(5))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"Peripheral Timeout Error\n");
+ 	if (error & BIT(6))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"False Control Error\n");
+ 	if (error & BIT(7))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"Contention Detected\n");
+ 	if (error & BIT(8))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"ECC Error, single-bit (detected and corrected)\n");
+ 	if (error & BIT(9))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"ECC Error, multi-bit (detected, not corrected)\n");
+ 	if (error & BIT(10))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"Checksum Error (long packet only)\n");
+ 	if (error & BIT(11))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"DSI Data Type Not Recognized\n");
+ 	if (error & BIT(12))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"DSI VC ID Invalid\n");
+ 	if (error & BIT(13))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"Invalid Transmission Length\n");
+ 	/* BIT(14) is reserved */
+ 	if (error & BIT(15))
+-		DRM_DEV_DEBUG_DRIVER(dev,
++		dev_err(dev,
+ 			"DSI Protocol Violation\n");
+ }
+ 
+@@ -1144,7 +1144,7 @@ static int nwl_dsi_connector_get_modes(struct drm_connector *connector)
+ 	int num_modes = 0;
+ 	struct drm_display_mode *mode;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "\n");
++	dev_err(dsi->dev, "\n");
+ 	if (dsi->panel)
+ 		num_modes = drm_panel_get_modes(dsi->panel);
+ 
+@@ -1220,7 +1220,7 @@ static int nwl_dsi_bridge_attach(struct drm_bridge *bridge)
+ 
+ 	int ret = 0;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "\n");
++	dev_err(dsi->dev, "\n");
+ 	if (!encoder) {
+ 		DRM_DEV_ERROR(dev, "Parent encoder object not found\n");
+ 		return -ENODEV;
+@@ -1266,7 +1266,7 @@ static void nwl_dsi_bridge_detach(struct drm_bridge *bridge)
+ {
+ 	struct nwl_mipi_dsi *dsi = bridge->driver_private;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "\n");
++	dev_err(dsi->dev, "\n");
+ 	if (dsi->panel) {
+ 		drm_panel_detach(dsi->panel);
+ 		drm_connector_cleanup(&dsi->connector);
+diff --git a/drivers/gpu/drm/mxsfb/mxsfb_crtc.c b/drivers/gpu/drm/mxsfb/mxsfb_crtc.c
+index 64ad13549fcc..09371d7b550c 100644
+--- a/drivers/gpu/drm/mxsfb/mxsfb_crtc.c
++++ b/drivers/gpu/drm/mxsfb/mxsfb_crtc.c
+@@ -75,7 +75,7 @@ static int mxsfb_set_pixel_fmt(struct mxsfb_drm_private *mxsfb, bool update)
+ 		ctrl1 &= CTRL1_CUR_FRAME_DONE_IRQ_EN | CTRL1_CUR_FRAME_DONE_IRQ;
+ 	}
+ 
+-	DRM_DEV_DEBUG_DRIVER(drm->dev, "Setting up %s mode\n",
++	dev_err(drm->dev, "Setting up %s mode\n",
+ 			drm_get_format_name(format, &format_name_buf));
+ 
+ 	/* Do some clean-up that we might have from a previous mode */
+@@ -203,7 +203,7 @@ static void mxsfb_set_bus_fmt(struct mxsfb_drm_private *mxsfb)
+ 	crtc->mode.private_flags |= (bus_format << 1); /* set bus format */
+ 	crtc->mode.private_flags |= 0x1; /* bus format change indication*/
+ 
+-	DRM_DEV_DEBUG_DRIVER(mxsfb->dev,
++	dev_err(mxsfb->dev,
+ 		"Using bus_format: 0x%08X\n", bus_format);
+ 
+ 	switch (bus_format) {
+@@ -363,12 +363,12 @@ static void mxsfb_crtc_mode_set_nofb(struct mxsfb_drm_private *mxsfb)
+ 		return;
+ 
+ 	clk_set_rate(mxsfb->clk, m->crtc_clock * 1000);
+-	DRM_DEV_DEBUG_DRIVER(mxsfb->dev, "Pixel clock: %dkHz (actual: %dkHz)\n",
++	dev_err(mxsfb->dev, "Pixel clock: %dkHz (actual: %dkHz)\n",
+ 		m->crtc_clock, (int)(clk_get_rate(mxsfb->clk) / 1000));
+ 
+-	DRM_DEV_DEBUG_DRIVER(mxsfb->dev,
++	dev_err(mxsfb->dev,
+ 		"Connector bus_flags: 0x%08X\n", bus_flags);
+-	DRM_DEV_DEBUG_DRIVER(mxsfb->dev,
++	dev_err(mxsfb->dev,
+ 		"Mode flags: 0x%08X\n", m->flags);
+ 
+ 	writel(TRANSFER_COUNT_SET_VCOUNT(m->crtc_vdisplay) |
+@@ -488,7 +488,7 @@ void mxsfb_plane_atomic_update(struct mxsfb_drm_private *mxsfb,
+ 	if (old_fb->format->format != fb->format->format) {
+ 		struct drm_format_name_buf old_fmt_buf;
+ 		struct drm_format_name_buf new_fmt_buf;
+-		DRM_DEV_DEBUG_DRIVER(mxsfb->dev,
++		dev_err(mxsfb->dev,
+ 				"Switching pixel format: %s -> %s\n",
+ 				drm_get_format_name(old_fb->format->format, &old_fmt_buf),
+ 				drm_get_format_name(fb->format->format, &new_fmt_buf));
+-- 
+2.17.1
+

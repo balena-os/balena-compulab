@@ -1,0 +1,104 @@
+From 34746c655201a2d7d7e4bd2488d9e087c856e8b5 Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Fri, 4 Oct 2019 15:14:54 +0200
+Subject: [PATCH] debug la driver de dsi
+
+---
+ drivers/gpu/drm/imx/nwl_dsi-imx.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/imx/nwl_dsi-imx.c b/drivers/gpu/drm/imx/nwl_dsi-imx.c
+index 658619936745..5810417198a5 100644
+--- a/drivers/gpu/drm/imx/nwl_dsi-imx.c
++++ b/drivers/gpu/drm/imx/nwl_dsi-imx.c
+@@ -200,13 +200,13 @@ static void imx_nwl_dsi_set_clocks(struct imx_mipi_dsi *dsi, bool enable)
+ 			clk_prepare_enable(clk);
+ 			dsi->clk_config[i].enabled = true;
+ 			cur_rate = clk_get_rate(clk);
+-			DRM_DEV_DEBUG_DRIVER(dev,
++			dev_err(dev,
+ 				"Enabled %s clk (rate: req=%lu act=%lu)\n",
+ 				id, new_rate, cur_rate);
+ 		} else if (enabled) {
+ 			clk_disable_unprepare(clk);
+ 			dsi->clk_config[i].enabled = false;
+-			DRM_DEV_DEBUG_DRIVER(dev, "Disabled %s clk\n", id);
++			dev_err(dev, "Disabled %s clk\n", id);
+ 		}
+ 	}
+ }
+@@ -242,7 +242,7 @@ static int imx8q_dsi_poweron(struct imx_mipi_dsi *dsi, bool v2)
+ 
+ 	mipi_id = inst?MIPI_ID(1):MIPI_ID(0);
+ 	dc_id = (!v2 && inst)?DC_ID(1):DC_ID(0);
+-	DRM_DEV_DEBUG_DRIVER(dev, "MIPI ID: %d DC ID: %d\n",
++	dev_err(dev, "MIPI ID: %d DC ID: %d\n",
+ 			     mipi_id,
+ 			     dc_id);
+ 
+@@ -484,7 +484,7 @@ static void imx_nwl_dsi_enable(struct imx_mipi_dsi *dsi)
+ 	if (dsi->enabled)
+ 		return;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dev, "id = %s\n", (dsi->instance)?"DSI1":"DSI0");
++	dev_err(dev, "id = %s\n", (dsi->instance)?"DSI1":"DSI0");
+ 
+ 	/*
+ 	 * On some systems we need to wait some time before enabling the
+@@ -523,7 +523,7 @@ static void imx_nwl_dsi_disable(struct imx_mipi_dsi *dsi)
+ 	if (!dsi->enabled)
+ 		return;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dev, "id = %s\n", (dsi->instance)?"DSI1":"DSI0");
++	dev_err(dev, "id = %s\n", (dsi->instance)?"DSI1":"DSI0");
+ 
+ 	if (!dsi->no_clk_reset)
+ 		devtype->poweroff(dsi);
+@@ -556,7 +556,7 @@ static bool imx_nwl_dsi_mode_fixup(struct imx_mipi_dsi *dsi,
+ {
+ 	unsigned int *flags = &mode->flags;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "Fixup mode:\n");
++	dev_err(dsi->dev, "Fixup mode:\n");
+ 	drm_mode_debug_printmodeline(mode);
+ 
+ 	/* Make sure all flags are set-up accordingly */
+@@ -673,7 +673,7 @@ static int imx_nwl_dsi_bridge_attach(struct drm_bridge *bridge)
+ 	struct drm_encoder *encoder = bridge->encoder;
+ 	int ret = 0;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "id = %s\n",
++	dev_err(dsi->dev, "id = %s\n",
+ 			     (dsi->instance)?"DSI1":"DSI0");
+ 	if (!encoder) {
+ 		DRM_DEV_ERROR(dsi->dev, "Parent encoder object not found\n");
+@@ -693,7 +693,7 @@ static void imx_nwl_dsi_bridge_detach(struct drm_bridge *bridge)
+ {
+ 	struct imx_mipi_dsi *dsi = bridge->driver_private;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dsi->dev, "id = %s\n",
++	dev_err(dsi->dev, "id = %s\n",
+ 			     (dsi->instance)?"DSI1":"DSI0");
+ 	/*
+ 	 * The next bridge in chain will be automatically detached, there is
+@@ -825,7 +825,7 @@ static int imx_nwl_dsi_bind(struct device *dev,
+ 	if (ret)
+ 		return ret;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dev, "id = %s\n", (dsi->instance)?"DSI1":"DSI0");
++	dev_err(dev, "id = %s\n", (dsi->instance)?"DSI1":"DSI0");
+ 
+ 	/* Re-validate the bridge */
+ 	if (dsi->next_bridge)
+@@ -869,7 +869,7 @@ static void imx_nwl_dsi_unbind(struct device *dev,
+ 	struct imx_mipi_dsi *dsi = dev_get_drvdata(dev);
+ 	struct drm_bridge *next_bridge = NULL;
+ 
+-	DRM_DEV_DEBUG_DRIVER(dev, "id = %s\n", (dsi->instance)?"DSI1":"DSI0");
++	dev_err(dev, "id = %s\n", (dsi->instance)?"DSI1":"DSI0");
+ 
+ 	/*
+ 	 * At this point, our next bridge in chain might be already removed,
+-- 
+2.17.1
+
