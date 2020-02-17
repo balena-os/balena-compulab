@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.46.0+rev8
+## (2020-02-17)
+
+* Update from 1.5.2 to 1.5.4 [Vicentiu Galanopulo]
+
 # v2.46.0+rev7
 ## (2020-01-28)
 

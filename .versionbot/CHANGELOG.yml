@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update from 1.5.2 to 1.5.4
+      hash: f3c5cf6ae58e30dfa8162ddc251993fab016c982
+      body: ''
+      footer:
+        Changelog-entry: Update from 1.5.2 to 1.5.4
+        changelog-entry: Update from 1.5.2 to 1.5.4
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.0+rev8
+  date: 2020-02-17T17:12:16.541Z
+- commits:
     - subject: Enable KSZ9893R switch for Etcher Pro board
       hash: af09ff33745f5d77be84db79508ccb85200b20f9
       body: |
