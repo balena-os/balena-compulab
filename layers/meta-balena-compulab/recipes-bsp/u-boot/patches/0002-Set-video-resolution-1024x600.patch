@@ -1,0 +1,30 @@
+From 18db43039eca2e17b69aeda3a1d6f1d53ea23393 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Fri, 6 Mar 2020 14:46:24 +0100
+Subject: [PATCH] Set video resolution
+
+Set the display video resolution to 1026x600
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo  <vicentiu@balena.io>
+---
+ include/configs/cl-som-imx8.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include/configs/cl-som-imx8.h b/include/configs/cl-som-imx8.h
+index 861f3fe222..a6a781891d 100644
+--- a/include/configs/cl-som-imx8.h
++++ b/include/configs/cl-som-imx8.h
+@@ -126,7 +126,8 @@
+ 	"mmcdev="__stringify(CONFIG_SYS_MMC_ENV_DEV)"\0" \
+ 	"mmcpart=" __stringify(CONFIG_SYS_MMC_IMG_LOAD_PART) "\0" \
+ 	"mmcautodetect=yes\0" \
+-	"mmcargs=setenv bootargs console=${console} ${resin_kernel_root} rootwait rw ${os_cmdline} \0" \
++	"mmcargs=setenv bootargs console=${console} ${resin_kernel_root} rootwait rw ${os_cmdline} " \
++	"video=HDMI-A-1:1024x600@60 \0" \
+ 	"loadbootscript=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
+ 	"bootscript=echo Running bootscript from mmc ...; " \
+ 		"source\0" \
+-- 
+2.17.1
+

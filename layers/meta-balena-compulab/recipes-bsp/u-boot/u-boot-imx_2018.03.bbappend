@@ -7,5 +7,6 @@ inherit resin-u-boot
 
 SRC_URI_append += " \
 	file://0001-Integrate-with-Balena-u-boot-environment.patch \
+	file://0002-Set-video-resolution-1024x600.patch \
 "
 
