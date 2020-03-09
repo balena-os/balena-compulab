@@ -18,8 +18,8 @@ SRC_URI_append_etcher-pro = " \
 	file://0001-Enable-pwm1-interface.patch \
 	file://0001-Add-support-for-KSZ9893R.patch \
 	file://0001-Enable-KSZ9893R-switch-in-Etcher-Pro-dtb.patch \
+	file://defconfig \
 "
-
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 
@@ -48,3 +48,7 @@ RESIN_CONFIGS[pca9956b] = " \
 RESIN_CONFIGS[ksz9893r] = " \
     CONFIG_MICROCHIP_KSZ9893R=y \
 "
+
+do_configure_prepend_etcher-pro () {
+    cat ${S}/arch/arm64/configs/cl-som-imx8_defconfig > ${S}/arch/arm64/configs/etcher-pro_defconfig
+}
