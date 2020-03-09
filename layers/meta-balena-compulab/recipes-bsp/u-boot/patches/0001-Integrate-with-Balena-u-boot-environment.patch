@@ -1,6 +1,6 @@
-From a28d12a58c95f33ebc1065427da19ee22aabf0c8 Mon Sep 17 00:00:00 2001
+From 833955ef1dafef7c8649e4f6ff23a7eb2725b6c4 Mon Sep 17 00:00:00 2001
 From: Vicentiu Galanopulo <vicentiu@balena.io>
-Date: Wed, 14 Aug 2019 14:39:04 +0200
+Date: Fri, 28 Feb 2020 12:04:21 +0100
 Subject: [PATCH] Integrate with Balena u-boot environment
 
 Integrated u-boot with Balena environment
@@ -14,22 +14,19 @@ Signed-off-by: Vicentiu Galanopulo  <vicentiu@balena.io>
  2 files changed, 13 insertions(+), 4 deletions(-)
 
 diff --git a/configs/cl-som-imx8_defconfig b/configs/cl-som-imx8_defconfig
-index 379dfe798b..da4e411e99 100644
+index 379dfe798b..b20764e479 100644
 --- a/configs/cl-som-imx8_defconfig
 +++ b/configs/cl-som-imx8_defconfig
-@@ -44,6 +44,10 @@ CONFIG_DM_REGULATOR_PFUZE100=y
- CONFIG_DM_REGULATOR_FIXED=y
- CONFIG_DM_REGULATOR_GPIO=y
- CONFIG_DM_THERMAL=y
+@@ -78,3 +78,7 @@ CONFIG_EEPROM_LAYOUT_HELP_STRING="v2, v3, v4"
+ CONFIG_CMD_EEPROM_LAYOUT=y
+ CONFIG_DM_I2C=y
+ 
 +CONFIG_CMD_UNZIP=y
 +CONFIG_CMD_IMPORTENV=y
 +CONFIG_PARTITION_UUIDS=y
 +CONFIG_CMD_PART=y
- CONFIG_USB=y
- CONFIG_DM_USB=y
- CONFIG_USB_XHCI_HCD=y
 diff --git a/include/configs/cl-som-imx8.h b/include/configs/cl-som-imx8.h
-index b991ef9fcd..9b036d9faf 100644
+index 6e1691e1bb..861f3fe222 100644
 --- a/include/configs/cl-som-imx8.h
 +++ b/include/configs/cl-som-imx8.h
 @@ -114,7 +114,8 @@
@@ -60,10 +57,10 @@ index b991ef9fcd..9b036d9faf 100644
  		"fi;\0"
  
  #define CONFIG_BOOTCOMMAND \
-+	    "setenv resin_kernel_load_addr ${loadaddr};" \
-+	    "run resin_set_kernel_root; run set_os_cmdline; " \
-+	    "setenv mmcdev ${resin_dev_index};" \
-+	    "setenv mmcbootpart ${resin_boot_part};" \
++	"setenv resin_kernel_load_addr ${loadaddr};" \
++	"run resin_set_kernel_root; run set_os_cmdline; " \
++	"setenv mmcdev ${resin_dev_index};" \
++	"setenv mmcbootpart ${resin_boot_part};" \
  	   "mmc dev ${mmcdev}; if mmc rescan; then " \
  		   "if run loadbootscript; then " \
  			   "run bootscript; " \
