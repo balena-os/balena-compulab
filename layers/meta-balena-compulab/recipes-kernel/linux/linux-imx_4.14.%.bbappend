@@ -18,6 +18,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0001-Enable-pwm1-interface.patch \
 	file://0001-Add-support-for-KSZ9893R.patch \
 	file://0001-Enable-KSZ9893R-switch-in-Etcher-Pro-dtb.patch \
+	file://0007-HDMI-Set-no-EDID.patch \
 "
 
 
