@@ -1,6 +1,12 @@
 # Change Log
 -----------
 
+# v2.46.0+rev9
+## (2020-03-10)
+
+* Correct EtcherPro flashing instructions [Vicentiu Galanopulo]
+* Update BSP layer from Compulab [Vicentiu Galanopulo]
+
 # v2.46.0+rev8
 ## (2020-02-17)
 

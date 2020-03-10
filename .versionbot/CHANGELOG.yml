@@ -1,4 +1,27 @@
 - commits:
+    - subject: Correct EtcherPro flashing instructions
+      hash: b0f210ac92a2e985a1b3eb4d6f85e5c2e03c3f5c
+      body: |
+        The flashing instructions for the switch button
+        position were wrong
+      footer:
+        Changelog-entry: Correct EtcherPro flashing instructions
+        changelog-entry: Correct EtcherPro flashing instructions
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+    - subject: Update BSP layer from Compulab
+      hash: 80f320b136287a09601418fb4eace7810d371408
+      body: ''
+      footer:
+        Changelog-entry: Update BSP layer from Compulab
+        changelog-entry: Update BSP layer from Compulab
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.0+rev9
+  date: 2020-03-10T08:50:35.159Z
+- commits:
     - subject: Update from 1.5.2 to 1.5.4
       hash: f3c5cf6ae58e30dfa8162ddc251993fab016c982
       body: ''
