@@ -1,8 +1,8 @@
 deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
  
-ETCHER_PRO_FLASH = 'Insert microSD card into flashing slot and toggle DSW1 switch to OFF position. Power-up board'
-ETCHER_PRO_POST_FLASH  = 'Remove microSD card from flashing slot and toggle DSW1 switch to ON position'
+ETCHER_PRO_FLASH = 'Insert microSD card into flashing slot and toggle DSW1 switch to ON position. Power-up board'
+ETCHER_PRO_POST_FLASH  = 'Remove microSD card from flashing slot and toggle DSW1 switch to OFF position'
  
 postProvisioningInstructions = [
         instructions.BOARD_SHUTDOWN
