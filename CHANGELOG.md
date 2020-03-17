@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.46.0+rev10
+## (2020-03-12)
+
+* Correct EtcherPro flashing instruction [Vicentiu Galanopulo]
+
 # v2.46.0+rev9
 ## (2020-03-10)
 

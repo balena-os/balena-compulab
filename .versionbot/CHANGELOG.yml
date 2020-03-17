@@ -1,4 +1,18 @@
 - commits:
+    - subject: Correct EtcherPro flashing instruction
+      hash: 3f5fa39f0cd9a928d579d998f3d37581172f33dc
+      body: |
+        The flashing instructions for the switch button
+        position were wrong
+      footer:
+        Changelog-entry: Correct EtcherPro flashing instruction
+        changelog-entry: Correct EtcherPro flashing instruction
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.0+rev10
+  date: 2020-03-12T09:18:03.367Z
+- commits:
     - subject: Update meta-rust to include 1.36
       hash: 431ad4374080d2af48bd43f2b262019544f6bb93
       body: ''
