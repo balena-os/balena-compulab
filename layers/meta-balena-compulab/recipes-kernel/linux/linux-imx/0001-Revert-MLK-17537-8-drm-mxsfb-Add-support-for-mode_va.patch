@@ -1,0 +1,369 @@
+From 649d1d63c8e9e9e6c499e14429d5d90341e85b3f Mon Sep 17 00:00:00 2001
+From: Robert Chiras <robert.chiras@nxp.com>
+Date: Tue, 28 May 2019 17:27:48 +0300
+Subject: [PATCH 1/7] Revert "MLK-17537-8: drm/mxsfb: Add support for
+ mode_valid"
+
+This reverts commit 01ba61aee0e2487e14c11c24a0eb3787fd3c990c.
+
+Upstream-Status: Inappropriate [not author]
+Signed-off-by: Vicentiu Galanopulo  <vicentiu@balena.io>
+---
+ .../devicetree/bindings/display/mxsfb.txt          |   2 -
+ drivers/gpu/drm/mxsfb/mxsfb_crtc.c                 |  28 +---
+ drivers/gpu/drm/mxsfb/mxsfb_drv.c                  | 176 ---------------------
+ drivers/gpu/drm/mxsfb/mxsfb_drv.h                  |  14 --
+ 4 files changed, 2 insertions(+), 218 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/mxsfb.txt b/Documentation/devicetree/bindings/display/mxsfb.txt
+index 234481c..7040fb0 100644
+--- a/Documentation/devicetree/bindings/display/mxsfb.txt
++++ b/Documentation/devicetree/bindings/display/mxsfb.txt
+@@ -13,8 +13,6 @@ Required properties:
+ - clock-names:	A list of clock names. For MXSFB it should contain:
+     - "pix" for the LCDIF block clock
+     - (MX6SX-only) "axi", "disp_axi" for the bus interface clock
+-    - (MX8-only) "video_pll, "osc_25", "osc_27" for the VIDEO_PLL,
+-      OSC_25M and OSC_27M clocks
+ 
+ Required sub-nodes:
+   - port: The connection to an encoder chip.
+diff --git a/drivers/gpu/drm/mxsfb/mxsfb_crtc.c b/drivers/gpu/drm/mxsfb/mxsfb_crtc.c
+index 94a6d16..64ad135 100644
+--- a/drivers/gpu/drm/mxsfb/mxsfb_crtc.c
++++ b/drivers/gpu/drm/mxsfb/mxsfb_crtc.c
+@@ -28,7 +28,6 @@
+ #include <drm/drm_simple_kms_helper.h>
+ #include <linux/busfreq-imx.h>
+ #include <linux/clk.h>
+-#include <linux/clk-provider.h>
+ #include <linux/iopoll.h>
+ #include <linux/of_graph.h>
+ #include <linux/platform_data/simplefb.h>
+@@ -344,8 +343,6 @@ static void mxsfb_crtc_mode_set_nofb(struct mxsfb_drm_private *mxsfb)
+ 	const u32 bus_flags = mxsfb->connector->display_info.bus_flags;
+ 	u32 vdctrl0, vsync_pulse_len, hsync_pulse_len;
+ 	int err;
+-	u32 pixclock = m->clock * 1000;
+-	struct mode_config *config;
+ 
+ 	/*
+ 	 * It seems, you can't re-program the controller if it is still
+@@ -358,27 +355,6 @@ static void mxsfb_crtc_mode_set_nofb(struct mxsfb_drm_private *mxsfb)
+ 	if (err)
+ 		return;
+ 
+-	/*
+-	 * Before setting the clock rate, we need to be sure that the clock
+-	 * has the right source to output the required rate.
+-	 */
+-	list_for_each_entry(config, &mxsfb->valid_modes, list) {
+-		if (config->clock == pixclock) {
+-			struct clk *src;
+-
+-			src = clk_get_parent(mxsfb->clk_sel);
+-			if (!clk_is_match(src, config->clk_src))
+-				clk_set_parent(mxsfb->clk_sel, config->clk_src);
+-			if (clk_get_rate(mxsfb->clk_pll) != config->out_rate)
+-				clk_set_rate(mxsfb->clk_pll, config->out_rate);
+-			DRM_DEV_DEBUG_DRIVER(mxsfb->dev,
+-				"pll rate: %ld (actual %ld)\n",
+-				config->out_rate, clk_get_rate(mxsfb->clk_pll));
+-			pixclock = config->mode_clock;
+-			break;
+-		}
+-	}
+-
+ 	/* Clear the FIFOs */
+ 	writel(CTRL1_FIFO_CLEAR, mxsfb->base + LCDC_CTRL1 + REG_SET);
+ 
+@@ -386,9 +362,9 @@ static void mxsfb_crtc_mode_set_nofb(struct mxsfb_drm_private *mxsfb)
+ 	if (err)
+ 		return;
+ 
+-	clk_set_rate(mxsfb->clk, pixclock);
++	clk_set_rate(mxsfb->clk, m->crtc_clock * 1000);
+ 	DRM_DEV_DEBUG_DRIVER(mxsfb->dev, "Pixel clock: %dkHz (actual: %dkHz)\n",
+-		pixclock / 1000, (int)(clk_get_rate(mxsfb->clk) / 1000));
++		m->crtc_clock, (int)(clk_get_rate(mxsfb->clk) / 1000));
+ 
+ 	DRM_DEV_DEBUG_DRIVER(mxsfb->dev,
+ 		"Connector bus_flags: 0x%08X\n", bus_flags);
+diff --git a/drivers/gpu/drm/mxsfb/mxsfb_drv.c b/drivers/gpu/drm/mxsfb/mxsfb_drv.c
+index 24bb09f..71e0099 100644
+--- a/drivers/gpu/drm/mxsfb/mxsfb_drv.c
++++ b/drivers/gpu/drm/mxsfb/mxsfb_drv.c
+@@ -19,7 +19,6 @@
+ #include <linux/module.h>
+ #include <linux/spinlock.h>
+ #include <linux/clk.h>
+-#include <linux/clk-provider.h>
+ #include <linux/component.h>
+ #include <linux/list.h>
+ #include <linux/of_device.h>
+@@ -47,10 +46,6 @@
+ /* The eLCDIF max possible CRTCs */
+ #define MAX_CRTCS 1
+ 
+-/* Maximum Video PLL frequency */
+-#define MAX_PLL_FREQ 1200000000
+-/* Mininum pixel clock in Hz */
+-#define MIN_PIX_CLK  74250000
+ enum mxsfb_devtype {
+ 	MXSFB_V3,
+ 	MXSFB_V4,
+@@ -164,153 +159,6 @@ static const struct drm_mode_config_helper_funcs mxsfb_mode_config_helpers = {
+ 	.atomic_commit_tail = drm_atomic_helper_commit_tail_rpm,
+ };
+ 
+-static struct clk *mxsfb_find_src_clk(struct mxsfb_drm_private *mxsfb,
+-	       int crtc_clock,
+-	       unsigned long *out_rate)
+-{
+-	struct clk *src = NULL;
+-	struct clk *p = mxsfb->clk;
+-	struct clk *src_clk[MAX_CLK_SRC];
+-	int num_src_clk = ARRAY_SIZE(mxsfb->clk_src);
+-	unsigned long src_rate;
+-	int i;
+-
+-	for (i = 0; i < num_src_clk; i++)
+-		src_clk[i] = mxsfb->clk_src[i];
+-
+-	/*
+-	 * First, check the current clock source and find the clock
+-	 * selector
+-	 */
+-	while (p) {
+-		struct clk *pp = clk_get_parent(p);
+-
+-		for (i = 0; i < num_src_clk; i++)
+-			if (src_clk[i] && clk_is_match(pp, src_clk[i])) {
+-				src = pp;
+-				mxsfb->clk_sel = p;
+-				src_clk[i] = NULL;
+-				break;
+-			}
+-
+-		if (src)
+-			break;
+-
+-		p = pp;
+-	}
+-
+-	while (!IS_ERR_OR_NULL(src)) {
+-		/* Check if current rate satisfies our needs */
+-		src_rate = clk_get_rate(src);
+-		*out_rate = clk_get_rate(mxsfb->clk_pll);
+-		if (!(*out_rate % crtc_clock))
+-			break;
+-
+-		/* Find the highest rate that fits our needs */
+-		*out_rate = crtc_clock * (MAX_PLL_FREQ / crtc_clock);
+-		if (!(*out_rate % src_rate))
+-			break;
+-
+-		/* Get the next clock source available */
+-		src = NULL;
+-		for (i = 0; i < num_src_clk; i++) {
+-			if (IS_ERR_OR_NULL(src_clk[i]))
+-				continue;
+-			src = src_clk[i];
+-			src_clk[i] = NULL;
+-			break;
+-		}
+-	}
+-
+-	return src;
+-}
+-
+-static enum drm_mode_status
+-mxsfb_pipe_mode_valid(struct drm_crtc *crtc,
+-		      const struct drm_display_mode *mode)
+-{
+-	struct drm_simple_display_pipe *pipe =
+-	       container_of(crtc, struct drm_simple_display_pipe, crtc);
+-	struct mxsfb_drm_private *mxsfb = drm_pipe_to_mxsfb_drm_private(pipe);
+-	struct clk *src = NULL;
+-	int clock = mode->clock * 1000;
+-	int crtc_clock = mode->crtc_clock * 1000;
+-	unsigned long out_rate;
+-	struct mode_config *config;
+-
+-	/*
+-	 * In order to verify possible clock sources we need to have at least
+-	 * two of them.
+-	 */
+-	if (!mxsfb->clk_src[0] || !mxsfb->clk_src[1])
+-		return MODE_OK;
+-
+-	/*
+-	 * TODO: Currently, only modes with pixel clock higher or equal to
+-	 * 74250kHz are working. Limit to these modes until we figure out how
+-	 * to handle the rest of the display modes.
+-	 */
+-	if (clock < MIN_PIX_CLK)
+-		return MODE_NOCLOCK;
+-
+-	if (!crtc_clock)
+-		crtc_clock = clock;
+-
+-	DRM_DEV_DEBUG_DRIVER(mxsfb->dev, "Validating mode:\n");
+-	drm_mode_debug_printmodeline(mode);
+-	/* Skip saving the config again */
+-	list_for_each_entry(config, &mxsfb->valid_modes, list)
+-		if (config->clock == clock)
+-			return MODE_OK;
+-
+-	src = mxsfb_find_src_clk(mxsfb, crtc_clock, &out_rate);
+-
+-	if (IS_ERR_OR_NULL(src))
+-		return MODE_NOCLOCK;
+-
+-	clk_set_rate(mxsfb->clk_pll, out_rate);
+-
+-	/* Save this configuration for later use */
+-	config = devm_kzalloc(mxsfb->dev,
+-		 sizeof(struct mode_config), GFP_KERNEL);
+-	config->clk_src = src;
+-	config->out_rate = out_rate;
+-	config->clock = clock;
+-	config->mode_clock = crtc_clock;
+-	list_add(&config->list, &mxsfb->valid_modes);
+-
+-	return MODE_OK;
+-}
+-
+-static int mxsfb_pipe_check(struct drm_simple_display_pipe *pipe,
+-		     struct drm_plane_state *plane_state,
+-		     struct drm_crtc_state *crtc_state)
+-{
+-	struct mxsfb_drm_private *mxsfb = drm_pipe_to_mxsfb_drm_private(pipe);
+-	struct drm_display_mode *mode = &crtc_state->mode;
+-	struct mode_config *config;
+-	struct clk *src;
+-
+-	DRM_DEV_DEBUG_DRIVER(mxsfb->dev, "Checking mode:\n");
+-	drm_mode_debug_printmodeline(mode);
+-
+-	/* Make sure that current mode can get the required clock */
+-	list_for_each_entry(config, &mxsfb->valid_modes, list)
+-		if (config->clock == mode->clock * 1000) {
+-			src = clk_get_parent(mxsfb->clk_sel);
+-			if (!clk_is_match(src, config->clk_src))
+-				clk_set_parent(mxsfb->clk_sel, config->clk_src);
+-			if (clk_get_rate(mxsfb->clk_pll) != config->out_rate)
+-				clk_set_rate(mxsfb->clk_pll, config->out_rate);
+-			DRM_DEV_DEBUG_DRIVER(mxsfb->dev,
+-				"pll rate: %ld (actual %ld)\n",
+-				config->out_rate, clk_get_rate(mxsfb->clk_pll));
+-			break;
+-		}
+-
+-	return 0;
+-}
+-
+ static void mxsfb_pipe_enable(struct drm_simple_display_pipe *pipe,
+ 			      struct drm_crtc_state *crtc_state)
+ {
+@@ -382,8 +230,6 @@ static int mxsfb_pipe_prepare_fb(struct drm_simple_display_pipe *pipe,
+ #endif
+ 
+ static struct drm_simple_display_pipe_funcs mxsfb_funcs = {
+-	.mode_valid	= mxsfb_pipe_mode_valid,
+-	.check		= mxsfb_pipe_check,
+ 	.enable		= mxsfb_pipe_enable,
+ 	.disable	= mxsfb_pipe_disable,
+ 	.update		= mxsfb_pipe_update,
+@@ -427,20 +273,6 @@ static int mxsfb_load(struct drm_device *drm, unsigned long flags)
+ 	if (IS_ERR(mxsfb->clk_disp_axi))
+ 		mxsfb->clk_disp_axi = NULL;
+ 
+-	mxsfb->clk_pll = devm_clk_get(drm->dev, "video_pll");
+-	if (IS_ERR(mxsfb->clk_pll))
+-		mxsfb->clk_pll = NULL;
+-
+-	mxsfb->clk_src[0] = devm_clk_get(drm->dev, "osc_25");
+-	if (IS_ERR(mxsfb->clk_src[0]))
+-		mxsfb->clk_src[0] = NULL;
+-
+-	mxsfb->clk_src[1] = devm_clk_get(drm->dev, "osc_27");
+-	if (IS_ERR(mxsfb->clk_src[1]))
+-		mxsfb->clk_src[1] = NULL;
+-
+-	INIT_LIST_HEAD(&mxsfb->valid_modes);
+-
+ 	ret = dma_set_mask_and_coherent(drm->dev, DMA_BIT_MASK(32));
+ 	if (ret)
+ 		return ret;
+@@ -545,8 +377,6 @@ static int mxsfb_load(struct drm_device *drm, unsigned long flags)
+ static void mxsfb_unload(struct drm_device *drm)
+ {
+ 	struct mxsfb_drm_private *mxsfb = drm->dev_private;
+-	struct mode_config *config;
+-	struct list_head *pos, *tmp;
+ 
+ 	if (mxsfb->fbdev)
+ 		drm_fbdev_cma_fini(mxsfb->fbdev);
+@@ -558,12 +388,6 @@ static void mxsfb_unload(struct drm_device *drm)
+ 	drm_irq_uninstall(drm);
+ 	pm_runtime_put_sync(drm->dev);
+ 
+-	list_for_each_safe(pos, tmp, &mxsfb->valid_modes) {
+-		config = list_entry(pos, struct mode_config, list);
+-		list_del(pos);
+-		devm_kfree(mxsfb->dev, config);
+-	}
+-
+ 	drm->dev_private = NULL;
+ 
+ 	pm_runtime_disable(drm->dev);
+diff --git a/drivers/gpu/drm/mxsfb/mxsfb_drv.h b/drivers/gpu/drm/mxsfb/mxsfb_drv.h
+index 24d573f..d081329 100644
+--- a/drivers/gpu/drm/mxsfb/mxsfb_drv.h
++++ b/drivers/gpu/drm/mxsfb/mxsfb_drv.h
+@@ -16,8 +16,6 @@
+ #ifndef __MXSFB_DRV_H__
+ #define __MXSFB_DRV_H__
+ 
+-#define MAX_CLK_SRC 2
+-
+ struct mxsfb_devdata {
+ 	unsigned int	 transfer_count;
+ 	unsigned int	 cur_buf;
+@@ -30,14 +28,6 @@ struct mxsfb_devdata {
+ 	unsigned int	 num_formats;
+ };
+ 
+-struct mode_config {
+-	struct clk *clk_src;
+-	unsigned long out_rate;
+-	int clock;
+-	int mode_clock;
+-	struct list_head list;
+-};
+-
+ struct mxsfb_drm_private {
+ 	struct device			*dev;
+ 	const struct mxsfb_devdata	*devdata;
+@@ -46,8 +36,6 @@ struct mxsfb_drm_private {
+ 	struct clk			*clk;
+ 	struct clk			*clk_axi;
+ 	struct clk			*clk_disp_axi;
+-	struct clk			*clk_src[MAX_CLK_SRC];
+-	struct clk			*clk_sel, *clk_pll;
+ 
+ 	struct drm_simple_display_pipe	pipe;
+ 	struct drm_connector		panel_connector;
+@@ -55,8 +43,6 @@ struct mxsfb_drm_private {
+ 	struct drm_panel		*panel;
+ 	struct drm_bridge		*bridge;
+ 	struct drm_fbdev_cma		*fbdev;
+-
+-	struct list_head		valid_modes;
+ };
+ 
+ int mxsfb_setup_crtc(struct drm_device *dev);
+-- 
+2.7.4
+

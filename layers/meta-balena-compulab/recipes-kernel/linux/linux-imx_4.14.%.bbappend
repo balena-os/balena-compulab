@@ -18,6 +18,15 @@ SRC_URI_append_etcher-pro = " \
 	file://0001-Enable-pwm1-interface.patch \
 	file://0001-Add-support-for-KSZ9893R.patch \
 	file://0001-Enable-KSZ9893R-switch-in-Etcher-Pro-dtb.patch \
+	file://0001-Revert-MLK-17537-8-drm-mxsfb-Add-support-for-mode_va.patch \
+	file://0002-Revert-MLK-17537-9-gpu-imx-dcss-Add-support-for-mode.patch \
+	file://0003-Revert-MLK-17537-10-drm-imx-dcss-Add-support-for-mod.patch \
+	file://0004-Revert-MLK-17537-11-arch-arm64-fsl-imx8mq-evk-Reconf.patch \
+	file://0005-gpu-imx-dcss-Update-clocks.patch \
+	file://0006-drm-bridge-nwl-Improve-the-clock-calculation.patch \
+	file://0007-arch64-dts-fsl-imx8mq-Update-DCSS-LCDIF-and-DSI-cloc.patch \
+	file://0001-tune-raydium-driver-for-maxen-display.patch \
+	file://0001-enable-maxen-display-in-dt.patch \
 	file://defconfig \
 "
 
@@ -47,6 +56,11 @@ RESIN_CONFIGS[pca9956b] = " \
 
 RESIN_CONFIGS[ksz9893r] = " \
     CONFIG_MICROCHIP_KSZ9893R=y \
+"
+
+RESIN_CONFIGS_append_etcher-pro = " maxen_display"
+RESIN_CONFIGS[maxen_display] = " \
+    CONFIG_DRM_PANEL_RAYDIUM_RM67191=y \
 "
 
 do_configure_prepend_etcher-pro () {
