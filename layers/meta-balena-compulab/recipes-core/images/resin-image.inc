@@ -17,8 +17,6 @@ IMAGE_INSTALL_append_cl-som-imx8 = " \
                                         imx-boot \
                                         kernel-modules \
 					firmware-imx \
-					wifi-start \
-					bt-start \
 "
 
 IMAGE_CMD_resinos-img_append_cl-som-imx8 () {
