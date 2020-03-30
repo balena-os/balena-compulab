@@ -7,9 +7,6 @@
 [submodule "layers/meta-balena"]
 	path = layers/meta-balena
 	url = git@github.com:balena-os/meta-balena.git
-[submodule "layers/meta-compulab"]
-	path = layers/meta-compulab
-	url = https://github.com/compulab-yokneam/meta-compulab
 [submodule "layers/meta-freescale"]
 	path = layers/meta-freescale
 	url = https://github.com/Freescale/meta-freescale.git

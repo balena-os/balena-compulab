@@ -15,7 +15,6 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-freescale \
     ${TOPDIR}/../layers/meta-fsl-bsp-release/imx/meta-bsp \
     ${TOPDIR}/../layers/meta-bsp-imx8mq \
-    ${TOPDIR}/../layers/meta-compulab \
     ${TOPDIR}/../layers/meta-balena/meta-balena-common \
     ${TOPDIR}/../layers/meta-balena/meta-resin-sumo \
     ${TOPDIR}/../layers/meta-balena-compulab \
