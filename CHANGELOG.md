@@ -1,6 +1,12 @@
 # Change Log
 -----------
 
+# v2.46.0+rev11
+## (2020-04-09)
+
+* Add support for MIPI Maxen display [Vicentiu Galanopulo]
+* Update BSP layer from Compulab [Vicentiu Galanopulo]
+
 # v2.46.0+rev10
 ## (2020-03-12)
 

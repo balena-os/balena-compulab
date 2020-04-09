@@ -1,4 +1,30 @@
 - commits:
+    - subject: Add support for MIPI Maxen display
+      hash: 76d74673e4d05e0dc052358692078aeb943211a2
+      body: |
+        Add support for MAXEN display based on Raydium
+        67191 driver
+      footer:
+        Changelog-entry: Add support for MIPI Maxen display
+        changelog-entry: Add support for MIPI Maxen display
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+    - subject: Update BSP layer from Compulab
+      hash: f2708fd704e57a8b6219ccbd5e7ef00cb3f53b48
+      body: |
+        Compulab support suggested to uset the
+        devel-next branch of the BSP to resolve
+        all the hangs and errors that we experienced.
+      footer:
+        Changelog-entry: Update BSP layer from Compulab
+        changelog-entry: Update BSP layer from Compulab
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.0+rev11
+  date: 2020-04-09T11:00:54.394Z
+- commits:
     - subject: Correct EtcherPro flashing instruction
       hash: 3f5fa39f0cd9a928d579d998f3d37581172f33dc
       body: |
