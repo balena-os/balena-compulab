@@ -1,0 +1,30 @@
+From 644a1baa8fffc1606f164add493b93685d7446b8 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Mon, 30 Mar 2020 15:12:38 +0200
+Subject: [PATCH] Set video resolution
+
+Set the display video resolution to 1920x1080
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo  <vicentiu@balena.io>
+---
+ include/configs/cl-som-imx8.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include/configs/cl-som-imx8.h b/include/configs/cl-som-imx8.h
+index 3db8d625ef..862a67c08a 100644
+--- a/include/configs/cl-som-imx8.h
++++ b/include/configs/cl-som-imx8.h
+@@ -116,7 +116,8 @@
+ 	"bootscript=echo Running bootscript from ${iface} ...; source\0"	\
+ 	"iface_boot=if run loadbootscript; then run bootscript; else if run loadimage; then run loadfdt;" \
+ 	" booti ${loadaddr} - ${fdt_addr}; fi; fi;\0"	\
+-	"iface_args=setenv bootargs console=${console} root=${rootdev} ${resin_kernel_root} rootwait rw ${os_cmdline} \0"	\
++	"iface_args=setenv bootargs console=${console} root=${rootdev} ${resin_kernel_root} rootwait rw ${os_cmdline} "	\
++	"video=HDMI-A-1:1920x1080@60 \0" \
+ 	"loadbootscript=load ${iface} ${dev}:${part} ${loadaddr} ${script}\0"	\
+ 	"loadfdt=load ${iface} ${dev}:${part} ${fdt_addr} ${fdt_file}\0"	\
+ 	"loadimage=load ${iface} ${dev}:${part} ${zip_addr} ${image}; unzip ${zip_addr} ${loadaddr};\0"	\
+-- 
+2.17.1
+

@@ -9,3 +9,6 @@ SRC_URI_append += " \
 	file://0001-Integrate-with-Balena-u-boot-environment.patch \
 "
 
+SRC_URI_append_etcher-pro += " \
+	file://0002-Set-video-resolution-1920x1080.patch \
+"

@@ -8,7 +8,7 @@ set -o errexit
 
 # machine specific data
 
-uboot_file="imx-boot-etcher-pro-cfg.bin-flash_evk"
+uboot_file="imx-boot-etcher-pro-sd.bin-flash_evk"
 uboot_block_size=1024
 uboot_seek_blocks=33
 

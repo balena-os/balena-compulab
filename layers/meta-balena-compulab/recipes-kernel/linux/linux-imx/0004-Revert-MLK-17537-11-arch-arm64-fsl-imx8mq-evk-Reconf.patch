@@ -1,0 +1,165 @@
+From 207c55ea8cc61f22027b4de235797f2f4405c48c Mon Sep 17 00:00:00 2001
+From: Robert Chiras <robert.chiras@nxp.com>
+Date: Tue, 28 May 2019 17:29:33 +0300
+Subject: [PATCH 4/7] Revert "MLK-17537-11: arch: arm64: fsl-imx8mq-evk:
+ Reconfigure LCDIF, DCSS & DSI clocks"
+
+This reverts commit f7743a67d1493f423a336af5e8a68970a8aacb2f.
+---
+ .../dts/freescale/fsl-imx8mq-evk-dcss-adv7535.dtsi |  9 +++----
+ .../dts/freescale/fsl-imx8mq-evk-dcss-rm67191.dtsi | 31 +++++++++++++++-------
+ .../freescale/fsl-imx8mq-evk-lcdif-rm67191.dtsi    | 20 ++++++++++++++
+ arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi      | 12 ++++-----
+ 4 files changed, 50 insertions(+), 22 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-dcss-adv7535.dtsi b/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-dcss-adv7535.dtsi
+index 5c8dd01..77a612b 100644
+--- a/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-dcss-adv7535.dtsi
++++ b/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-dcss-adv7535.dtsi
+@@ -30,12 +30,9 @@
+ 		 <&clk IMX8MQ_CLK_DISP_AXI_ROOT>,
+ 		 <&clk IMX8MQ_CLK_DISP_RTRM_ROOT>,
+ 		 <&clk IMX8MQ_CLK_DC_PIXEL>,
+-		 <&clk IMX8MQ_CLK_DISP_DTRC>,
+-		 <&clk IMX8MQ_VIDEO_PLL1>,
+-		 <&clk IMX8MQ_CLK_27M>,
+-		 <&clk IMX8MQ_CLK_25M>;
+-	clock-names = "apb", "axi", "rtrm", "pix", "dtrc",
+-		      "pll", "pll_src1", "pll_src2";
++		 <&clk IMX8MQ_CLK_DUMMY>,
++		 <&clk IMX8MQ_CLK_DISP_DTRC>;
++	clock-names = "apb", "axi", "rtrm", "pix_div", "pix_out", "dtrc";
+ 	assigned-clocks = <&clk IMX8MQ_CLK_DC_PIXEL>,
+ 			  <&clk IMX8MQ_CLK_DISP_AXI>,
+ 			  <&clk IMX8MQ_CLK_DISP_RTRM>;
+diff --git a/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-dcss-rm67191.dtsi b/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-dcss-rm67191.dtsi
+index 7d124d3..d801dba 100644
+--- a/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-dcss-rm67191.dtsi
++++ b/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-dcss-rm67191.dtsi
+@@ -30,22 +30,24 @@
+ 		 <&clk IMX8MQ_CLK_DISP_AXI_ROOT>,
+ 		 <&clk IMX8MQ_CLK_DISP_RTRM_ROOT>,
+ 		 <&clk IMX8MQ_CLK_DC_PIXEL>,
+-		 <&clk IMX8MQ_CLK_DISP_DTRC>,
+-		 <&clk IMX8MQ_VIDEO_PLL1>,
+-		 <&clk IMX8MQ_CLK_27M>,
+-		 <&clk IMX8MQ_CLK_25M>;
+-	clock-names = "apb", "axi", "rtrm", "pix", "dtrc", "pll",
+-		      "pll_src1", "pll_src2";
++		 <&clk IMX8MQ_CLK_DUMMY>,
++		 <&clk IMX8MQ_CLK_DISP_DTRC>;
++	clock-names = "apb", "axi", "rtrm", "pix_div", "pix_out", "dtrc";
+ 
+ 	assigned-clocks = <&clk IMX8MQ_CLK_DC_PIXEL>,
+ 			  <&clk IMX8MQ_CLK_DISP_AXI>,
+-			  <&clk IMX8MQ_CLK_DISP_RTRM>;
++			  <&clk IMX8MQ_CLK_DISP_RTRM>,
++			  <&clk IMX8MQ_VIDEO_PLL1_REF_SEL>,
++			  <&clk IMX8MQ_VIDEO_PLL1>;
+ 	assigned-clock-parents = <&clk IMX8MQ_VIDEO_PLL1_OUT>,
+ 				 <&clk IMX8MQ_SYS1_PLL_800M>,
+-				 <&clk IMX8MQ_SYS1_PLL_800M>;
++				 <&clk IMX8MQ_SYS1_PLL_800M>,
++				 <&clk IMX8MQ_CLK_25M>;
+ 	assigned-clock-rates = <600000000>,
+ 			       <800000000>,
+-			       <400000000>;
++			       <0>,
++			       <400000000>,
++			       <599999999>;
+ 
+ 	dcss_disp0: port@0 {
+ 		reg = <0>;
+@@ -62,6 +64,17 @@
+ 
+ &mipi_dsi {
+ 	status = "okay";
++	assigned-clocks = <&clk IMX8MQ_CLK_DSI_PHY_REF>,
++			  <&clk IMX8MQ_CLK_DSI_CORE>,
++			  <&clk IMX8MQ_VIDEO_PLL1_REF_SEL>,
++			  <&clk IMX8MQ_VIDEO_PLL1>;
++	assigned-clock-parents = <&clk IMX8MQ_VIDEO_PLL1_OUT>,
++				 <&clk IMX8MQ_SYS1_PLL_266M>,
++				 <&clk IMX8MQ_CLK_25M>;
++	assigned-clock-rates = <24000000>,
++			       <266000000>,
++			       <0>,
++			       <599999999>;
+ 
+ 	port@1 {
+ 		mipi_dsi_in: endpoint {
+diff --git a/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-lcdif-rm67191.dtsi b/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-lcdif-rm67191.dtsi
+index 3688aa0..325ed26 100644
+--- a/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-lcdif-rm67191.dtsi
++++ b/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk-lcdif-rm67191.dtsi
+@@ -38,6 +38,15 @@
+ 	status = "okay";
+ 	max-res = <1080>, <1920>;
+ 
++	assigned-clocks = <&clk IMX8MQ_CLK_LCDIF_PIXEL>,
++			  <&clk IMX8MQ_VIDEO_PLL1_REF_SEL>,
++			  <&clk IMX8MQ_VIDEO_PLL1>;
++	assigned-clock-parents = <&clk IMX8MQ_VIDEO_PLL1_OUT>,
++				 <&clk IMX8MQ_CLK_25M>;
++	assigned-clock-rate = <120000000>,
++			      <0>,
++			      <599999999>;
++
+ 	port@0 {
+ 		lcdif_mipi_dsi: mipi-dsi-endpoint {
+ 			remote-endpoint = <&mipi_dsi_in>;
+@@ -53,6 +62,17 @@
+ 	status = "okay";
+ 	as_bridge;
+ 	sync-pol = <1>;
++	assigned-clocks = <&clk IMX8MQ_CLK_DSI_PHY_REF>,
++			  <&clk IMX8MQ_CLK_DSI_CORE>,
++			  <&clk IMX8MQ_VIDEO_PLL1_REF_SEL>,
++			  <&clk IMX8MQ_VIDEO_PLL1>;
++	assigned-clock-parents = <&clk IMX8MQ_VIDEO_PLL1_OUT>,
++				 <&clk IMX8MQ_SYS1_PLL_266M>,
++				 <&clk IMX8MQ_CLK_25M>;
++	assigned-clock-rates = <24000000>,
++			       <266000000>,
++			       <0>,
++			       <599999999>;
+ 
+ 	port@1 {
+ 		mipi_dsi_in: endpoint {
+diff --git a/arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi b/arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi
+index 669f712..00f795c 100755
+--- a/arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi
++++ b/arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi
+@@ -551,12 +551,13 @@
+ 		clocks = <&clk IMX8MQ_CLK_DISP_APB_ROOT>,
+ 			 <&clk IMX8MQ_CLK_DISP_AXI_ROOT>,
+ 			 <&clk IMX8MQ_CLK_DISP_RTRM_ROOT>,
++			 <&clk IMX8MQ_CLK_DUMMY>,
+ 			 <&clk IMX8MQ_VIDEO2_PLL_OUT>,
+ 			 <&clk IMX8MQ_CLK_DISP_DTRC>,
+ 			 <&clk IMX8MQ_VIDEO2_PLL1_REF_SEL>,
+ 			 <&clk IMX8MQ_CLK_PHY_27MHZ>;
+-		clock-names = "apb", "axi", "rtrm", "pix",
+-			"dtrc", "pll", "pll_src1";
++		clock-names = "apb", "axi", "rtrm", "pix_div", "pix_out",
++			"dtrc", "pll_src", "pll_phy_ref";
+ 		assigned-clocks = <&clk IMX8MQ_CLK_DC_PIXEL>,
+ 				  <&clk IMX8MQ_CLK_DISP_AXI>,
+ 				  <&clk IMX8MQ_CLK_DISP_RTRM>,
+@@ -603,11 +604,8 @@
+ 	lcdif: lcdif@30320000 {
+ 		compatible = "fsl,imx8mq-lcdif", "fsl,imx28-lcdif";
+ 		reg = <0x0 0x30320000 0x0 0x10000>;
+-		clocks = <&clk IMX8MQ_CLK_LCDIF_PIXEL>,
+-			 <&clk IMX8MQ_VIDEO_PLL1>,
+-			 <&clk IMX8MQ_CLK_27M>,
+-			 <&clk IMX8MQ_CLK_25M>;
+-		clock-names = "pix", "video_pll", "osc_27", "osc_25";
++		clocks = <&clk IMX8MQ_CLK_LCDIF_PIXEL>;
++		clock-names = "pix";
+ 		assigned-clocks = <&clk IMX8MQ_CLK_LCDIF_PIXEL>;
+ 		assigned-clock-parents = <&clk IMX8MQ_VIDEO_PLL1_OUT>;
+ 		assigned-clock-rate = <594000000>;
+-- 
+2.7.4
+
