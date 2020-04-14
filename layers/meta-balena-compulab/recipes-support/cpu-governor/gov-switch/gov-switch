@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+echo "Frequency scaling depending on the CPU temperature"
+
+GV='/sys/devices/system/cpu/cpu0/cpufreq'
+echo userspace > ${GV}/scaling_governor
+LIMIT=75
+
+while [ 1 ]
+do
+    TEMP=$(sed 's/000$//g'  < /sys/class/thermal/thermal_zone0/temp)
+    if [[ ${TEMP} -gt ${LIMIT} ]]
+    then
+	echo powersave > ${GV}/scaling_governor
+    else
+	echo schedutil > ${GV}/scaling_governor
+    fi
+    sleep 1
+done
+
+exit 0
