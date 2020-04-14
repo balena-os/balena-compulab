@@ -27,7 +27,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0007-arch64-dts-fsl-imx8mq-Update-DCSS-LCDIF-and-DSI-cloc.patch \
 	file://0001-tune-raydium-driver-for-maxen-display.patch \
 	file://0001-enable-maxen-display-in-dt.patch \
-	file://defconfig \
+	file://0008-Enable_touchpanel_GT911.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"

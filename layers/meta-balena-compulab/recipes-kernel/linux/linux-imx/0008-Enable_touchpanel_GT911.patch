@@ -1,0 +1,76 @@
+From d69c67269d46f3b7a1b02fbf082dba0536d86056 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Mon, 13 Apr 2020 12:15:51 +0200
+Subject: [PATCH] Enable the GT911 touchpanel in the device tree
+
+The MX8MQ_IOMUXC_SAI2_TXD0 pad was used for SAI and created a conflict
+when the goodix driver was trying to configure it.
+SAI2 has been disabled in the device tree since audio is not necessary
+on the EtcherPro
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts  | 25 +++++++++++++++++++
+ .../boot/dts/compulab/compulab-imx8mq.dtsi    |  2 +-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index ac61906170a9..786a1f3beed1 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -56,6 +56,16 @@
+ 				MX8MQ_IOMUXC_GPIO1_IO00_ANAMIX_REF_CLK_32K 0x16
+ 			>;
+ 		};
++		pinctrl_i2c4_gt911: i2c4-gt911grp {
++			fsl,pins = <
++				#define GPIRQ_GT911		<&gpio4 26 IRQ_TYPE_LEVEL_HIGH>
++				#define GP_GT911_IRQ		<&gpio4 26 GPIO_ACTIVE_HIGH>
++				MX8MQ_IOMUXC_SAI2_TXD0_GPIO4_IO26	0x1D6
++				/* driver writes levels, instead of active/inactive */
++				#define GP_GT911_RESET			<&gpio4 23 GPIO_ACTIVE_LOW>
++				MX8MQ_IOMUXC_SAI2_RXD0_GPIO4_IO23	0x149
++			>;
++		};
+ 	};
+ };
+ 
+@@ -365,6 +375,21 @@
+ 	reg = <0x5f>;
+ 	compatible = "ksz9893r";
+     };
++
++	goodix_ts@5d {
++		compatible = "goodix,gt911";
++		reg = <0x5d>;
++
++		pinctrl-names = "default";
++		pinctrl-0 = <&pinctrl_i2c4_gt911>;
++
++		esd-recovery-timeout-ms = <2000>;
++		interrupts-extended = GPIRQ_GT911;
++		irq-gpios = GP_GT911_IRQ;
++		reset-gpios = GP_GT911_RESET;
++		status = "okay";
++	};
++
+ };
+ 
+ &irqsteer_dcss {
+diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+index a578e372b9ad..bdbafd415baa 100644
+--- a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
++++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+@@ -633,7 +633,7 @@
+ 	assigned-clocks = <&clk IMX8MQ_CLK_SAI2>;
+ 	assigned-clock-parents = <&clk IMX8MQ_AUDIO_PLL1_OUT>;
+ 	assigned-clock-rates = <24576000>;
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &sai4 {
+-- 
+2.17.1
+
