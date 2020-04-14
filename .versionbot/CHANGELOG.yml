@@ -1,4 +1,18 @@
 - commits:
+    - subject: Added support for the Goodix GT911 touch panel
+      hash: c38cf60fccc56216914f219e9857ded2a12e9991
+      body: |
+        The EtcherPro board uses the Goodix GT911 touch panel over
+        i2c on the I2C4 bus.
+      footer:
+        Changelog-entry: Added support for the Goodix GT911 touch panel
+        changelog-entry: Added support for the Goodix GT911 touch panel
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.0+rev12
+  date: 2020-04-13T13:43:36.728Z
+- commits:
     - subject: Add support for MIPI Maxen display
       hash: 76d74673e4d05e0dc052358692078aeb943211a2
       body: |

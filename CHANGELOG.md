@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.46.0+rev12
+## (2020-04-13)
+
+* Added support for the Goodix GT911 touch panel [Vicentiu Galanopulo]
+
 # v2.46.0+rev11
 ## (2020-04-09)
 
