@@ -1,0 +1,50 @@
+From f0d0e144f3b30cfaaac9ba7188c72a9095c0ba61 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Tue, 14 Apr 2020 11:07:59 +0200
+Subject: [PATCH] Set linux kernel device tree to sbc-imx8-no-wp.dtb
+
+The USB3.0 block from the IMX8 SOM goes into a USB muxer.
+The USB muxer has 2 outputs: the first is a USB3.0 lane
+and the second is Wifi and BT block.
+
+The device tree sbc-imx8-no-wp.dtb has the USB muxer
+set to output the USB3.0 lane.
+The Wifi and BT block will be managed by the PCI lane
+coming from the IMX8 SOM
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo  <vicentiu@balena.io>
+---
+ board/compulab/cl-som-imx8/Kconfig | 2 +-
+ configs/cl-som-imx8_defconfig      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/board/compulab/cl-som-imx8/Kconfig b/board/compulab/cl-som-imx8/Kconfig
+index 36ee7b2516..bb3f057733 100644
+--- a/board/compulab/cl-som-imx8/Kconfig
++++ b/board/compulab/cl-som-imx8/Kconfig
+@@ -11,7 +11,7 @@ endchoice
+ config DEFAULT_DTB
+     string "U-Boot Default Device Tree File"
+     depends on TARGET_COMPULAB_IMX8
+-    default "sbc-imx8.dtb"
++    default "sbc-imx8-no-wp.dtb"
+ 
+ config SYS_BOARD
+ 	default "cl-som-imx8"
+diff --git a/configs/cl-som-imx8_defconfig b/configs/cl-som-imx8_defconfig
+index 6b1c1fed22..99620b0ce7 100644
+--- a/configs/cl-som-imx8_defconfig
++++ b/configs/cl-som-imx8_defconfig
+@@ -9,7 +9,7 @@ CONFIG_LOCALVERSION="-cl-som-imx8-rev2.1-1.2"
+ CONFIG_FIT=y
+ CONFIG_SPL_LOAD_FIT=y
+ CONFIG_SYS_EXTRA_OPTIONS="IMX_CONFIG=arch/arm/mach-imx/spl_sd.cfg"
+-CONFIG_DEFAULT_FDT_FILE="sbc-imx8.dtb"
++CONFIG_DEFAULT_FDT_FILE="sbc-imx8-no-wp.dtb"
+ CONFIG_ARCH_MISC_INIT=y
+ CONFIG_SPL=y
+ CONFIG_SPL_BOARD_INIT=y
+-- 
+2.17.1
+

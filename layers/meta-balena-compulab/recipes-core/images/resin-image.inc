@@ -13,6 +13,11 @@ RESIN_BOOT_PARTITION_FILES_cl-som-imx8 = " \
     ${KERNEL_IMAGETYPE}-sbc-imx8-m4.dtb:/sbc-imx8-m4.dtb \
 "
 
+RESIN_BOOT_PARTITION_FILES_etcher-pro = " \
+    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/Image.gz \
+    ${KERNEL_IMAGETYPE}-sbc-imx8-no-wp.dtb:/sbc-imx8-no-wp.dtb \
+"
+
 IMAGE_INSTALL_append_cl-som-imx8 = " \
                                         imx-boot \
                                         kernel-modules \
