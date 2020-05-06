@@ -1,0 +1,11 @@
+[Unit]
+Description=CPU temperature scaling governor service
+
+[Service]
+Type=simple
+Restart=always
+RemainAfterExit=yes
+ExecStart=@BASE_BINDIR@/bash @BINDIR@/gov-switch
+
+[Install]
+WantedBy=multi-user.target

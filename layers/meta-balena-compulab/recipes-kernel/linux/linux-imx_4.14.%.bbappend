@@ -32,7 +32,7 @@ SRC_URI_append_etcher-pro = " \
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 
-RESIN_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable"
+RESIN_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil"
 RESIN_CONFIGS[80211] = " \
     CONFIG_CFG80211=y \
 "
@@ -47,6 +47,11 @@ RESIN_CONFIGS[iwlwifi] = " \
 
 RESIN_CONFIGS[debug_preempt_disable] = " \
     CONFIG_DEBUG_PREEMPT=n \
+"
+
+RESIN_CONFIGS[schedutil] = " \
+    CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y \
+    CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y \
 "
 
 RESIN_CONFIGS_append_etcher-pro = " pca9956b ksz9893r"
