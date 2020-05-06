@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.46.0+rev13
+## (2020-05-06)
+
+* Add service to set CPU governor by temperature [Vicentiu Galanopulo]
+
 # v2.46.0+rev12
 ## (2020-04-13)
 

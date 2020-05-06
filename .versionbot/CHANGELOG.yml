@@ -1,4 +1,23 @@
 - commits:
+    - subject: Add service to set CPU governor by temperature
+      hash: 519e3252c48093c99ddecd402ab5743135808c9e
+      body: |
+        The service will monitor the CPU temperature and when
+        it is over a threshold value (75 degrees) it will set
+        the CPU governor to powersave.
+        The schedutil scaling governor has been added to kernel
+        config.
+        If the CPU temperature will drop below the threshold value,
+        the CPU governor will be set to schedutil
+      footer:
+        Changelog-entry: Add service to set CPU governor by temperature
+        changelog-entry: Add service to set CPU governor by temperature
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.0+rev13
+  date: 2020-05-06T12:52:07.107Z
+- commits:
     - subject: Added support for the Goodix GT911 touch panel
       hash: c38cf60fccc56216914f219e9857ded2a12e9991
       body: |
