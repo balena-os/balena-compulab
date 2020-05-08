@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add etcher-pro logo
+      hash: a310908c6b6a5a43129e6e5ae6e7755c7b55e508
+      body: |
+        Overwrite the resin-logo for the etcher-pro
+        board
+      footer:
+        Changelog-entry: Add etcher-pro logo
+        changelog-entry: Add etcher-pro logo
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.0+rev14
+  date: 2020-05-08T12:40:49.098Z
+- commits:
     - subject: Add service to set CPU governor by temperature
       hash: 519e3252c48093c99ddecd402ab5743135808c9e
       body: |

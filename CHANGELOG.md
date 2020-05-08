@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.46.0+rev14
+## (2020-05-08)
+
+* Add etcher-pro logo [Vicentiu Galanopulo]
+
 # v2.46.0+rev13
 ## (2020-05-06)
 
