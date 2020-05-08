@@ -1,6 +1,193 @@
 # Change Log
 -----------
 
+# v2.49.0+rev1
+## (2020-05-08)
+
+
+<details>
+<summary> Update the meta-balena submodule from v2.46.0 to v2.49.0 [Vicentiu Galanopulo] </summary>
+
+> ## meta-balena-2.49.0
+> ### (2020-05-01)
+> 
+> * balena-host: Ignore environment file if it does not exist [Alex Gonzalez]
+> * Bump balena-engine to 18.09.17 [Robert Günzler]
+> * networkmanager: Use absolute path in drop-in [Sven Schwermer]
+> * Update ModemManager to v1.12.8 [Michal Toman]
+> * Update balena-engine to 18.09.16 [Robert Günzler]
+> * Add support for using udev by-state links in balenaOS [Alex Gonzalez]
+> * Add initramfs module to regenerate default filesystem UUIDs [Alex Gonzalez]
+> * Create udev state symlinks for all partitions [Alex Gonzalez]
+> * initramfs-framework: Add os-helpers to module prepare [Alex Gonzalez]
+> * Fix initramfs fsck warnings for the boot partition [Andrei Gherzan]
+> * Switch to built-in FAT kernel configs [Andrei Gherzan]
+> 
+<details>
+<summary> Update balena-supervisor from v10.8.0 to v10.11.0 [Cameron Diver] </summary>
+
+>> ### balena-supervisor-10.11.0
+>> #### (2020-03-30)
+>> 
+>> * Add BALENA_DEVICE_ARCH environment variable for containers [Cameron Diver]
+
+>> ### balena-supervisor-10.10.15
+>> #### (2020-03-30)
+>> 
+>> * Don't throw an error when getting an unhealthy state [Cameron Diver]
+
+>> ### balena-supervisor-10.10.14
+>> #### (2020-03-28)
+>> 
+>> * Convert src/device-api/common.coffee to javascript [Pagan Gazzard]
+
+>> ### balena-supervisor-10.10.13
+>> #### (2020-03-27)
+>> 
+>> * Switch to mz for the proxyvisor [Pagan Gazzard]
+>> * Convert proxyvisor to javascript [Pagan Gazzard]
+
+>> ### balena-supervisor-10.10.12
+>> #### (2020-03-26)
+>> 
+>> * Remove unnecessary code from application-manager [Pagan Gazzard]
+>> * Switch to a named export for application-manager [Pagan Gazzard]
+
+>> ### balena-supervisor-10.10.11
+>> #### (2020-03-25)
+>> 
+>> * Convert device-api/v1 to javascript [Pagan Gazzard]
+
+>> ### balena-supervisor-10.10.10
+>> #### (2020-03-24)
+>> 
+>> * Update livepush [Cameron Diver]
+
+>> ### balena-supervisor-10.10.9
+>> #### (2020-03-24)
+>> 
+>> * Add type checking for javascript files [Pagan Gazzard]
+
+>> ### balena-supervisor-10.10.8
+>> #### (2020-03-24)
+>> 
+>> * Pin resin-cli-visuals to avoid build error of lzma-native [Cameron Diver]
+>> * Update dependencies [Cameron Diver]
+
+>> ### balena-supervisor-10.10.7
+>> #### (2020-03-24)
+>> 
+>> * Avoid any transpilation of node_modules [Pagan Gazzard]
+
+>> ### balena-supervisor-10.10.6
+>> #### (2020-03-24)
+>> 
+>> * Add transpilation for javascript files to ease node 6 compatibility [Pagan Gazzard]
+>> * Add a precheck that linting/tests work on node 10 [Pagan Gazzard]
+>> * Update to balena-lint and enable javascript linting [Pagan Gazzard]
+
+>> ### balena-supervisor-10.10.5
+>> #### (2020-03-23)
+>> 
+>> * Tests: Add missing await [Pagan Gazzard]
+
+>> ### balena-supervisor-10.10.4
+>> #### (2020-03-16)
+>> 
+>> * docs: Clarify update locks for multicontainer applications [Gareth Davies]
+
+>> ### balena-supervisor-10.10.3
+>> #### (2020-03-16)
+>> 
+>> * logging: fix up some typos [Matthew McGinn]
+
+>> ### balena-supervisor-10.10.2
+>> #### (2020-03-16)
+>> 
+>> * Bump acorn from 5.7.3 to 5.7.4 [dependabot[bot]]
+
+>> ### balena-supervisor-10.10.1
+>> #### (2020-03-13)
+>> 
+>> * Update dependencies [Pagan Gazzard]
+
+>> ### balena-supervisor-10.10.0
+>> #### (2020-03-06)
+>> 
+>> * Allow semver comparison on l4t versions in contracts [Cameron Diver]
+>> * Allow l4t versions with three numbers as well as two [Cameron Diver]
+
+>> ### balena-supervisor-10.9.2
+>> #### (2020-03-05)
+>> 
+>> * config: Support loading SSDT via ConfigFS [Rich Bayliss]
+
+>> ### balena-supervisor-10.9.1
+>> #### (2020-02-25)
+>> 
+>> * Convert device-state module to typescript [Cameron Diver]
+>> * Improve application-manager typings [Cameron Diver]
+>> * Improve and extend internal typings [Cameron Diver]
+
+>> ### balena-supervisor-10.9.0
+>> #### (2020-02-24)
+>> 
+>> * Add a containerId request parameter for journal-logs api endpoint, and pass it along to journalctl process options. [Ivan]
+</details>
+
+> 
+
+> ## meta-balena-2.48.0
+> ### (2020-03-20)
+> 
+> * Add the linux-firmware recipe from the Poky zeus-22.0.1 release and package various iwlwifi firmware separately [Florin Sarbu]
+> * Add regulatory.db (Wireless Central Regulatory Domain Database) to rootfs so kernel versions >= v4.15 can load it (for Poky Thud and Warrior based board) [Florin Sarbu]
+> * Do not send SIGKILL directly to user containers (set KillMode=process in balena.service) [Florin Sarbu]
+> * Update balena-supervisor from  to v10.8.0 [Cameron Diver]
+> * Update config.json documentation for disabling NM connectivity checks [Gareth Davies]
+> * Fix a typo in a NetworkManager plugin path [Zubair Lutfullah Kakakhel]
+> * Remove unnecessary openvpn v2.4.4 recipe in meta-resin-pyro. [Zubair Lutfullah Kakakhel]
+> * Use a weak default assignment in a recipe for customer trying to override a variable in his layer [Zubair Lutfullah Kakakhel]
+
+> ## meta-balena-2.47.1
+> ### (2020-02-13)
+> 
+> * Affects 2.45+ on all devices. Fix dangling sshd services on failed connections that would grow and cause cpu load to keep rising. See issue 1837 in meta-balena for more detail. [Zubair Lutfullah Kakakhel]
+
+> ## meta-balena-2.47.0
+> ### (2020-01-29)
+> 
+> * Update usb-modeswitch-data to version 20191128 [Florin Sarbu]
+> * Update usb-modeswitch to version 2.5.2 [Florin Sarbu]
+> * Update to ModemManager v1.12.4 [Florin Sarbu]
+> * Update libmbim to version 1.22.0 [Florin Sarbu]
+> * Update libqmi to version 1.24.4 [Florin Sarbu]
+> * Add periodic vacuuming of journald log files [Alex Gonzalez]
+> * No user impact. Increase limit for maximum initramfs size from 12MB to 32MB. This helps reduce unnecessary overrides in integration layers. [Zubair Lutfullah Kakakhel]
+> * Match licenses with license files. [Alex Gonzalez]
+> * Enable sixaxis support in bluez5 [Alexis Svinartchouk]
+> * Addressing review comments [Gareth Davies]
+> * Update config.json documentation [Gareth Davies]
+> * Increase DNS clients timeout to 15 seconds [Alex Gonzalez]
+> * Fix supervisor nested changelogs [Zubair Lutfullah Kakakhel]
+> * Enable memory overcommit [Alex Gonzalez]
+> * Add uinput kernel module [Florin Sarbu]
+> * Make sure to add in rootfs the wifi firmware for wl18xx [Florin Sarbu]
+> * Add supported USB WiFi dongle [Vicentiu Galanopulo]
+
+> ## meta-balena-2.46.2
+> ### (2020-01-17)
+> 
+> * Americanize the README.md [Matthew McGinn]
+
+> ## meta-balena-2.46.1
+> ### (2020-01-01)
+> 
+> * Disable by default the option to stop u-boot autoboot by pressing CTRL+C in all OS versions [Florin Sarbu]
+> * Increase NTP polling time to around 4.5 hours. [Alex Gonzalez]
+> * Disable the option to stop u-boot autoboot by pressing CTRL+C in production OS version [Florin Sarbu]
+</details>
+
 # v2.46.0+rev14
 ## (2020-05-08)
 
