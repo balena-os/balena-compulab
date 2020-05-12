@@ -1,4 +1,16 @@
 - commits:
+    - subject: Set private to false in .coffee files for the public device types
+      hash: e0b64f371c200df211ef623d1fa5e5d9349d6ef5
+      body: ''
+      footer:
+        Changelog-entry: Set private to false in .coffee files for the public device types
+        changelog-entry: Set private to false in .coffee files for the public device types
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.49.0+rev3
+  date: 2020-05-12T08:49:47.065Z
+- commits:
     - subject: Undo removal of USB devices scan
       hash: 39d31c3d46ab6fe1b854232f02e6fc590f0634c9
       body: |
