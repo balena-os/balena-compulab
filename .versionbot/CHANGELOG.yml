@@ -1,4 +1,20 @@
 - commits:
+    - subject: Undo removal of USB devices scan
+      hash: 39d31c3d46ab6fe1b854232f02e6fc590f0634c9
+      body: |
+        The reverted commit affected product basics improvement guidelines.
+        Changes to support not booting from USB were done
+        in meta-balena commit
+        b4ac80b7c443d7dec241e35eae8db4ad95490b3a
+      footer:
+        Changelog-entry: Undo removal of USB devices scan
+        changelog-entry: Undo removal of USB devices scan
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.49.0+rev2
+  date: 2020-05-11T14:50:50.095Z
+- commits:
     - subject: Update the meta-balena submodule from v2.46.0 to v2.49.0
       hash: b01fd004a5a94ffe9262a7503b07bb768b7404ca
       body: |

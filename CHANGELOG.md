@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.49.0+rev2
+## (2020-05-11)
+
+* Undo removal of USB devices scan [Vicentiu Galanopulo]
+
 # v2.49.0+rev1
 ## (2020-05-08)
 
