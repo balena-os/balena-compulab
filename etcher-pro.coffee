@@ -17,6 +17,7 @@ module.exports =
         name: 'Etcher Pro'
         arch: 'aarch64'
         state: 'experimental'
+        private: false
  
         stateInstructions:
                 postProvisioning: postProvisioningInstructions
