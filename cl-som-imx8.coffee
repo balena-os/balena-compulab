@@ -15,6 +15,7 @@ module.exports =
         name: 'Compulab MX8M'
         arch: 'aarch64'
         state: 'released'
+        private: false
  
         stateInstructions:
                 postProvisioning: postProvisioningInstructions

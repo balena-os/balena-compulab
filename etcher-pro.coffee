@@ -16,7 +16,8 @@ module.exports =
         slug: 'etcher-pro'
         name: 'Etcher Pro'
         arch: 'aarch64'
-        state: 'experimental'
+        state: 'new'
+        private: false
  
         stateInstructions:
                 postProvisioning: postProvisioningInstructions
