@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.50.0+rev2
+## (2020-05-18)
+
+* Rotate GT911 touchpanel 180 degrees [Vicentiu Galanopulo]
+
 # v2.50.0+rev1
 ## (2020-05-14)
 

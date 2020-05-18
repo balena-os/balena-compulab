@@ -1,4 +1,18 @@
 - commits:
+    - subject: Rotate GT911 touchpanel 180 degrees
+      hash: b995912002c6eb9767db4742daebed1c770f9118
+      body: |
+        The Goodix GT911 touch panel needs to be rotated 180 degrees
+        to have it placed correctly over the display
+      footer:
+        Changelog-entry: Rotate GT911 touchpanel 180 degrees
+        changelog-entry: Rotate GT911 touchpanel 180 degrees
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.50.0+rev2
+  date: 2020-05-18T15:25:22.565Z
+- commits:
     - subject: Update the meta-balena submodule from v2.49.0 to v2.50.0
       hash: 5735329c318e6a93022352a62477190feeda4d8b
       body: |
