@@ -33,7 +33,7 @@ SRC_URI_append_etcher-pro = " \
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 
-RESIN_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil"
+RESIN_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil localversion"
 RESIN_CONFIGS[80211] = " \
     CONFIG_CFG80211=y \
 "
@@ -67,6 +67,11 @@ RESIN_CONFIGS[ksz9893r] = " \
 RESIN_CONFIGS_append_etcher-pro = " maxen_display"
 RESIN_CONFIGS[maxen_display] = " \
     CONFIG_DRM_PANEL_RAYDIUM_RM67191=y \
+"
+
+RESIN_CONFIGS[localversion] = " \
+    CONFIG_LOCALVERSION="" \
+    CONFIG_LOCALVERSION_AUTO=n \
 "
 
 do_configure_prepend_etcher-pro () {
