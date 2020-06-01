@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.50.0+rev3
+## (2020-05-29)
+
+* Disable commit SHA in kernel version [Vicentiu Galanopulo]
+
 # v2.50.0+rev2
 ## (2020-05-18)
 
