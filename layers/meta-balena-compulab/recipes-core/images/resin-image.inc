@@ -24,6 +24,7 @@ IMAGE_INSTALL_append_cl-som-imx8 = " \
 					firmware-imx \
 					firmware-imx-sdma \
 					firmware-imx-epdc \
+					linux-firmware-ibt \
 "
 
 IMAGE_CMD_resinos-img_append_cl-som-imx8 () {
