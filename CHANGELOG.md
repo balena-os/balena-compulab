@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.50.0+rev4
+## (2020-06-04)
+
+* Use sbc-imx8-bluetooth.dtb as kernel device tree [Vicentiu Galanopulo]
+
 # v2.50.0+rev3
 ## (2020-05-29)
 

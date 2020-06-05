@@ -1,4 +1,18 @@
 - commits:
+    - subject: Use sbc-imx8-bluetooth.dtb as kernel device tree
+      hash: 03f2cf7df066d27363d8cc179196e443e2be76d3
+      body: |
+        In order to have bluetooth working for the cl-som-imx8 we need
+        to use the device tree which enables it
+      footer:
+        Changelog-entry: Use sbc-imx8-bluetooth.dtb as kernel device tree
+        changelog-entry: Use sbc-imx8-bluetooth.dtb as kernel device tree
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.50.0+rev4
+  date: 2020-06-04T14:43:26.753Z
+- commits:
     - subject: Disable commit SHA in kernel version
       hash: f9ff3c0c2f01b461e79e9971dada8b7fa2d1329f
       body: |
