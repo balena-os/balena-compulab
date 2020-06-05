@@ -1,6 +1,101 @@
 # Change Log
 -----------
 
+# v2.51.1+rev1
+## (2020-06-05)
+
+
+<details>
+<summary> Update meta-balena from v2.50.0 to v2.51.1 [Vicentiu Galanopulo] </summary>
+
+> ## meta-balena-2.51.1
+> ### (2020-06-04)
+> 
+> * openvpn: Add runtime dependency on bash [Willem Remie]
+
+> ## meta-balena-2.51.0
+> ### (2020-06-03)
+> 
+> * balena-engine: Update to 19.03.13 [Robert Günzler]
+
+> ## meta-balena-2.50.4
+> ### (2020-06-02)
+> 
+> * Use correct SRC_URI for bindmount [Florin Sarbu]
+
+> ## meta-balena-2.50.3
+> ### (2020-06-01)
+> 
+> * os-helpers-fs: Fix shellcheck warnings [Alex Gonzalez]
+> * Fallback to label root device matching to support devices with closed source bootloaders [Alex Gonzalez]
+> * Fallback to labels and partlabels for devices with custom HUPs [Alex Gonzalez]
+
+> ## meta-balena-2.50.2
+> ### (2020-05-27)
+> 
+> * Enable the Analog Devices AD5446 kernel driver [Florin Sarbu]
+
+> ## meta-balena-2.50.1
+> ### (2020-05-21)
+> 
+> * networkmanager: Remove build warning [Alex Gonzalez]
+> * Remove busybox-syslog to use only systemd's journald [Alex Gonzalez]
+> * Update CODEOWNERS [Alex Gonzalez]
+> * Backport NM patch for setting modem MTU correctly [Florin Sarbu]
+> * update-resin-supervisor: short circuit if remote image cannot be fetched [Matthew McGinn]
+> 
+<details>
+<summary> Update balena-supervisor from v11.4.1 to v11.4.10 [Cameron Diver] </summary>
+
+>> ### balena-supervisor-11.4.10
+>> #### (2020-05-18)
+>> 
+>> * Fix leftover spurious return from typescript conversion [Cameron Diver]
+
+>> ### balena-supervisor-11.4.9
+>> #### (2020-05-18)
+>> 
+>> * Catch errors in the target state poll so polling will always continue [Pagan Gazzard]
+
+>> ### balena-supervisor-11.4.8
+>> #### (2020-05-18)
+>> 
+>> * Avoid querying `instantUpdates` on every state poll [Pagan Gazzard]
+
+>> ### balena-supervisor-11.4.7
+>> #### (2020-05-16)
+>> 
+>> * Fix default request options [Pagan Gazzard]
+
+>> ### balena-supervisor-11.4.6
+>> #### (2020-05-15)
+>> 
+>> * Remove CoffeeScript tests and all CoffeeScript tools [Miguel Casqueira]
+
+>> ### balena-supervisor-11.4.5
+>> #### (2020-05-15)
+>> 
+>> * Update to @balena/lint 5.x [Pagan Gazzard]
+
+>> ### balena-supervisor-11.4.4
+>> #### (2020-05-15)
+>> 
+>> * Add a random offset to the poll interval with each poll [Cameron Diver]
+
+>> ### balena-supervisor-11.4.3
+>> #### (2020-05-14)
+>> 
+>> * Cache service names in local log backend [Cameron Diver]
+
+>> ### balena-supervisor-11.4.2
+>> #### (2020-05-13)
+>> 
+>> * Update engine information in package.json [Cameron Diver]
+</details>
+
+> 
+</details>
+
 # v2.50.0+rev4
 ## (2020-06-04)
 
