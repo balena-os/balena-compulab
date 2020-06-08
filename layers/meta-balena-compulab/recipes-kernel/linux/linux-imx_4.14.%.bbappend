@@ -33,6 +33,9 @@ SRC_URI_append_etcher-pro = " \
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 
+# Disable commit SHA in kernel version string
+SCMVERSION="n"
+
 RESIN_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil"
 RESIN_CONFIGS[80211] = " \
     CONFIG_CFG80211=y \
