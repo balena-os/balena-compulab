@@ -1,4 +1,19 @@
 - commits:
+    - subject: Disable commit SHA in kernel version
+      hash: db91c65dca99b2017e72aa70825c40ff62c532c4
+      body: |
+        Do this to allow modules built for the
+        current kernel version to be loaded between
+        small updates
+      footer:
+        Changelog-entry: Disable commit SHA in kernel version
+        changelog-entry: Disable commit SHA in kernel version
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.51.1+rev2
+  date: 2020-06-08T09:16:06.413Z
+- commits:
     - subject: Update meta-balena from v2.50.0 to v2.51.1
       hash: dc484151720b850f7ff6a7cd989301e19fb25dfd
       body: |
