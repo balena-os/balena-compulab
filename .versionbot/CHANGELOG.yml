@@ -1,4 +1,20 @@
 - commits:
+    - subject: Change i2c4 clock freq. to 400kHz
+      hash: c2f7d91221fd1c14ade04ce3c238a8213ea87658
+      body: |
+        I2C4 is the main i2c bus of the Etcher Pro and it will have
+        improved performance if the clock frequency is changed from
+        100kHz to 400kHz
+      footer:
+        Changelog-entry: Change i2c4 clock freq. to 400kHz
+        changelog-entry: Change i2c4 clock freq. to 400kHz
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.51.1+rev3
+  date: 2020-07-28T16:02:03.710Z
+- commits:
     - subject: Disable commit SHA in kernel version
       hash: db91c65dca99b2017e72aa70825c40ff62c532c4
       body: |

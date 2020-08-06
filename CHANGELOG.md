@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.51.1+rev3
+## (2020-07-28)
+
+* Change i2c4 clock freq. to 400kHz [Vicentiu Galanopulo]
+
 # v2.51.1+rev2
 ## (2020-06-08)
 
