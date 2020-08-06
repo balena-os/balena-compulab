@@ -1,0 +1,31 @@
+From 24eea7c1c61bffd9f8eda619c9368a2f6ed54700 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Tue, 28 Jul 2020 17:47:48 +0200
+Subject: [PATCH] Change i2c4 clock frequency to 400kHz
+
+I2C4 is the main i2c bus of the Etcher Pro and it will have
+improved performance if the clock frequency is changed from
+100kHz to 400kHz
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index 99c0a38de01a..63bc7e3f0a1d 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -98,7 +98,7 @@
+ };
+ 
+ &i2c4 {
+-    clock-frequency = <100000>;
++    clock-frequency = <400000>;
+     pinctrl-names = "default";
+     pinctrl-0 = <&pinctrl_i2c4>;
+     status = "okay";
+-- 
+2.17.1
+
