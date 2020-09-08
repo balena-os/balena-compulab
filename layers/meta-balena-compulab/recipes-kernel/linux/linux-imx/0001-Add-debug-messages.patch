@@ -1,0 +1,174 @@
+From cde2c49c9ced921c3cdce9747cfad95f6ab341af Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Tue, 8 Sep 2020 11:42:57 +0200
+Subject: [PATCH] Add debug messages
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentriu Galanopulo <vicentiu@balena.io>
+---
+ drivers/pci/dwc/pci-imx6.c | 29 +++++++++++++++++++++++++----
+ 1 file changed, 25 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/pci/dwc/pci-imx6.c b/drivers/pci/dwc/pci-imx6.c
+index 54459b5..6bef772 100644
+--- a/drivers/pci/dwc/pci-imx6.c
++++ b/drivers/pci/dwc/pci-imx6.c
+@@ -1087,8 +1087,10 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 	struct device_node *np;
+ 	void __iomem *base;
+ 
++	printk(KERN_ERR"starting imx_pcie_init_phy\n");
+ 	if (imx_pcie->variant == IMX8QM
+ 			|| imx_pcie->variant == IMX8QXP) {
++		printk(KERN_ERR"starting variant imx8qm\n");
+ 		switch (imx_pcie->hsio_cfg) {
+ 		case PCIEAX2SATA:
+ 			/*
+@@ -1157,7 +1159,7 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 				IMX8QM_MISC_PCIE_AB_SELECT);
+ 			break;
+ 		}
+-
++		printk(KERN_ERR"imx_pcie->ext_osc\n");
+ 		if (imx_pcie->ext_osc) {
+ 			regmap_update_bits(imx_pcie->iomuxc_gpr,
+ 				IMX8QM_CSR_MISC_OFFSET,
+@@ -1168,6 +1170,7 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 				IMX8QM_MISC_IOB_TXENA,
+ 				0);
+ 		} else {
++			 printk(KERN_ERR"Try to used the internal pll as ref clk\n");
+ 			/* Try to used the internal pll as ref clk */
+ 			regmap_update_bits(imx_pcie->iomuxc_gpr,
+ 				IMX8QM_CSR_MISC_OFFSET,
+@@ -1185,6 +1188,7 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 				| IMX8QM_CSR_MISC_IOB_A_0_M1M0_2);
+ 		}
+ 	} else if (imx_pcie->variant == IMX8MQ || imx_pcie->variant == IMX8MM) {
++		printk(KERN_ERR"imx_pcie->variant == IMX8MQ || imx_pcie->variant == IMX8MM\n");
+ 		imx_pcie_phy_pwr_up(imx_pcie);
+ 
+ 		if (imx_pcie->ctrl_id == 0)
+@@ -1193,10 +1197,12 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 			val = IOMUXC_GPR16;
+ 
+ 		if (imx_pcie->ext_osc) {
++			 printk(KERN_ERR"imx_pcie->ext_osc before regmap_update_bits\n");
+ 			regmap_update_bits(imx_pcie->iomuxc_gpr, val,
+ 					IMX8MQ_GPR_PCIE_REF_USE_PAD,
+ 					IMX8MQ_GPR_PCIE_REF_USE_PAD);
+ 			if (imx_pcie->variant == IMX8MM) {
++				 printk(KERN_ERR"variant == imx8mm\n");
+ 				dev_info(imx_pcie->pci->dev,
+ 					"Initialize PHY with EXT REfCLK!.\n");
+ 				regmap_update_bits(imx_pcie->iomuxc_gpr, val,
+@@ -1227,7 +1233,9 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 					"PHY Initialization End!.\n");
+ 			}
+ 		} else {
++		       printk(KERN_ERR"ELSE imx_pcie->ext_osc\n");
+ 			if (imx_pcie->variant == IMX8MM) {
++				printk(KERN_ERR"variant = imx8mm\n");
+ 				/* Configure the internal PLL as REF clock */
+ 				dev_info(imx_pcie->pci->dev,
+ 					"Initialize PHY with PLL REfCLK!.\n");
+@@ -1264,6 +1272,7 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 				dev_info(imx_pcie->pci->dev,
+ 					"PHY Initialization End!.\n");
+ 			} else {
++				printk(KERN_ERR"for the rest of the IMX variants mq...\n");
+ 				np = of_find_compatible_node(NULL, NULL,
+ 						"fsl,imx8mq-anatop");
+ 				base = of_iomap(np, 0);
+@@ -1288,12 +1297,14 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 		 * Configure the TRSV regiser of iMX8MM PCIe PHY.
+ 		 */
+ 		if (imx_pcie->variant == IMX8MM) {
++			printk(KERN_ERR"In order to pass the compliance tests\n");
+ 			writel(PCIE_PHY_TRSV_REG5_GEN1_DEEMP,
+ 			       imx_pcie->phy_base + PCIE_PHY_TRSV_REG5);
+ 			writel(PCIE_PHY_TRSV_REG6_GEN2_DEEMP,
+ 			       imx_pcie->phy_base + PCIE_PHY_TRSV_REG6);
+ 		}
+ 	} else if (imx_pcie->variant == IMX7D) {
++		printk(KERN_ERR"imx_pcie->variant IMX7D\n");
+ 		/* Enable PCIe PHY 1P0D */
+ 		regulator_set_voltage(imx_pcie->pcie_phy_regulator,
+ 				1000000, 1000000);
+@@ -1306,6 +1317,7 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 		regmap_update_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR12,
+ 				   IMX7D_GPR12_PCIE_PHY_REFCLK_SEL, 0);
+ 	} else if (imx_pcie->variant == IMX6SX) {
++		printk(KERN_ERR"imx_pcie->variant IMX6SX\n");
+ 		/* Force PCIe PHY reset */
+ 		regmap_update_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR5,
+ 				IMX6SX_GPR5_PCIE_BTNRST_RESET,
+@@ -1323,6 +1335,7 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 	}
+ 
+ 	if (imx_pcie->pcie_bus_regulator != NULL) {
++	printk(KERN_ERR"pcie_bus_regulator not null\n");
+ 		ret = regulator_enable(imx_pcie->pcie_bus_regulator);
+ 		if (ret)
+ 			dev_err(imx_pcie->pci->dev, "failed to enable pcie regulator.\n");
+@@ -1332,7 +1345,7 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 					  || (imx_pcie->variant == IMX6SX)) {
+ 		regmap_update_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR12,
+ 				   IMX6Q_GPR12_PCIE_CTL_2, 0 << 10);
+-
++		printk(KERN_ERR"imx_pcie->variant IMX6Sq/qp/6sx\n");
+ 		/* configure constant input signal to the pcie ctrl and phy */
+ 		regmap_update_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR12,
+ 				   IMX6Q_GPR12_LOS_LEVEL, IMX6Q_GPR12_LOS_LEVEL_9);
+@@ -1356,14 +1369,17 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 
+ 	/* configure the device type */
+ 	if (IS_ENABLED(CONFIG_EP_MODE_IN_EP_RC_SYS)) {
++		printk(KERN_ERR"IS_ENABLED(CONFIG_EP_MODE_IN_EP_RC_SYS)\n");
+ 		if (imx_pcie->variant == IMX8QM
+ 				|| imx_pcie->variant == IMX8QXP) {
++			printk(KERN_ERR"imx_pcie->variant == IMX8QM/IMX8QXP\n");
+ 			val = IMX8QM_CSR_PCIEA_OFFSET
+ 				+ imx_pcie->ctrl_id * SZ_64K;
+ 			regmap_update_bits(imx_pcie->iomuxc_gpr,
+ 					val, IMX8QM_PCIE_TYPE_MASK,
+ 					PCI_EXP_TYPE_ENDPOINT << 24);
+ 		} else {
++			printk(KERN_ERR"unlikely(imx_pcie->ctrl_id)\n");
+ 			if (unlikely(imx_pcie->ctrl_id))
+ 				/* iMX8MQ second PCIE */
+ 				regmap_update_bits(imx_pcie->iomuxc_gpr,
+@@ -1379,23 +1395,28 @@ static void imx_pcie_init_phy(struct imx_pcie *imx_pcie)
+ 	} else {
+ 		if (imx_pcie->variant == IMX8QM
+ 				|| imx_pcie->variant == IMX8QXP) {
++			printk(KERN_ERR" ON ELSE imx_pcie->variant == IMX8QM/IMX8QXP\n");
+ 			val = IMX8QM_CSR_PCIEA_OFFSET
+ 				+ imx_pcie->ctrl_id * SZ_64K;
+ 			regmap_update_bits(imx_pcie->iomuxc_gpr,
+ 					val, IMX8QM_PCIE_TYPE_MASK,
+ 					PCI_EXP_TYPE_ROOT_PORT << 24);
+ 		} else {
+-			if (unlikely(imx_pcie->ctrl_id))
++			printk(KERN_ERR"ELSE unlikely(imx_pcie->ctrl_id)\n");
++			if (unlikely(imx_pcie->ctrl_id)) {
+ 				/* iMX8MQ second PCIE */
++				printk(KERN_ERR"iMX8MQ second PCIE\n");
+ 				regmap_update_bits(imx_pcie->iomuxc_gpr,
+ 						IOMUXC_GPR12,
+ 						IMX6Q_GPR12_DEVICE_TYPE >> 4,
+ 						PCI_EXP_TYPE_ROOT_PORT << 8);
+-			else
++			} else {
++				printk(KERN_ERR"ELSE iMX8MQ second PCIE\n");
+ 				regmap_update_bits(imx_pcie->iomuxc_gpr,
+ 						IOMUXC_GPR12,
+ 						IMX6Q_GPR12_DEVICE_TYPE,
+ 						PCI_EXP_TYPE_ROOT_PORT << 12);
++			}
+ 		}
+ 	}
+ }
+-- 
+2.7.4
+
