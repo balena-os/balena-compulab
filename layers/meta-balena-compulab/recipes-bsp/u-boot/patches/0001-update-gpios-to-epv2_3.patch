@@ -1,0 +1,37 @@
+From 20f39c4aef3e438e8f986afcf28a70f05f042aee Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Tue, 28 Jul 2020 15:46:54 +0200
+Subject: [PATCH] update gpios to epv2_3
+
+---
+ board/compulab/cl-som-imx8/cl-som-imx8.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/board/compulab/cl-som-imx8/cl-som-imx8.c b/board/compulab/cl-som-imx8/cl-som-imx8.c
+index 2a14ceb959..2d881d0059 100644
+--- a/board/compulab/cl-som-imx8/cl-som-imx8.c
++++ b/board/compulab/cl-som-imx8/cl-som-imx8.c
+@@ -336,16 +336,13 @@ int board_init(void)
+ 	gpio_direction_output(IMX_GPIO_NR(4, 5), 1);
+ 
+ 	gpio_request(IMX_GPIO_NR(5, 18),"tft_bcl_pwm");
+-	gpio_direction_output(IMX_GPIO_NR(5, 18), 0);
++	gpio_direction_output(IMX_GPIO_NR(5, 18), 1);
+ 
+-	gpio_request(IMX_GPIO_NR(4, 1),"tft_shlr");
+-	gpio_direction_output(IMX_GPIO_NR(4, 1), 0);
++	gpio_request(IMX_GPIO_NR(5, 4),"pwm_fan");
++	gpio_direction_output(IMX_GPIO_NR(5, 4), 1);
+ 
+-	gpio_request(IMX_GPIO_NR(4, 16),"tft_updw");
+-	gpio_direction_output(IMX_GPIO_NR(4, 16), 1);
+-
+-	gpio_request(IMX_GPIO_NR(3, 25),"tft_rst");
+-	gpio_direction_output(IMX_GPIO_NR(3, 25), 1);
++	gpio_request(IMX_GPIO_NR(4, 7),"uPCIe_1_RST");
++	gpio_direction_output(IMX_GPIO_NR(4, 7), 1);
+ 
+ #if defined(CONFIG_USB_DWC3) || defined(CONFIG_USB_XHCI_IMX8M)
+ 	init_usb_clk();
+-- 
+2.17.1

@@ -22,4 +22,5 @@ SRC_URI_append_etcher-pro += " \
 	file://0002-Set-video-resolution-1920x1080.patch \
 	file://0003-Set_device_tree_to_sbc-imx8-no-wp.dtb.patch \
 	file://0005-maxen-mipi-display-gpios-configuration.patch \
+	file://0001-update-gpios-to-epv2_3.patch \
 "
