@@ -65,7 +65,7 @@ RESIN_CONFIGS[schedutil] = " \
 
 RESIN_CONFIGS_append_etcher-pro = " pca9956b ksz9893r"
 RESIN_CONFIGS[pca9956b] = " \
-    CONFIG_LEDS_PCA9956B=y \
+    CONFIG_LEDS_PCA9956B=m \
 "
 
 RESIN_CONFIGS[ksz9893r] = " \
