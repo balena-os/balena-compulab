@@ -31,10 +31,8 @@ SRC_URI_append_etcher-pro = " \
 	file://0009-Rotate_180degree_touchpanel_GT911.patch \
 	file://0010-change_i2c4_clock_freq_400kHz.patch \
 	file://0001-disable-reset-pcie.patch \
+	file://0001-Remove-reset-pin-from-GT911.patch \
 "
-
-# Let's try only with the pcie0 reset disaled, without the logs
-#       file://0001-Add-debug-messages.patch
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 
@@ -65,7 +63,7 @@ RESIN_CONFIGS[schedutil] = " \
 
 RESIN_CONFIGS_append_etcher-pro = " pca9956b ksz9893r"
 RESIN_CONFIGS[pca9956b] = " \
-    CONFIG_LEDS_PCA9956B=m \
+    CONFIG_LEDS_PCA9956B=y \
 "
 
 RESIN_CONFIGS[ksz9893r] = " \

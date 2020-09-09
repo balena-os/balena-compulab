@@ -1,0 +1,25 @@
+From ba509ff5052936750931f70142a4f3f705a61cb0 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Thu, 10 Sep 2020 14:30:33 +0200
+Subject: [PATCH] test
+
+---
+ arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+index 6700fd6..d43bfa8 100644
+--- a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
++++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+@@ -176,8 +176,6 @@
+ 			fsl,pins = <
+ 				MX8MQ_IOMUXC_GPIO1_IO12_GPIO1_IO12	0x16
+ 				MX8MQ_IOMUXC_GPIO1_IO13_GPIO1_IO13	0x16
+-				MX8MQ_IOMUXC_UART4_TXD_GPIO5_IO29 	0x16
+-				MX8MQ_IOMUXC_UART4_RXD_GPIO5_IO28 	0x16
+ 			>;
+ 		};
+ 
+-- 
+2.7.4
+
