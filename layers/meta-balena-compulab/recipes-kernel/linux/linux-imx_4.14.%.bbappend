@@ -32,6 +32,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0010-change_i2c4_clock_freq_400kHz.patch \
 	file://0001-disable-reset-pcie.patch \
 	file://0001-Remove-reset-pin-from-GT911.patch \
+	file://0001-test.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
@@ -67,7 +68,7 @@ RESIN_CONFIGS[pca9956b] = " \
 "
 
 RESIN_CONFIGS[ksz9893r] = " \
-    CONFIG_MICROCHIP_KSZ9893R=y \
+    CONFIG_MICROCHIP_KSZ9893R=m \
 "
 
 RESIN_CONFIGS_append_etcher-pro = " maxen_display"
