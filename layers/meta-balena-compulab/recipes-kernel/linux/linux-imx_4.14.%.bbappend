@@ -31,6 +31,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0009-Rotate_180degree_touchpanel_GT911.patch \
 	file://0010-change_i2c4_clock_freq_400kHz.patch \
 	file://0011-remove-reset-gpio-for-pcie0.patch \
+	file://0012-remove-reset-pin-from-gt911.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
