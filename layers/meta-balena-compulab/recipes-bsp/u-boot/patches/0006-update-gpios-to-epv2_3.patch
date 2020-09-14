@@ -3,34 +3,24 @@ From: Vicentiu Galanopulo <vicentiu@balena.io>
 Date: Tue, 28 Jul 2020 15:46:54 +0200
 Subject: [PATCH] Update gpios pins to reflect etcher-pro hardware changes in v2_3
 
-‘TFT_RST’ (GPIO3_IO25, pin142)oved
+ TFT_RST (GPIO3_IO25, pin142) removed
+ TFT_SHLR (GPIO4_IO1, pin192) removed
+ TFT_UPDN (GPIO4_IO16, pin194) removed
+ TouP_RTS (GPIO4_IO23, pin203) removed
+ EE_WP (GPIO3_IO18, pin81) removed
+ CEC_STBY (GPIO5_IO29, pin3) removed
+ UART1 (GPIO_5_IO22, GPIO_5_IO23, pin69, pin 65) removed
+ All HDMI signals removed
+ LED_RST (GPIO5_IO4, pin198) moved on (GPIO4_IO23,pin203)
+ PWM_FAN (GPIO5_IO4) added. Should be configured as PWM out for the FAN Control.
+                   For the time can be set it just as a simple High Level output.
+ uPCIe_1_RST (GPIO4_IO7, pin139) added. Set it as output and High Level on startup
+ SD_WP (GPIO2_IO20, pin67) added.
+ INT_IO_EXP (GPIO5_IO28) added
+ TFT_BCL_PWM (GPIO5_IO18, pin43), Should be configured as PWM out
+                              for the backlight Control.
+                       For the time can be set it just as a simple High Level output.
 
-‘TFT_SHLR’ (GPIO4_IO1, pin192)oved
-
-‘TFT_UPDN’ (GPIO4_IO16, pin194)oved
-
-‘TouP_RTS’ (GPIO4_IO23, pin203)oved
-
-‘EE_WP’ (GPIO3_IO18, pin81move
-
-‘CEC_STBY’ (GPIO5_IO29, pin3) rem
-
-UART1 (GPIO_5_IO22, GPIO_5_IO23, pin69, pin 65) removed
-All HDMI signals removed
-
-‘LED_RST’ (GPIO5_IO4, pin198) moved on (GPIO4_IO23,pi)
-
-‘PWM_FAN’ (GPIO5_IO4) added. Should be configured as PWM out for the FAN Cont
-For the time can be set it just as a simple High Level output.
-
-‘uPCIe_1_RST’ (GPIO4_IO7, pin139) added. Set it as output and High Level on sta
-
-‘SD_WP’ (GPIO2_IO20, pin67ded
-
-‘INT_IO_EXP’ (GPIO5_IO2dded
-
-‘TFT_BCL_PWM�GPIO5_IO18, pin43), Should be configured as PWM out for the backlight Cont
-For the time can be set it just as a simple High Level output
 
 Upstream-status: Inappropriate [configuration]
 Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
