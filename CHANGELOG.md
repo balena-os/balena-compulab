@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.51.1+rev5
+## (2020-09-14)
+
+* Fix description in patch [Vicentiu Galanopulo]
+
 # v2.51.1+rev4
 ## (2020-09-14)
 

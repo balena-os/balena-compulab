@@ -1,4 +1,19 @@
 - commits:
+    - subject: Fix description in patch
+      hash: 60dce64e0dcd57c604e151bb5c92300c5fe580bd
+      body: |
+        Minor change to remove trailing characters
+        in patch descrption
+      footer:
+        Changelog-entry: Fix description in patch
+        changelog-entry: Fix description in patch
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.51.1+rev5
+  date: 2020-09-14T09:47:53.670Z
+- commits:
     - subject: 'linux-imx: Release reset pin from gt911'
       hash: baeef34a435b8929fcd626e0c6e89b8033541cde
       body: |
