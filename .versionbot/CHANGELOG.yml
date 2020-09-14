@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'linux-imx: Release reset pin from gt911'
+      hash: baeef34a435b8929fcd626e0c6e89b8033541cde
+      body: |
+        This fixes the led board not working on ep2.3,
+        as the led board OE was taken as a reset gpio by gt911.
+      footer:
+        Changelog-entry: 'linux-imx: Release reset pin from gt911'
+        changelog-entry: 'linux-imx: Release reset pin from gt911'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.51.1+rev4
+  date: 2020-09-14T09:29:19.604Z
+- commits:
     - subject: Change i2c4 clock freq. to 400kHz
       hash: c2f7d91221fd1c14ade04ce3c238a8213ea87658
       body: |

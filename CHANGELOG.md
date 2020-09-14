@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.51.1+rev4
+## (2020-09-14)
+
+* linux-imx: Release reset pin from gt911 [Alexandru Costache]
+
 # v2.51.1+rev3
 ## (2020-07-28)
 
