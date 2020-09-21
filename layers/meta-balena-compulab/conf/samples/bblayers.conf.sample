@@ -16,7 +16,7 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-fsl-bsp-release/imx/meta-bsp \
     ${TOPDIR}/../layers/meta-bsp-imx8mq \
     ${TOPDIR}/../layers/meta-balena/meta-balena-common \
-    ${TOPDIR}/../layers/meta-balena/meta-resin-sumo \
+    ${TOPDIR}/../layers/meta-balena/meta-balena-warrior \
     ${TOPDIR}/../layers/meta-balena-compulab \
     ${TOPDIR}/../layers/meta-rust \
     "
@@ -24,3 +24,9 @@ BBLAYERS ?= " \
 BBMASK += "chromium/chromium_%.bbappend"
 BBMASK += "firmware-imx/firmware-imx_7.5.bb"
 BBMASK += "chromium/chromium-ozone-wayland_%.bbappend"
+BBMASK += "imx/meta-bsp/recipes-connectivity/openssl/openssl_1.1.1b.bbappend"
+BBMASK += "imx/meta-bsp/recipes-kernel/linux-firmware/linux-firmware_git.bbappend"
+BBMASK += "imx/meta-bsp/recipes-bsp/imx-atf/imx-atf_2.0.bb"
+BBMASK += "imx/meta-bsp/recipes-bsp/imx-mkimage/*"
+
+SERIAL_CONSOLES = "115200;ttymxc2"
