@@ -3,19 +3,19 @@ KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 
 RESIN_BOOT_PARTITION_FILES_cl-som-imx8 = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/Image.gz \
-    ${KERNEL_IMAGETYPE}-cl-som-imx8.dtb:/cl-som-imx8.dtb \
-    ${KERNEL_IMAGETYPE}-sbc-imx8.dtb:/sbc-imx8.dtb \
-    ${KERNEL_IMAGETYPE}-sbc-imx8-bluetooth.dtb:/sbc-imx8-bluetooth.dtb \
-    ${KERNEL_IMAGETYPE}-sbc-imx8-lvds-dcss.dtb:/sbc-imx8-lvds-dcss.dtb \
-    ${KERNEL_IMAGETYPE}-sbc-imx8-lvds-lcdif.dtb:/sbc-imx8-lvds-lcdif.dtb \
-    ${KERNEL_IMAGETYPE}-sbc-imx8-dual.dtb:/sbc-imx8-dual.dtb \
-    ${KERNEL_IMAGETYPE}-sbc-imx8-thermal.dtb:/sbc-imx8-thermal.dtb \
-    ${KERNEL_IMAGETYPE}-sbc-imx8-m4.dtb:/sbc-imx8-m4.dtb \
+    cl-som-imx8.dtb:/cl-som-imx8.dtb \
+    sbc-imx8.dtb:/sbc-imx8.dtb \
+    sbc-imx8-bluetooth.dtb:/sbc-imx8-bluetooth.dtb \
+    sbc-imx8-lvds-dcss.dtb:/sbc-imx8-lvds-dcss.dtb \
+    sbc-imx8-lvds-lcdif.dtb:/sbc-imx8-lvds-lcdif.dtb \
+    sbc-imx8-dual.dtb:/sbc-imx8-dual.dtb \
+    sbc-imx8-thermal.dtb:/sbc-imx8-thermal.dtb \
+    sbc-imx8-m4.dtb:/sbc-imx8-m4.dtb \
 "
 
 RESIN_BOOT_PARTITION_FILES_etcher-pro = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/Image.gz \
-    ${KERNEL_IMAGETYPE}-sbc-imx8-no-wp.dtb:/sbc-imx8-no-wp.dtb \
+    sbc-imx8-no-wp.dtb:/sbc-imx8-no-wp.dtb \
 "
 
 IMAGE_INSTALL_append_cl-som-imx8 = " \
