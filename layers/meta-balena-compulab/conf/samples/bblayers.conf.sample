@@ -16,11 +16,7 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-fsl-bsp-release/imx/meta-bsp \
     ${TOPDIR}/../layers/meta-bsp-imx8mq \
     ${TOPDIR}/../layers/meta-balena/meta-balena-common \
-    ${TOPDIR}/../layers/meta-balena/meta-resin-sumo \
+    ${TOPDIR}/../layers/meta-balena/meta-balena-warrior \
     ${TOPDIR}/../layers/meta-balena-compulab \
     ${TOPDIR}/../layers/meta-rust \
     "
-
-BBMASK += "chromium/chromium_%.bbappend"
-BBMASK += "firmware-imx/firmware-imx_7.5.bb"
-BBMASK += "chromium/chromium-ozone-wayland_%.bbappend"

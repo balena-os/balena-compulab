@@ -23,4 +23,7 @@ SRC_URI_append_etcher-pro += " \
 	file://0003-Set_device_tree_to_sbc-imx8-no-wp.dtb.patch \
 	file://0005-maxen-mipi-display-gpios-configuration.patch \
 	file://0006-update-gpios-to-epv2_3.patch \
+	file://0007-disable-usb_xhci.patch \
 "
+
+RESIN_UBOOT_DEVICE_TYPES = "mmc"
