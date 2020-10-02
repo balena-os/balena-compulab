@@ -33,7 +33,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0011-remove-reset-gpio-for-pcie0.patch \
 	file://0012-remove-reset-pin-from-gt911.patch \
 	file://0014-Enable_PWM2_and_PWM4.patch \
-	file://0015-change-compatible-for-watchdog.patch \
+	file://0015-remove-WCR-watchdog-enable-and-disable-in-setup.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
