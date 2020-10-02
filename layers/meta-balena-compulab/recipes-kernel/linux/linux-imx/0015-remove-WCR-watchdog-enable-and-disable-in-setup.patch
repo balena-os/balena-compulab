@@ -1,0 +1,42 @@
+From 95489e47a0582bb476c42fed58faf0a0f50770e8 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Fri, 2 Oct 2020 17:18:04 +0200
+Subject: [PATCH] remove WCR watchdog enable and disable in setup
+
+The board reboots after a period of time, after issueing
+ $echo freeze > /sys/power/state
+On BalenaOS this happens due to an active systemd watchdog
+which should sleep during deep sleep.
+Having the two lines commented out the reboot does not happen
+and freeze state and wakeup works as expected
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ drivers/watchdog/imx2_wdt.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/watchdog/imx2_wdt.c b/drivers/watchdog/imx2_wdt.c
+index 6a279a831479..2787cbb1b982 100644
+--- a/drivers/watchdog/imx2_wdt.c
++++ b/drivers/watchdog/imx2_wdt.c
+@@ -149,14 +149,14 @@ static inline void imx2_wdt_setup(struct watchdog_device *wdog)
+ 	else
+ 		val |= IMX2_WDT_WCR_WRE;
+ 	/* Keep Watchdog Disabled */
+-	val &= ~IMX2_WDT_WCR_WDE;
++	/* val &= ~IMX2_WDT_WCR_WDE; */
+ 	/* Set the watchdog's Time-Out value */
+ 	val |= WDOG_SEC_TO_COUNT(wdog->timeout);
+ 
+ 	regmap_write(wdev->regmap, IMX2_WDT_WCR, val);
+ 
+ 	/* enable the watchdog */
+-	val |= IMX2_WDT_WCR_WDE;
++	/* val |= IMX2_WDT_WCR_WDE; */
+ 	regmap_write(wdev->regmap, IMX2_WDT_WCR, val);
+ }
+ 
+-- 
+2.17.1
+
