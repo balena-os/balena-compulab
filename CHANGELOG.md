@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.58.3+rev2
+## (2020-10-02)
+
+* remove WCR enable and disable registers operations in imx2_wdt_setup [Vicentiu Galanopulo]
+
 # v2.58.3+rev1
 ## (2020-09-24)
 
