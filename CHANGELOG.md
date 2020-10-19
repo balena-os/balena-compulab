@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.58.3+rev3
+## (2020-10-16)
+
+* Add fan-ctrl service [Vicentiu Galanopulo]
+
 # v2.58.3+rev2
 ## (2020-10-02)
 
