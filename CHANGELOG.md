@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.58.3+rev4
+## (2020-11-02)
+
+* Add 60 seconds fan cooling when entering sleep mode [Vicentiu Galanopulo]
+
 # v2.58.3+rev3
 ## (2020-10-16)
 

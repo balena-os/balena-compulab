@@ -1,4 +1,19 @@
 - commits:
+    - subject: Add 60 seconds fan cooling when entering sleep mode
+      hash: a315a73472de12d791c1c718a800b2f255a6c0ae
+      body: |
+        Check if the application has set sleep mode and
+        run the CPU FAN for 60 seconds
+      footer:
+        Changelog-entry: Add 60 seconds fan cooling when entering sleep mode
+        changelog-entry: Add 60 seconds fan cooling when entering sleep mode
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.58.3+rev4
+  date: 2020-11-02T13:40:03.954Z
+- commits:
     - subject: Add fan-ctrl service
       hash: 47cac12bee1340064a907b4532c79adf5cdd3785
       body: |
