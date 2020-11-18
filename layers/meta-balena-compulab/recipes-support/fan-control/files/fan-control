@@ -5,7 +5,8 @@ echo "CPU FAN PWM controlled depending on CPU temperature"
 
 PWM_FAN='/sys/class/pwm/pwmchip1'
 
-LIMIT=65 #temperature limit
+LIMIT_START=65 #temperature at which the CPU FAN starts
+LIMIT_STOP=60 #temperature at which the CPU FAN stops
 TIMEOUT=60 #seconds that the fan will run when entering sleep mode
 
 if [ ! -d /sys/class/pwm/pwmchip1/pwm0 ]; then
@@ -34,17 +35,18 @@ do
 
     if [ ${CPU1_ONLINE} -eq 1 ]; then
 	TIMEOUT=60
-	if [ ${TEMP} -gt ${LIMIT} ]
-	then
+	if [ ${TEMP} -gt ${LIMIT_START} ]; then
 		if [ -d "${PWM_FAN}/pwm0" ]; then
 			echo 45000 > ${PWM_FAN}/pwm0/period
 			echo 45000 > ${PWM_FAN}/pwm0/duty_cycle
 			echo 1 > ${PWM_FAN}/pwm0/enable
 		fi
-	else
+	fi
+
+	if [ ${TEMP} -lt ${LIMIT_STOP} ]; then
 		if [ -d "${PWM_FAN}/pwm0" ]; then
 			echo 45000 > ${PWM_FAN}/pwm0/period
-			echo 6000 > ${PWM_FAN}/pwm0/duty_cycle
+			echo 18000 > ${PWM_FAN}/pwm0/duty_cycle
 			echo 1 > ${PWM_FAN}/pwm0/enable
 		fi
 	fi
