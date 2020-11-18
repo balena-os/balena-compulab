@@ -1,0 +1,32 @@
+From 1cdda172a888724474813f9b78a13b348c2c0951 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Wed, 18 Nov 2020 16:03:05 +0100
+Subject: [PATCH] Enable UART1 node in the EtcherPro device tree
+
+Enable UART1 in the device tree to have /dev/ttymxc0 and be
+able to set UART1 RX pin as a wake-up source
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/sbc-imx8-no-wp.dts | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/compulab/sbc-imx8-no-wp.dts b/arch/arm64/boot/dts/compulab/sbc-imx8-no-wp.dts
+index 637e367..f3755af 100644
+--- a/arch/arm64/boot/dts/compulab/sbc-imx8-no-wp.dts
++++ b/arch/arm64/boot/dts/compulab/sbc-imx8-no-wp.dts
+@@ -29,3 +29,10 @@
+ 	/delete-property/ wp-gpios;
+ };
+ 
++&uart1 { /* wake-up */
++    pinctrl-names = "default";
++    pinctrl-0 = <&pinctrl_uart1_rs485_hdx>;
++    assigned-clocks = <&clk IMX8MQ_CLK_UART1>;
++    assigned-clock-parents = <&clk IMX8MQ_CLK_25M>;
++    status = "okay";
++};
+-- 
+2.7.4
+
