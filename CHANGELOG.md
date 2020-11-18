@@ -1,6 +1,12 @@
 # Change Log
 -----------
 
+# v2.58.3+rev5
+## (2020-11-18)
+
+* Set MIPI display backlight PWM duty cycle to 2500 [Vicentiu Galanopulo]
+* Add a temperature range to start and stop the CPU FAN [Vicentiu Galanopulo]
+
 # v2.58.3+rev4
 ## (2020-11-02)
 

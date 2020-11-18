@@ -1,4 +1,34 @@
 - commits:
+    - subject: Set MIPI display backlight PWM duty cycle to 2500
+      hash: 8388b85349f99708c5348c4e202f3c90e9489c32
+      body: |
+        The B70HM30-TNX15 (production display) PWM backlight
+        operates properly on a lower value for the duty cycle.
+        Set the value to 2500 to reduce the risk of damage in time
+      footer:
+        Changelog-entry: Set MIPI display backlight PWM duty cycle to 2500
+        changelog-entry: Set MIPI display backlight PWM duty cycle to 2500
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Add a temperature range to start and stop the CPU FAN
+      hash: 5be25466a25807a5b1907e7b844bd21e0abb8319
+      body: |
+        If the temperature for the CPU stays around the 65 degrees Celsius
+        value, the fan will have repeated intermittent starts and stops.
+        Add a temperature range (from 65 to 60 degrees Celsius) for the FAN
+        to start and stop
+      footer:
+        Changelog-entry: Add a temperature range to start and stop the CPU FAN
+        changelog-entry: Add a temperature range to start and stop the CPU FAN
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.58.3+rev5
+  date: 2020-11-18T11:55:47.279Z
+- commits:
     - subject: Add 60 seconds fan cooling when entering sleep mode
       hash: a315a73472de12d791c1c718a800b2f255a6c0ae
       body: |
