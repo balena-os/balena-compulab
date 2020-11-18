@@ -24,6 +24,7 @@ SRC_URI_append_etcher-pro += " \
 	file://0005-maxen-mipi-display-gpios-configuration.patch \
 	file://0006-update-gpios-to-epv2_3.patch \
 	file://0007-disable-usb_xhci.patch \
+	file://0008-Set-GPIO5_IO22-to-low.patch \
 "
 
 RESIN_UBOOT_DEVICE_TYPES = "mmc"
