@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.58.3+rev6
+## (2020-11-18)
+
+* Add UART1 as deep sleep wakeup source [Vicentiu Galanopulo]
+
 # v2.58.3+rev5
 ## (2020-11-18)
 

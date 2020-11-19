@@ -1,4 +1,20 @@
 - commits:
+    - subject: Add UART1 as deep sleep wakeup source
+      hash: 43c0abf17a923364ee22d0ba8d0118e8535a4ddf
+      body: |
+        Pin 69 of the SoM will be used as uart wakeup source.
+        The device tree was updated to enable /dev/ttymxc0 and
+        have the proper pad field values
+      footer:
+        Changelog-entry: Add UART1 as deep sleep wakeup source
+        changelog-entry: Add UART1 as deep sleep wakeup source
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.58.3+rev6
+  date: 2020-11-18T16:49:18.342Z
+- commits:
     - subject: Set MIPI display backlight PWM duty cycle to 2500
       hash: 8388b85349f99708c5348c4e202f3c90e9489c32
       body: |
