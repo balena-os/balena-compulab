@@ -1,0 +1,50 @@
+From dc0cbbbdcd405293896028d0338cc6ed784d8687 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Wed, 18 Nov 2020 15:58:51 +0100
+Subject: [PATCH] Remove ecspi pin-controller and ecspi dts node
+
+GPIO5_IO22/UART1 will be used as an external wake-up
+pin so remove all iomuxing operation on its pads
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+index 711ebdf..ba0a55a 100644
+--- a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
++++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+@@ -263,15 +263,6 @@
+ 			>;
+ 		};
+ 
+-		pinctrl_ecspi3: ecspi3grp {
+-			fsl,pins = <
+-				MX8MQ_IOMUXC_UART1_RXD_ECSPI3_SCLK	0x82
+-				MX8MQ_IOMUXC_UART1_TXD_ECSPI3_MOSI	0x82
+-				MX8MQ_IOMUXC_UART2_RXD_ECSPI3_MISO 	0x82
+-				MX8MQ_IOMUXC_UART2_TXD_GPIO5_IO25	0x82
+-			>;
+-		};
+-
+ 		pinctrl_uart3: uart3grp {
+ 			fsl,pins = <
+ 				MX8MQ_IOMUXC_UART3_TXD_UART3_DCE_TX		0x79
+@@ -581,12 +572,6 @@
+ 	status = "okay";
+ };
+ 
+-&ecspi3 {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_ecspi3>;
+-	status = "disabled";
+-
+-};
+ 
+ &usdhc1 {
+ 	pinctrl-names = "default", "state_100mhz", "state_200mhz";
+-- 
+2.7.4
+
