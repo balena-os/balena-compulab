@@ -35,6 +35,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0016-Remove-ecspi-pin-controller-and-dts-node.patch \
 	file://0017-Remove-uart1-dts-reference-and-change-pad-and-pad-va.patch \
 	file://0018-Enable-UART1-node.patch \
+	file://0019-Add-kernel-5.x-mainline-KSZ9893-switch-support.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
@@ -72,6 +73,14 @@ RESIN_CONFIGS[pca9956b] = " \
 RESIN_CONFIGS_append_etcher-pro = " maxen_display"
 RESIN_CONFIGS[maxen_display] = " \
     CONFIG_DRM_PANEL_RAYDIUM_RM67191=y \
+"
+
+RESIN_CONFIGS_append_etcher-pro = " dsa"
+RESIN_CONFIGS[dsa] = " \
+    CONFIG_NET_DSA=y \
+    CONFIG_NET_DSA_MICROCHIP_KSZ_COMMON=y \
+    CONFIG_NET_DSA_MICROCHIP_KSZ9477=y \
+    CONFIG_NET_DSA_MICROCHIP_KSZ9477_I2C=y \
 "
 
 do_configure_prepend_etcher-pro () {
