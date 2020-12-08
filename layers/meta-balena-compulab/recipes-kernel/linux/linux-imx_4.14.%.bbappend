@@ -16,8 +16,6 @@ SRC_URI_append_etcher-pro = " \
 	file://0001-Enable-the-two-PCA9956B-LED-drivers-in-dtb.patch \
 	file://0001-Set-fec1-to-fixed-link-mode.patch \
 	file://0001-Enable-pwm1-interface.patch \
-	file://0001-Add-support-for-KSZ9893R.patch \
-	file://0001-Enable-KSZ9893R-switch-in-Etcher-Pro-dtb.patch \
 	file://0001-Revert-MLK-17537-8-drm-mxsfb-Add-support-for-mode_va.patch \
 	file://0002-Revert-MLK-17537-9-gpu-imx-dcss-Add-support-for-mode.patch \
 	file://0003-Revert-MLK-17537-10-drm-imx-dcss-Add-support-for-mod.patch \
@@ -66,13 +64,9 @@ RESIN_CONFIGS[schedutil] = " \
     CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y \
 "
 
-RESIN_CONFIGS_append_etcher-pro = " pca9956b ksz9893r"
+RESIN_CONFIGS_append_etcher-pro = " pca9956b"
 RESIN_CONFIGS[pca9956b] = " \
     CONFIG_LEDS_PCA9956B=y \
-"
-
-RESIN_CONFIGS[ksz9893r] = " \
-    CONFIG_MICROCHIP_KSZ9893R=y \
 "
 
 RESIN_CONFIGS_append_etcher-pro = " maxen_display"
