@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.62.0+rev3
+## (2020-12-15)
+
+* Add mainline version of KSZ9893 switch driver [Vicentiu Galanopulo]
+
 # v2.62.0+rev2
 ## (2020-12-15)
 

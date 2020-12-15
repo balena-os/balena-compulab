@@ -1,4 +1,19 @@
 - commits:
+    - subject: Add mainline version of KSZ9893 switch driver
+      hash: 9038495fd3f910d93ceb4ded8140a7448e6dbec3
+      body: |
+        Driver offers support to have two network devices for each
+        of the switch user ports
+      footer:
+        Changelog-entry: Add mainline version of KSZ9893 switch driver
+        changelog-entry: Add mainline version of KSZ9893 switch driver
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.62.0+rev3
+  date: 2020-12-15T14:23:36.440Z
+- commits:
     - subject: Set MIPI display backlight PWM duty cycle to 20000
       hash: 99d2d6b9f59b58b92570f3ecbd5f85e3a6bfe07b
       body: |
