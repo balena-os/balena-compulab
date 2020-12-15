@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.62.0+rev2
+## (2020-12-15)
+
+* Set MIPI display backlight PWM duty cycle to 20000 [Vicentiu Galanopulo]
+
 # v2.62.0+rev1
 ## (2020-11-19)
 

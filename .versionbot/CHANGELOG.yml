@@ -1,4 +1,20 @@
 - commits:
+    - subject: Set MIPI display backlight PWM duty cycle to 20000
+      hash: 99d2d6b9f59b58b92570f3ecbd5f85e3a6bfe07b
+      body: |
+        During testing of the B70HM30-TNX15 (production display), the
+        20000 value for the duty cycle of the PWM backlight was considered
+        optimal to be set as default
+      footer:
+        Changelog-entry: Set MIPI display backlight PWM duty cycle to 20000
+        changelog-entry: Set MIPI display backlight PWM duty cycle to 20000
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.62.0+rev2
+  date: 2020-12-15T14:00:47.798Z
+- commits:
     - subject: Update meta-balena from v2.58.3 to v2.62.0
       hash: 32271eb8c80727d881d651386b1a7d8c850a6117
       body: |
