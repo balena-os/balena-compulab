@@ -16,8 +16,6 @@ SRC_URI_append_etcher-pro = " \
 	file://0001-Enable-the-two-PCA9956B-LED-drivers-in-dtb.patch \
 	file://0001-Set-fec1-to-fixed-link-mode.patch \
 	file://0001-Enable-pwm1-interface.patch \
-	file://0001-Add-support-for-KSZ9893R.patch \
-	file://0001-Enable-KSZ9893R-switch-in-Etcher-Pro-dtb.patch \
 	file://0001-Revert-MLK-17537-8-drm-mxsfb-Add-support-for-mode_va.patch \
 	file://0002-Revert-MLK-17537-9-gpu-imx-dcss-Add-support-for-mode.patch \
 	file://0003-Revert-MLK-17537-10-drm-imx-dcss-Add-support-for-mod.patch \
@@ -37,6 +35,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0016-Remove-ecspi-pin-controller-and-dts-node.patch \
 	file://0017-Remove-uart1-dts-reference-and-change-pad-and-pad-va.patch \
 	file://0018-Enable-UART1-node.patch \
+	file://0019-Add-kernel-5.x-mainline-KSZ9893-switch-support.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
@@ -66,18 +65,22 @@ RESIN_CONFIGS[schedutil] = " \
     CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y \
 "
 
-RESIN_CONFIGS_append_etcher-pro = " pca9956b ksz9893r"
+RESIN_CONFIGS_append_etcher-pro = " pca9956b"
 RESIN_CONFIGS[pca9956b] = " \
     CONFIG_LEDS_PCA9956B=y \
-"
-
-RESIN_CONFIGS[ksz9893r] = " \
-    CONFIG_MICROCHIP_KSZ9893R=y \
 "
 
 RESIN_CONFIGS_append_etcher-pro = " maxen_display"
 RESIN_CONFIGS[maxen_display] = " \
     CONFIG_DRM_PANEL_RAYDIUM_RM67191=y \
+"
+
+RESIN_CONFIGS_append_etcher-pro = " dsa"
+RESIN_CONFIGS[dsa] = " \
+    CONFIG_NET_DSA=y \
+    CONFIG_NET_DSA_MICROCHIP_KSZ_COMMON=y \
+    CONFIG_NET_DSA_MICROCHIP_KSZ9477=y \
+    CONFIG_NET_DSA_MICROCHIP_KSZ9477_I2C=y \
 "
 
 do_configure_prepend_etcher-pro () {
