@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.62.0+rev4
+## (2021-01-06)
+
+* Change CPU FAN control logic [Vicentiu Galanopulo]
+
 # v2.62.0+rev3
 ## (2020-12-15)
 

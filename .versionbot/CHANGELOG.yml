@@ -1,4 +1,25 @@
 - commits:
+    - subject: Change CPU FAN control logic
+      hash: dd75e5733d1077be5bca2368ba185be709be4c29
+      body: |
+        Changed the temperature intervals to 65 and 70
+        degrees Celsius and removed timeout during sleep
+        mode.
+        The CPU FAN control is done in the following way
+         - lower or equal to 65 deg. Celsius -> stop FAN
+         - higher than 65 deg. and less or equal to 70 deg.
+                              -> default FAN speed
+         - higher than 70 deg. Celsius -> max FAN speed
+      footer:
+        Changelog-entry: Change CPU FAN control logic
+        changelog-entry: Change CPU FAN control logic
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.62.0+rev4
+  date: 2021-01-06T12:45:55.743Z
+- commits:
     - subject: Add mainline version of KSZ9893 switch driver
       hash: 9038495fd3f910d93ceb4ded8140a7448e6dbec3
       body: |
