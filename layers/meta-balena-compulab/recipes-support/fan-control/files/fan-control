@@ -5,9 +5,9 @@ echo "CPU FAN PWM controlled depending on CPU temperature"
 
 PWM_FAN='/sys/class/pwm/pwmchip1'
 
-LIMIT_START=65 #temperature at which the CPU FAN starts
-LIMIT_STOP=60 #temperature at which the CPU FAN stops
-TIMEOUT=60 #seconds that the fan will run when entering sleep mode
+TEMP_MAX=70  # above this temperature the CPU FAN runs at full duty cycle (max speed)
+             # in between 65 and 70 degrees Celsius the CPU FAN runs with default duty cycle
+TEMP_STOP=65 # lower limit temperature at which the CPU FAN stops
 
 if [ ! -d /sys/class/pwm/pwmchip1/pwm0 ]; then
     echo 0 > ${PWM_FAN}/export;
@@ -15,43 +15,34 @@ fi
 
 while [ 1 ]
 do
-    TEMP=$(sed 's/000$//g'  < /sys/class/thermal/thermal_zone0/temp)
-    CPU1_ONLINE=$(cat /sys/devices/system/cpu/cpu1/online)
 
-    if [ ${CPU1_ONLINE} -eq 0 ] && [ ${TIMEOUT} -gt 0 ]; then
-	TIMEOUT=$((TIMEOUT-1))
-	if [[ ${TIMEOUT} -eq 0 ]]; then
-		echo 0 > ${PWM_FAN}/pwm0/duty_cycle
-		echo 1 > ${PWM_FAN}/pwm0/period
-	else
-		DUTY_CYCLE=$(cat ${PWM_FAN}/pwm0/duty_cycle)
-		if [[ ! ${DUTY_CYCLE} -eq 45000 ]]; then
-			echo 45000 > ${PWM_FAN}/pwm0/period
-			echo 45000 > ${PWM_FAN}/pwm0/duty_cycle
-			echo 1 > ${PWM_FAN}/pwm0/enable
-		fi
-	fi
-    fi
+	TEMP=$(sed 's/000$//g'  < /sys/class/thermal/thermal_zone0/temp)
 
-    if [ ${CPU1_ONLINE} -eq 1 ]; then
-	TIMEOUT=60
-	if [ ${TEMP} -gt ${LIMIT_START} ]; then
+	if [ ${TEMP} -le ${TEMP_STOP} ]; then
 		if [ -d "${PWM_FAN}/pwm0" ]; then
-			echo 45000 > ${PWM_FAN}/pwm0/period
-			echo 45000 > ${PWM_FAN}/pwm0/duty_cycle
-			echo 1 > ${PWM_FAN}/pwm0/enable
+			echo 0 > ${PWM_FAN}/pwm0/duty_cycle
+			echo 1 > ${PWM_FAN}/pwm0/period
+			echo 0 > ${PWM_FAN}/pwm0/enable
 		fi
 	fi
 
-	if [ ${TEMP} -lt ${LIMIT_STOP} ]; then
+	if [ ${TEMP} -gt ${TEMP_STOP} ] && [ ${TEMP} -le ${TEMP_MAX} ]; then
 		if [ -d "${PWM_FAN}/pwm0" ]; then
 			echo 45000 > ${PWM_FAN}/pwm0/period
 			echo 18000 > ${PWM_FAN}/pwm0/duty_cycle
 			echo 1 > ${PWM_FAN}/pwm0/enable
 		fi
 	fi
-    fi
-    sleep 1
+
+	if [ ${TEMP} -gt ${TEMP_MAX} ]; then
+		if [ -d "${PWM_FAN}/pwm0" ]; then
+			echo 45000 > ${PWM_FAN}/pwm0/period
+			echo 45000 > ${PWM_FAN}/pwm0/duty_cycle
+			echo 1 > ${PWM_FAN}/pwm0/enable
+		fi
+	fi
+
+	sleep 1
 
 done
 
