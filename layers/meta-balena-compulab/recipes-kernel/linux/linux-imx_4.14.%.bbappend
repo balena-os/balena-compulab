@@ -36,6 +36,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0017-Remove-uart1-dts-reference-and-change-pad-and-pad-va.patch \
 	file://0018-Enable-UART1-node.patch \
 	file://0019-Add-kernel-5.x-mainline-KSZ9893-switch-support.patch \
+	file://0020-Disable-internal-imx-RTC-and-external-i2c-RTC.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
