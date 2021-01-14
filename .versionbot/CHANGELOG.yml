@@ -1,4 +1,27 @@
 - commits:
+    - subject: Remove CONFIG_RTC_HCTOSYS and CONFIG_RTC_SYSTOHC
+      hash: b0293d964bdaa662781ff320d3c5ffef2de8ae78
+      body: |
+        These kernel configs allow setting of the RTC which
+        has a wrong initial value and may be conflicting with
+        the timeinit-rtc.sh script and chronyd
+
+        Reported error
+        [timeinit-rtc.sh][INFO] System time is already set
+        [timeinit-rtc.sh][WARN] RTC time is in the past
+        [timeinit-rtc.sh][WARN] Check RTC battery if this issue persists
+        [timeinit-rtc.sh][WARN] RTC time    Tue Feb  1 00.00.10 UTC 2000
+        [timeinit-rtc.sh][WARN] System time Mon Dec  7 05.11.18 UTC 2020
+      footer:
+        Changelog-entry: Remove CONFIG_RTC_HCTOSYS and CONFIG_RTC_SYSTOHC
+        changelog-entry: Remove CONFIG_RTC_HCTOSYS and CONFIG_RTC_SYSTOHC
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.67.0+rev1
+  date: 2021-01-14T07:15:43.036Z
+- commits:
     - subject: Change CPU FAN control logic
       hash: dd75e5733d1077be5bca2368ba185be709be4c29
       body: |

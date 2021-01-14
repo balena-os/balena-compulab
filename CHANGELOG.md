@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.67.0+rev1
+## (2021-01-14)
+
+* Remove CONFIG_RTC_HCTOSYS and CONFIG_RTC_SYSTOHC [Vicentiu Galanopulo]
+
 # v2.62.0+rev4
 ## (2021-01-06)
 
