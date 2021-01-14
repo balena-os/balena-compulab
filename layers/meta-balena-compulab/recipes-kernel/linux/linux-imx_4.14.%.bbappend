@@ -36,6 +36,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0017-Remove-uart1-dts-reference-and-change-pad-and-pad-va.patch \
 	file://0018-Enable-UART1-node.patch \
 	file://0019-Add-kernel-5.x-mainline-KSZ9893-switch-support.patch \
+	file://0020-Disable-internal-imx-RTC-and-external-i2c-RTC.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
@@ -43,7 +44,7 @@ KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 # Disable commit SHA in kernel version string
 SCMVERSION="n"
 
-RESIN_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil"
+RESIN_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil rtc_configs"
 RESIN_CONFIGS[80211] = " \
     CONFIG_CFG80211=y \
 "
@@ -81,6 +82,12 @@ RESIN_CONFIGS[dsa] = " \
     CONFIG_NET_DSA_MICROCHIP_KSZ_COMMON=y \
     CONFIG_NET_DSA_MICROCHIP_KSZ9477=y \
     CONFIG_NET_DSA_MICROCHIP_KSZ9477_I2C=y \
+"
+
+RESIN_CONFIGS_append_etcher-pro = " rtc_configs"
+RESIN_CONFIGS[rtc_configs] = " \
+    CONFIG_RTC_HCTOSYS=n \
+    CONFIG_RTC_SYSTOHC=n \
 "
 
 do_configure_prepend_etcher-pro () {
