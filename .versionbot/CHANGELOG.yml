@@ -1,4 +1,23 @@
 - commits:
+    - subject: Add EP sw versioning based on EEPROM hw vers
+      hash: 2e5b180a23a163258adc4482470912bc5ccd90f2
+      body: |2
+         * Enable the I2C4 bus to enable EEPROM communication
+         * Use i2c commands to read from the EEPROM the EP version
+         * Set the read EP version as a env variable
+         * Add the EP version env variable to cmdline
+         * Add logic to load different dtbs based on EP versions
+         * Add GPIO board specific settings based on EP versions
+      footer:
+        Changelog-entry: Add EP sw versioning based on EEPROM hw vers
+        changelog-entry: Add EP sw versioning based on EEPROM hw vers
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.67.0+rev2
+  date: 2021-01-22T14:05:05.572Z
+- commits:
     - subject: Remove CONFIG_RTC_HCTOSYS and CONFIG_RTC_SYSTOHC
       hash: b0293d964bdaa662781ff320d3c5ffef2de8ae78
       body: |

@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.67.0+rev2
+## (2021-01-22)
+
+* Add EP sw versioning based on EEPROM hw vers [Vicentiu Galanopulo]
+
 # v2.67.0+rev1
 ## (2021-01-14)
 
