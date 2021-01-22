@@ -37,6 +37,8 @@ SRC_URI_append_etcher-pro = " \
 	file://0018-Enable-UART1-node.patch \
 	file://0019-Add-kernel-5.x-mainline-KSZ9893-switch-support.patch \
 	file://0020-Disable-internal-imx-RTC-and-external-i2c-RTC.patch \
+	file://sbc-imx8-no-wp_v2.46.0+rev10.dtb \
+	file://sbc-imx8-no-wp_v2.51.1+rev3.dtb \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
@@ -92,4 +94,9 @@ RESIN_CONFIGS[rtc_configs] = " \
 
 do_configure_prepend_etcher-pro () {
     cat ${S}/arch/arm64/configs/cl-som-imx8_defconfig > ${S}/arch/arm64/configs/etcher-pro_defconfig
+}
+
+do_deploy_append_etcher-pro () {
+    cp ${WORKDIR}/sbc-imx8-no-wp_v2.46.0+rev10.dtb ${DEPLOYDIR}
+    cp ${WORKDIR}/sbc-imx8-no-wp_v2.51.1+rev3.dtb ${DEPLOYDIR}
 }

@@ -2,6 +2,13 @@
 
 set -e
 
+EP_VERSION=$(sed -n "s/^.*ep_version=\s*\(\S*\).*$/\1/p" /proc/cmdline)
+
+if [ $EP_VERSION = "02460010" ]; then
+    echo "PWM backlight control for the MIPI display not available in this EP hw version"
+    exit 0
+fi
+
 if [ -d /sys/class/pwm/pwmchip2 ]
 then
   echo 0 > /sys/class/pwm/pwmchip2/export
