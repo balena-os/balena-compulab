@@ -38,10 +38,10 @@ module.exports =
 
         yocto:
                 machine: 'etcher-pro'
-                image: 'resin-image-flasher'
-                fstype: 'resinos-img'
+                image: 'balena-image-flasher'
+                fstype: 'balenaos-img'
                 version: 'yocto-sumo'
-                deployArtifact: 'resin-image-flasher-etcher-pro.resinos-img'
+                deployArtifact: 'balena-image-flasher-etcher-pro.balenaos-img'
                 compressed: true
 
         options: [ networkOptions.group ]
