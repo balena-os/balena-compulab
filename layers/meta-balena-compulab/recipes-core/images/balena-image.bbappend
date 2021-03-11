@@ -1,6 +1,6 @@
-include resin-image.inc
+include balena-image.inc
 
-RESIN_BOOT_PARTITION_FILES_append_cl-som-imx8 = " \
+BALENA_BOOT_PARTITION_FILES_append_cl-som-imx8 = " \
     imx-boot-${MACHINE}-sd.bin-flash_evk:\
 "
 

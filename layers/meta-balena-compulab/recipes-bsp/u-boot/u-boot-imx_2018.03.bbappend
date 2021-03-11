@@ -28,4 +28,4 @@ SRC_URI_append_etcher-pro += " \
 	file://0009-Add_EEPROM_EP_versioning_based_on_board_hw_version.patch \
 "
 
-RESIN_UBOOT_DEVICE_TYPES = "mmc"
+BALENA_UBOOT_DEVICE_TYPES = "mmc"

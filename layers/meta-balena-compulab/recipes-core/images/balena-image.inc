@@ -1,7 +1,7 @@
-IMAGE_FSTYPES_append_cl-som-imx8 = " resinos-img"
+IMAGE_FSTYPES_append_cl-som-imx8 = " balenaos-img"
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 
-RESIN_BOOT_PARTITION_FILES_cl-som-imx8 = " \
+BALENA_BOOT_PARTITION_FILES_cl-som-imx8 = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/Image.gz \
     cl-som-imx8.dtb:/cl-som-imx8.dtb \
     sbc-imx8.dtb:/sbc-imx8.dtb \
@@ -13,7 +13,7 @@ RESIN_BOOT_PARTITION_FILES_cl-som-imx8 = " \
     sbc-imx8-m4.dtb:/sbc-imx8-m4.dtb \
 "
 
-RESIN_BOOT_PARTITION_FILES_etcher-pro = " \
+BALENA_BOOT_PARTITION_FILES_etcher-pro = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/Image.gz \
     sbc-imx8-no-wp.dtb:/sbc-imx8-no-wp.dtb \
     sbc-imx8-no-wp_v2.46.0+rev10.dtb:/sbc-imx8-no-wp_v2.46.0+rev10.dtb \
@@ -29,7 +29,7 @@ IMAGE_INSTALL_append_cl-som-imx8 = " \
 					linux-firmware-ibt \
 "
 
-IMAGE_CMD_resinos-img_append_cl-som-imx8 () {
-    dd if=${DEPLOY_DIR_IMAGE}/imx-boot-${MACHINE}-sd.bin-flash_evk of=${RESIN_RAW_IMG} conv=notrunc seek=33 bs=1K
+IMAGE_CMD_balenaos-img_append_cl-som-imx8 () {
+    dd if=${DEPLOY_DIR_IMAGE}/imx-boot-${MACHINE}-sd.bin-flash_evk of=${BALENA_RAW_IMG} conv=notrunc seek=33 bs=1K
 }
 

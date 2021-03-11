@@ -46,48 +46,48 @@ KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 # Disable commit SHA in kernel version string
 SCMVERSION="n"
 
-RESIN_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil rtc_configs"
-RESIN_CONFIGS[80211] = " \
+BALENA_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil rtc_configs"
+BALENA_CONFIGS[80211] = " \
     CONFIG_CFG80211=y \
 "
 
-RESIN_CONFIGS[overlayfs] = " \
+BALENA_CONFIGS[overlayfs] = " \
     CONFIG_OVERLAY_FS=y \
 "
 
-RESIN_CONFIGS[iwlwifi] = " \
+BALENA_CONFIGS[iwlwifi] = " \
     CONFIG_IWLWIFI=m \
 "
 
-RESIN_CONFIGS[debug_preempt_disable] = " \
+BALENA_CONFIGS[debug_preempt_disable] = " \
     CONFIG_DEBUG_PREEMPT=n \
 "
 
-RESIN_CONFIGS[schedutil] = " \
+BALENA_CONFIGS[schedutil] = " \
     CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y \
     CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y \
 "
 
-RESIN_CONFIGS_append_etcher-pro = " pca9956b"
-RESIN_CONFIGS[pca9956b] = " \
+BALENA_CONFIGS_append_etcher-pro = " pca9956b"
+BALENA_CONFIGS[pca9956b] = " \
     CONFIG_LEDS_PCA9956B=y \
 "
 
-RESIN_CONFIGS_append_etcher-pro = " maxen_display"
-RESIN_CONFIGS[maxen_display] = " \
+BALENA_CONFIGS_append_etcher-pro = " maxen_display"
+BALENA_CONFIGS[maxen_display] = " \
     CONFIG_DRM_PANEL_RAYDIUM_RM67191=y \
 "
 
-RESIN_CONFIGS_append_etcher-pro = " dsa"
-RESIN_CONFIGS[dsa] = " \
+BALENA_CONFIGS_append_etcher-pro = " dsa"
+BALENA_CONFIGS[dsa] = " \
     CONFIG_NET_DSA=y \
     CONFIG_NET_DSA_MICROCHIP_KSZ_COMMON=y \
     CONFIG_NET_DSA_MICROCHIP_KSZ9477=y \
     CONFIG_NET_DSA_MICROCHIP_KSZ9477_I2C=y \
 "
 
-RESIN_CONFIGS_append_etcher-pro = " rtc_configs"
-RESIN_CONFIGS[rtc_configs] = " \
+BALENA_CONFIGS_append_etcher-pro = " rtc_configs"
+BALENA_CONFIGS[rtc_configs] = " \
     CONFIG_RTC_HCTOSYS=n \
     CONFIG_RTC_SYSTOHC=n \
 "
