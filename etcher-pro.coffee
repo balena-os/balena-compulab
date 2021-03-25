@@ -30,9 +30,9 @@ module.exports =
         ].concat(postProvisioningInstructions)
 
         gettingStartedLink:
-                windows: 'http://docs.resin.io/etcher-pro/nodejs/getting-started/#adding-your-first-device'
-                osx: 'http://docs.resin.io/etcher-pro/getting-started/#adding-your-first-device'
-                linux: 'http://docs.resin.io/etcher-pro/getting-started/#adding-your-first-device'
+                windows: 'https://www.balena.io/docs/learn/getting-started/raspberrypi4/nodejs/'
+                osx: 'https://www.balena.io/docs/learn/getting-started/raspberrypi4/nodejs/'
+                linux: 'https://www.balena.io/docs/learn/getting-started/raspberrypi4/nodejs/'
 
         supportsBlink: false
 
