@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.72.0+rev3
+## (2021-03-25)
+
+* fan-control: Remove set of period and duty_cycle when OFF [Vicentiu Galanopulo]
+
 # v2.72.0+rev2
 ## (2021-03-25)
 

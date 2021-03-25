@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'fan-control: Remove set of period and duty_cycle when OFF'
+      hash: 00ea64bff0a4e3813526ec5e6302226b4f35f891
+      body: |
+        Setting the period and duty_cycle of the PWM is not needed
+        in the OFF state of the CPU FAN
+      footer:
+        Changelog-entry: 'fan-control: Remove set of period and duty_cycle when OFF'
+        changelog-entry: 'fan-control: Remove set of period and duty_cycle when OFF'
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.72.0+rev3
+  date: 2021-03-25T14:38:00.881Z
+- commits:
     - subject: Updated the Getting started links
       hash: 08ecc5ba8902621db0d40624d56622de4bf39973
       body: >
