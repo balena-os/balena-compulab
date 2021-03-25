@@ -27,8 +27,6 @@ do
 
 	if [ ${TEMP} -le ${TEMP_STOP} ]; then
 		if [ -d "${PWM_FAN}/pwm0" ]; then
-			echo 1 > ${PWM_FAN}/pwm0/period
-			echo 0 > ${PWM_FAN}/pwm0/duty_cycle
 			echo 0 > ${PWM_FAN}/pwm0/enable
 		fi
 	fi
