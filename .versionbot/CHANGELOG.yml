@@ -1,4 +1,21 @@
 - commits:
+    - subject: Updated the Getting started links
+      hash: 08ecc5ba8902621db0d40624d56622de4bf39973
+      body: >
+        Updated the Getting Started Links to RPi 4 Getting started to don't get
+        404
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Updated the Getting started links
+        changelog-entry: Updated the Getting started links
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Marc Pous
+      nested: []
+  version: 2.72.0+rev2
+  date: 2021-03-25T13:39:49.158Z
+- commits:
     - subject: Rename resin image types to balena
       hash: 130920090d6c9d02df7db33389945fefe7cdc28a
       body: |

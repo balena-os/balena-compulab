@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.72.0+rev2
+## (2021-03-25)
+
+* Updated the Getting started links [Marc Pous]
+
 # v2.72.0+rev1
 ## (2021-03-11)
 
