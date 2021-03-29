@@ -37,6 +37,8 @@ SRC_URI_append_etcher-pro = " \
 	file://0018-Enable-UART1-node.patch \
 	file://0019-Add-kernel-5.x-mainline-KSZ9893-switch-support.patch \
 	file://0020-Disable-internal-imx-RTC-and-external-i2c-RTC.patch \
+	file://0021-Input-goodix-add-support-for-ESD.patch \
+	file://0022-Add-RST-touchpanel-pin-GPIO4_IO24.patch \
 	file://sbc-imx8-no-wp_v2.46.0+rev10.dtb \
 	file://sbc-imx8-no-wp_v2.51.1+rev3.dtb \
 "
