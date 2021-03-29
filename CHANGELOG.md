@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.72.0+rev4
+## (2021-03-29)
+
+* Add touchpanel ESD support [Vicentiu Galanopulo]
+
 # v2.72.0+rev3
 ## (2021-03-25)
 

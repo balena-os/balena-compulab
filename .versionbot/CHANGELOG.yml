@@ -1,4 +1,26 @@
 - commits:
+    - subject: Add touchpanel ESD support
+      hash: 4653e599f0398ec067a094ff82354767c7b99b0a
+      body: |
+        Add ESD (Electrostatic Discharge) protection mechanism.
+
+        The driver enables ESD protection in HW and checks a register
+        to determine if ESD occurred. If ESD is signalled by the HW,
+        the driver will reset the device.
+
+        The ESD poll time (in ms) can be set through
+        esd-recovery-timeout-ms ACPI/DT property. If it is set to 0,
+        ESD protection is disabled.
+      footer:
+        Changelog-entry: Add touchpanel ESD support
+        changelog-entry: Add touchpanel ESD support
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.72.0+rev4
+  date: 2021-03-29T12:08:24.018Z
+- commits:
     - subject: 'fan-control: Remove set of period and duty_cycle when OFF'
       hash: 00ea64bff0a4e3813526ec5e6302226b4f35f891
       body: |
