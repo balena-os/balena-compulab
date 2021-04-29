@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.72.0+rev5
+## (2021-04-29)
+
+* Change PWM FAN implementation [Vicentiu Galanopulo]
+
 # v2.72.0+rev4
 ## (2021-03-29)
 

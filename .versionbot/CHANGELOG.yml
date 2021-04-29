@@ -1,4 +1,21 @@
 - commits:
+    - subject: Change PWM FAN implementation
+      hash: 9ca5c78344b39c276c2d91bed55342267b29aaf3
+      body: |
+        Add pwm-fan dts node and integrate it in the thermal-zones node.
+        Trip values are set for 65 and 70 deg. Celsius.
+
+        Remove obsolete fan-control recipe
+      footer:
+        Changelog-entry: Change PWM FAN implementation
+        changelog-entry: Change PWM FAN implementation
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.72.0+rev5
+  date: 2021-04-29T14:20:28.467Z
+- commits:
     - subject: Add touchpanel ESD support
       hash: 4653e599f0398ec067a094ff82354767c7b99b0a
       body: |
