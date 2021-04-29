@@ -39,6 +39,7 @@ SRC_URI_append_etcher-pro = " \
 	file://0020-Disable-internal-imx-RTC-and-external-i2c-RTC.patch \
 	file://0021-Input-goodix-add-support-for-ESD.patch \
 	file://0022-Add-RST-touchpanel-pin-GPIO4_IO24.patch \
+	file://0023-Add-dts-thermal-PWM-cooling.patch \
 	file://sbc-imx8-no-wp_v2.46.0+rev10.dtb \
 	file://sbc-imx8-no-wp_v2.51.1+rev3.dtb \
 "
@@ -48,7 +49,7 @@ KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
 # Disable commit SHA in kernel version string
 SCMVERSION="n"
 
-BALENA_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil rtc_configs"
+BALENA_CONFIGS_append = " 80211 iwlwifi overlayfs debug_preempt_disable schedutil"
 BALENA_CONFIGS[80211] = " \
     CONFIG_CFG80211=y \
 "
@@ -92,6 +93,11 @@ BALENA_CONFIGS_append_etcher-pro = " rtc_configs"
 BALENA_CONFIGS[rtc_configs] = " \
     CONFIG_RTC_HCTOSYS=n \
     CONFIG_RTC_SYSTOHC=n \
+"
+
+BALENA_CONFIGS_append_etcher-pro = " pwm_fan"
+BALENA_CONFIGS[pwm_fan] = " \
+    CONFIG_SENSORS_PWM_FAN=m \
 "
 
 do_configure_prepend_etcher-pro () {
