@@ -1,4 +1,22 @@
 - commits:
+    - subject: Disable RTCs for all EP hw versions
+      hash: bf5f06d1428b44756ec92692ec174865627626ba
+      body: |
+        The RTC was disabled in device tree of the main (latest) hw
+        version of the EP  because the time and date are taken
+        from an NTP server.
+        The DTBs which are precompiled and are for older EP hw
+        versions were omitted. This commit updates those DTBs
+      footer:
+        Changelog-entry: Disable RTCs for all EP hw versions
+        changelog-entry: Disable RTCs for all EP hw versions
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.72.0+rev6
+  date: 2021-05-10T12:03:30.692Z
+- commits:
     - subject: Change PWM FAN implementation
       hash: 9ca5c78344b39c276c2d91bed55342267b29aaf3
       body: |

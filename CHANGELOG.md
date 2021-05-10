@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.72.0+rev6
+## (2021-05-10)
+
+* Disable RTCs for all EP hw versions [Vicentiu Galanopulo]
+
 # v2.72.0+rev5
 ## (2021-04-29)
 
