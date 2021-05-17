@@ -1,4 +1,35 @@
 - commits:
+    - subject: Update host tools to replace docker with balena-engine in build process
+      hash: e21623926766f5dc11bb3e708acf4a7e996a5ade
+      body: >
+        Add a set of host tools dependencies to use rootless balena-engine.
+
+
+        For overlay based devices, the docker host tool will be removed once the
+
+        meta-balena supports building with balena-engine.
+
+
+        For devcies that use aufs we leave docker as rootless is not supported
+        over
+
+        aufs, and we will remove it once aufs devices are deprecated.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: >-
+          Update host tools to replace docker with balena-engine in build
+          process
+        changelog-entry: >-
+          Update host tools to replace docker with balena-engine in build
+          process
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.72.0+rev7
+  date: 2021-05-17T12:36:29.821Z
+- commits:
     - subject: Disable RTCs for all EP hw versions
       hash: bf5f06d1428b44756ec92692ec174865627626ba
       body: |
