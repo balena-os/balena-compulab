@@ -1,4 +1,23 @@
 - commits:
+    - subject: Add balena-yocto-scripts upstream source
+      hash: a9fe8a6f3bea38ab186922c478ff8fb4cbd62ec3
+      body: >
+        This allows to add nested changelogs from the balena-yocto-scripts
+        repository
+
+        from version >= 1.14.1
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Add balena-yocto-scripts upstream source
+        changelog-entry: Add balena-yocto-scripts upstream source
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.72.0+rev7
+  date: 2021-05-24T11:09:40.638Z
+- commits:
     - subject: Disable RTCs for all EP hw versions
       hash: bf5f06d1428b44756ec92692ec174865627626ba
       body: |
