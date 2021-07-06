@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.72.0+rev8
+## (2021-07-05)
+
+* Adjust panel driver for Maxen display [Alex Gonzalez]
+
 # v2.72.0+rev7
 ## (2021-05-24)
 

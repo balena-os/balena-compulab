@@ -1,4 +1,24 @@
 - commits:
+    - subject: Adjust panel driver for Maxen display
+      hash: 8a5a077e60e6605786f68dd6aceb661ee1933d7d
+      body: |
+        Add a series of linux-imx kernel patches to adjust the Raydium RM67191
+        driver to the Maxen display used in the EtcherPro.
+
+        Also, guarantee DSI bus clocks are stable before being used to prevent
+        DSI bus timeouts.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Adjust panel driver for Maxen display
+        changelog-entry: Adjust panel driver for Maxen display
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.72.0+rev8
+  date: 2021-07-05T12:06:59.080Z
+- commits:
     - subject: Add balena-yocto-scripts upstream source
       hash: a9fe8a6f3bea38ab186922c478ff8fb4cbd62ec3
       body: >
