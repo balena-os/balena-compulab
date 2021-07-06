@@ -31,7 +31,6 @@ SRC_URI_append_etcher-pro = " \
 	file://0011-remove-reset-gpio-for-pcie0.patch \
 	file://0012-remove-reset-pin-from-gt911.patch \
 	file://0014-Enable_PWM2_and_PWM4.patch \
-	file://0015-remove-WCR-watchdog-enable-and-disable-in-setup.patch \
 	file://0016-Remove-ecspi-pin-controller-and-dts-node.patch \
 	file://0017-Remove-uart1-dts-reference-and-change-pad-and-pad-va.patch \
 	file://0018-Enable-UART1-node.patch \
