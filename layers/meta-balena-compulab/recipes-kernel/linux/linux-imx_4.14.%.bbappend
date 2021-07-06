@@ -42,6 +42,8 @@ SRC_URI_append_etcher-pro = " \
 	file://0023-Add-dts-thermal-PWM-cooling.patch \
 	file://sbc-imx8-no-wp_v2.46.0+rev10.dtb \
 	file://sbc-imx8-no-wp_v2.51.1+rev3.dtb \
+	file://0001-drm-panel-raydium-rm67191-Adjust-for-Maxen-display.patch \
+	file://0002-nwl_dsi-imx-Delays-before-and-after-clock-enabling-d.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
