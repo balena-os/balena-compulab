@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.72.0+rev9
+## (2021-07-06)
+
+* Add configuration file for watchdog [Vicentiu Galanopulo]
+
 # v2.72.0+rev8
 ## (2021-07-05)
 

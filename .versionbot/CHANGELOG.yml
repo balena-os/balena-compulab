@@ -1,4 +1,20 @@
 - commits:
+    - subject: Add configuration file for watchdog
+      hash: 001fb4c8c090d7feb5dd09915a2508af24ecf029
+      body: |
+        The configuration file has the realtime config option set
+        as to force the  watchdog to lock itself into memory
+        so it is never swapped out.
+      footer:
+        Changelog-entry: Add configuration file for watchdog
+        changelog-entry: Add configuration file for watchdog
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.72.0+rev9
+  date: 2021-07-06T13:07:53.048Z
+- commits:
     - subject: Adjust panel driver for Maxen display
       hash: 8a5a077e60e6605786f68dd6aceb661ee1933d7d
       body: |
