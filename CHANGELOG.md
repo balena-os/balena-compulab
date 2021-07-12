@@ -1,6 +1,610 @@
 # Change Log
 -----------
 
+# v2.82.0+rev1
+## (2021-07-12)
+
+
+<details>
+<summary> Update meta-balena from v2.72.0 to v2.80.8 [Vicentiu Galanopulo] </summary>
+
+> ## meta-balena-2.80.8
+> ### (2021-06-21)
+> 
+> * Update balena-supervisor from v12.8.7 to v12.8.8 [Florin Sarbu]
+> 
+> ## meta-balena-2.80.7
+> ### (2021-06-18)
+> 
+> * prevent failed teardown from making test hang [rcooke-warwick]
+> 
+> ## meta-balena-2.80.6
+> ### (2021-06-17)
+> 
+> * catch error if image path is corrupted [rcooke-warwick]
+> 
+> ## meta-balena-2.80.5
+> ### (2021-06-17)
+> 
+> * update-balena-supervisor: Improve obtaining the supervisor directory name [Alexandru Costache]
+> * Update balena-supervisor from v12.7.0 to v12.8.7 [Miguel Casqueira]
+> 
+> ## meta-balena-2.80.4
+> ### (2021-06-14)
+> 
+> * kernel-headers-test: simplify example module Makefile [Joseph Kogut]
+> 
+> ## meta-balena-2.80.3
+> ### (2021-06-10)
+> 
+> * Add oneshot service to migrate supervisor state config [Kyle Harding]
+> 
+> ## meta-balena-2.80.2
+> ### (2021-06-09)
+> 
+> * update-balena-supervisor: Refactor script to ensure target version is ran [Alexandru Costache]
+> 
+> ## meta-balena-2.80.1
+> ### (2021-06-07)
+> 
+> * bluez5: Disable PnP Device Information service [Zahari Petkov]
+> 
+> ## meta-balena-2.80.0
+> ### (2021-06-07)
+> 
+> * Revert Go 1.16 recipes [Joseph Kogut]
+> 
+> ## meta-balena-2.79.10
+> ### (2021-06-03)
+> 
+> * supervisor: Remove symlink to legacy resin sysconfig [Kyle Harding]
+> * hostapp-update-hooks: Migrate resin-supervisor to balena-supervisor [Kyle Harding]
+> * supervisor: Remove legacy resin supervisor container [Kyle Harding]
+> 
+> ## meta-balena-2.79.9
+> ### (2021-06-03)
+> 
+> * hostapp-update-hooks: Sync to disk when hook is done [Alex Gonzalez]
+> * extract-balena-ca: Sync changes to disk in case of power loss [Alex Gonzalez]
+> * resin-net-config: Make sure to sync changes to disk in case of power loss [Alex Gonzalez]
+> 
+> ## meta-balena-2.79.8
+> ### (2021-06-02)
+> 
+> * bluez: Set policy configuration to AutoEnable [Alex Gonzalez]
+> * bluez5: Replace executable path directory in unit file [Alex Gonzalez]
+> 
+> ## meta-balena-2.79.7
+> ### (2021-05-26)
+> 
+> * meta-balena: rename connectivity packagegroup [Mark Corbin]
+> 
+> ## meta-balena-2.79.6
+> ### (2021-05-26)
+> 
+> * bluez5: Use bluez5 recipe from poky master [Zahari Petkov]
+> 
+> ## meta-balena-2.79.5
+> ### (2021-05-21)
+> 
+> * README: Update supported Yocto versions [Alex Gonzalez]
+> 
+> ## meta-balena-2.79.4
+> ### (2021-05-21)
+> 
+> * Skip some services when running under docker [Robert Günzler]
+> 
+> ## meta-balena-2.79.3
+> ### (2021-05-20)
+> 
+> * kernel-resin: disable panic on hung task [Joseph Kogut]
+> 
+> ## meta-balena-2.79.2
+> ### (2021-05-19)
+> 
+> * Add boot-splash test to unmanaged suite [rcooke-warwick]
+> 
+> ## meta-balena-2.79.1
+> ### (2021-05-18)
+> 
+> * balena-os: Add preferred provider for Go native [Alex Gonzalez]
+> 
+> ## meta-balena-2.79.0
+> ### (2021-05-13)
+> 
+> * balena-engine: build in GOPATH mode [Joseph Kogut]
+> * recipes-devtools: go: backport get_linuxloader [Joseph Kogut]
+> * meta-resin-pyro: go-native: include fix-goarch.inc [Joseph Kogut]
+> * meta-balena-common: upgrade from go 1.12.17 to 1.16.2 [Joseph Kogut]
+> 
+> ## meta-balena-2.78.2
+> ### (2021-05-13)
+> 
+> * balena-config-vars: improve handling of NM config parameters [Mark Corbin]
+> 
+> ## meta-balena-2.78.1
+> ### (2021-05-12)
+> 
+> * Add Device Tree tests [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.78.0
+> ### (2021-05-10)
+> 
+> * Add symlinks and aliases for legacy resin namespaces [Kyle Harding]
+> * Rename resin-supervisor to balena-supervisor [Kyle Harding]
+> 
+> ## meta-balena-2.77.2
+> ### (2021-05-10)
+> 
+> 
+> <details>
+> <summary> Update balena-supservisor from v12.5.10 to v12.7.0 [Kyle Harding] </summary>
+> 
+>> ### balena-supervisor-12.7.0
+>> #### (2021-05-07)
+>> 
+>> * Backwards compatility changes for old resin namespaces [Kyle Harding]
+>> * Change container name to balena_supervisor [Kyle Harding]
+>> * Rename resin-supervisor to balena-supervisor [Kyle Harding]
+>> 
+>> ### balena-supervisor-12.6.8
+>> #### (2021-05-06)
+>> 
+>> * Show warning instead of exception for invalid network config [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.6.7
+>> #### (2021-05-06)
+>> 
+>> * Patch awaiting response when checking if supervisor0 network exists [Miguel Casqueira]
+>> 
+>> ### balena-supervisor-12.6.6
+>> #### (2021-05-06)
+>> 
+>> * Fix parsing driver_opts from compose to docker network creation [quentinGllmt]
+>> 
+>> ### balena-supervisor-12.6.5
+>> #### (2021-05-06)
+>> 
+>> 
+>> <details>
+>> <summary> Update balena-register-device and send extra info at provision time [Pagan Gazzard] </summary>
+>> 
+>>> #### balena-register-device-7.2.0
+>>> ##### (2021-04-29)
+>>> 
+>>> * Support `supervisorVersion`/`osVersion`/`osVariant`/`macAddress` fields [Pagan Gazzard]
+>>> 
+>>> #### balena-register-device-7.1.1
+>>> ##### (2021-04-29)
+>>> 
+>>> * Update dependencies [Pagan Gazzard]
+>>> 
+>>> #### balena-register-device-7.1.0
+>>> ##### (2020-07-13)
+>>> 
+>>> * Switch from randomstring to uuid for generating device uuids [Pagan Gazzard]
+>>> 
+>>> #### balena-register-device-7.0.1
+>>> ##### (2020-07-13)
+>>> 
+>>> * Add .versionbot/CHANGELOG.yml for nested changelogs [Pagan Gazzard]
+>>> 
+>>> #### balena-register-device-7.0.0
+>>> ##### (2020-07-06)
+>>> 
+>>> * Convert to type checked javascript [Pagan Gazzard]
+>>> * Drop callback interface in favor of promise interface [Pagan Gazzard]
+>>> * Switch to a named export [Pagan Gazzard]
+>>> * Convert to typescript [Pagan Gazzard]
+>>> * Update to typed-error 3.x [Pagan Gazzard]
+>>> * Switch to returning native promises [Pagan Gazzard]
+>>> * Update to balena-request 11.x [Pagan Gazzard]
+>>> * Use typescript import helpers [Pagan Gazzard]
+>>> 
+>> </details>
+>> 
+>> 
+>> ### balena-supervisor-12.6.4
+>> #### (2021-05-05)
+>> 
+>> * Log error responses from API when reporting state [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.6.3
+>> #### (2021-05-04)
+>> 
+>> * Added configurations.md to document all configurable vars [Miguel Casqueira]
+>> 
+>> ### balena-supervisor-12.6.2
+>> #### (2021-04-30)
+>> 
+>> * Remove version tag from livepush generated image [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.6.1
+>> #### (2021-04-27)
+>> 
+>> * Remove mz, mkdirp, body-parser dependencies [Christina Wang]
+>> 
+>> ### balena-supervisor-12.6.0
+>> #### (2021-04-27)
+>> 
+>> * Bump dockerode types to 2.5.34 [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.5.16
+>> #### (2021-04-27)
+>> 
+>> * Enable docker layer caching on CircleCI [Miguel Casqueira]
+>> 
+>> ### balena-supervisor-12.5.15
+>> #### (2021-04-26)
+>> 
+>> * Added clean step to remove previous builds before running tests [Miguel Casqueira]
+>> 
+>> ### balena-supervisor-12.5.14
+>> #### (2021-04-26)
+>> 
+>> * balena-supervisor: replace references to resin-vars [Mark Corbin]
+>> 
+>> ### balena-supervisor-12.5.13
+>> #### (2021-04-25)
+>> 
+>> * Update supervisor to typescript 4 [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.5.12
+>> #### (2021-04-20)
+>> 
+>> * Bump ssri from 6.0.1 to 6.0.2 [dependabot[bot]]
+>> 
+>> ### balena-supervisor-12.5.11
+>> #### (2021-04-14)
+>> 
+>> * Refactor extra_uEnv to not match with intel nuc [Miguel Casqueira]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.77.1
+> ### (2021-05-10)
+> 
+> * Update os-config from v1.2.0 to v1.2.1 [Kyle Harding]
+> 
+> ## meta-balena-2.77.0
+> ### (2021-05-05)
+> 
+> * grub update hook: move variables from grub.cfg to grubenv [Michal Toman]
+> 
+> ## meta-balena-2.76.0
+> ### (2021-04-30)
+> 
+> * kernel: Always include overlayfs support [Robert Günzler]
+> 
+> ## meta-balena-2.75.1
+> ### (2021-04-29)
+> 
+> * grub: grub-efi: buildin gzio for gz compressed kernels [Joseph Kogut]
+> 
+> ## meta-balena-2.75.0
+> ### (2021-04-22)
+> 
+> * Update mobynit to the new multi-container hostOS specification [Alex Gonzalez]
+> 
+> ## meta-balena-2.74.0
+> ### (2021-04-20)
+> 
+> * balena-engine: Update to 19.03.18 [Robert Günzler]
+> 
+> ## meta-balena-2.73.15
+> ### (2021-04-20)
+> 
+> * modemmanager:u-blox-switch: Rework the u-blox modem switch to ECM mode [Florin Sarbu]
+> 
+> ## meta-balena-2.73.14
+> ### (2021-04-19)
+> 
+> * device-progress: do not force an exit code [Matthew McGinn]
+> 
+> ## meta-balena-2.73.13
+> ### (2021-04-19)
+> 
+> * add retries to status check [rcooke-warwick]
+> 
+> ## meta-balena-2.73.12
+> ### (2021-04-16)
+> 
+> * meta-balena: rename resin-vars to balena-config-vars [Mark Corbin]
+> 
+> ## meta-balena-2.73.11
+> ### (2021-04-16)
+> 
+> * patch: Add strict bootcount count condition [Vipul Gupta (@vipulgupta2048)]
+> * patch: Reactivate Persistent Logging test [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.73.10
+> ### (2021-04-14)
+> 
+> * repo.yml: Move balena-supervisor reference to balena-os [Alex Gonzalez]
+> 
+> ## meta-balena-2.73.9
+> ### (2021-04-14)
+> 
+> * Update balena-supervisor from v12.5.6 to v12.5.10 [Christina Wang]
+> 
+> ## meta-balena-2.73.8
+> ### (2021-04-13)
+> 
+> * resin-mounts/etc-fake-hwclock: add dependency on resin-state services [Mark Corbin]
+> 
+> ## meta-balena-2.73.7
+> ### (2021-04-13)
+> 
+> * fix udev test indentation [rcooke-warwick]
+> * Added comments for easier debugging [rcooke-warwick]
+> * Fix old tests + add new tests based on testlodge [rcooke-warwick]
+> 
+> ## meta-balena-2.73.6
+> ### (2021-04-12)
+> 
+> * Add automated test checking for udev/resin_update_state_probe warnings [Michal Toman]
+> * udev: Silence warnings from resin_update_state_probe [Michal Toman]
+> 
+> ## meta-balena-2.73.5
+> ### (2021-04-06)
+> 
+> * Update balena-supervisor from v12.4.6 to v12.5.6 [Christina Wang]
+> 
+> ## meta-balena-2.73.4
+> ### (2021-03-20)
+> 
+> * Add to persistent logging defn [Andrew Nhem]
+> 
+> ## meta-balena-2.73.3
+> ### (2021-03-19)
+> 
+> * wifi: remove listed example as it's discontinued [Tomás Migone]
+> 
+> ## meta-balena-2.73.2
+> ### (2021-03-17)
+> 
+> * hostapp-update: convert absolute symlinks to relative [Joseph Kogut]
+> 
+> ## meta-balena-2.73.1
+> ### (2021-03-16)
+> 
+> * Update balena-supervisor from v12.3.5 to v12.4.6 [Felipe Lalanne]
+> 
+> ## meta-balena-2.73.0
+> ### (2021-03-15)
+> 
+> * image_types_balena: make rootfs labeling generic [Joseph Kogut]
+> * image_types_balena: make agnostic to root fstype [Joseph Kogut]
+> * mkfs-hostapp-native: make agnostic to fstype [Joseph Kogut]
+> 
+> ## meta-balena-2.72.2
+> ### (2021-03-15)
+> 
+> * balena: dissolve healthcheck-image-load into healthcheck script [Robert Günzler]
+> 
+> ## meta-balena-2.72.1
+> ### (2021-03-11)
+> 
+> * Fix disablement of userspace firmware loading requests [Pelle van Gils]
+> 
+</details>
+
+
+<details>
+<summary> Update balena-yocto-scripts from v1.11.0 to v1.14.7 [Vicentiu Galanopulo] </summary>
+
+> ## balena-yocto-scripts-1.14.7
+> ### (2021-06-29)
+> 
+> * balena-lib: Fix print statements helper functions [Kyle Harding]
+> * balena-lib: Fix device dir when running in Jenkins containers [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.14.6
+> ### (2021-06-18)
+> 
+> * balena-deploy: Flag hostapps as bootable apps [Alex Gonzalez]
+> * balena-deploy: Provide working directory when deploying hostapp [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.5
+> ### (2021-06-18)
+> 
+> * balena-deploy-block: Do not add variant suffix to release tag [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.4
+> ### (2021-06-16)
+> 
+> * Dockerfile_balena-push-env: Add balena-lib to image [Alex Gonzalez]
+> * balena-deploy-block: source balena-lib script library [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.3
+> ### (2021-06-01)
+> 
+> * balena-api: Filter out debug output [Alex Gonzalez]
+> * balena-api: Specify API environment and token when setting app roles [Alex Gonzalez]
+> * jenkins_build-blocks: Separate recipes and packages [Alex Gonzalez]
+> * balena-lib: Generalize contract fetcher [Alex Gonzalez]
+> * balena-deploy: Shorten installation directory '/yocto/resin-board' to '/work' [Alex Gonzalez]
+> * Conditional verbosity mode [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.2
+> ### (2021-05-26)
+> 
+> * balena-lib: Add function to fetch labels from image [Alex Gonzalez]
+> * balena-lib: contracts: Add package list fetcher [Alex Gonzalez]
+> * semver: Add bash utility for semantic version comparison [Alex Gonzalez]
+> * balena-docker: Add image retrieval function [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.1
+> ### (2021-05-24)
+> 
+> * Add a parsable representation of the changelog [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.0
+> ### (2021-05-21)
+> 
+> * Dockerfile_yocto-block-build-env: Add container to build Yocto based hostOS blocks [Alex Gonzalez]
+> * balena-build-block: Balena build and deploy a hostOS block image [Alex Gonzalez]
+> * jenkins_build-blocks: Add package blocks builder script [Alex Gonzalez]
+> * balena-deploy: Add functions to deploy block, feed and OS release [Alex Gonzalez]
+> * README: Add brief introduction to the main scripts [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.13.0
+> ### (2021-05-19)
+> 
+> * barys: Replace supervisor tag with supervisor release version [Alex Gonzalez]
+> * jenkins_build: Replace supervisor tag with supervisor release [Alex Gonzalez]
+> * jenkins_build: Rename metaResinBranch to metaBalenaBranch [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.16
+> ### (2021-05-18)
+> 
+> * tests: Substitute deviceType with MACHINE when packaging tests [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.12.15
+> ### (2021-05-18)
+> 
+> * Dockerfile_yocto-build-env: Specify docker version [Alex Gonzalez]
+> * balena-docker: Allow to control iptables and ipmasq flags [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.14
+> ### (2021-05-17)
+> 
+> * balena-api: Set default argument value not to exist on nounset setting [Alex Gonzalez]
+> * balena-api: Allow access to OS developers to public apps [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.13
+> ### (2021-05-14)
+> 
+> * balena-api: Add functions for apps management [Alex Gonzalez]
+> * balena-api: Add block images getter functions [Alex Gonzalez]
+> * balena-api: Add missing argument to function comments [Alex Gonzalez]
+> * balena-deploy-block: Create public app if required [Alex Gonzalez]
+> * balena-lib: Fix device installation path when running in helper container [Alex Gonzalez]
+> * balena-deploy: Fix device installation path when running in helper container [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.12
+> ### (2021-05-12)
+> 
+> * balena-docker: Adapt to be used from POSIX shell [Alex Gonzalez]
+> * balena-docker: Generalize functions to any engine [Alex Gonzalez]
+> * balena-build: Re-enable the container's output [Alex Gonzalez]
+> * balena-build: Add option to keep local containers [Alex Gonzalez]
+> * yocto-build-env: Update Dockerfile to add host tools dependencies [Alex Gonzalez]
+> * Shorten installation directory '/yocto/resin-board' to '/work' [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.11
+> ### (2021-05-11)
+> 
+> * Substitute device type in config.js if present [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.12.10
+> ### (2021-04-28)
+> 
+> * balena-build: print submodule status [Alex Gonzalez]
+> * balena-build: Correctly pass development images flag and amend usage [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.9
+> ### (2021-04-22)
+> 
+> * balena-build: Pass the API environment to the build container [Alex Gonzalez]
+> * balena-lib: Add function to resolve between contract slugs and Yocto machines [Alex Gonzalez]
+> * balena-build: Do not exit if no SSH_AUTH_SOCK defined [Alex Gonzalez]
+> * balena-build: Fix indentation [Alex Gonzalez]
+> * balena-build: Cleanup build containers and enable build output [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.8
+> ### (2021-04-15)
+> 
+> * balena-build: Fix development image build [Alex Gonzalez]
+> * jenkins_build-containers: Use a fixed length for the git short revision [Alex Gonzalez]
+> * balena-lib: Do not err when sourcing without a repository [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.7
+> ### (2021-04-12)
+> 
+> * balena-api: Improve logs when setting version [Alex Gonzalez]
+> * balena-docker: Make it less verbose [Alex Gonzalez]
+> * balena-deploy: Set the OS version before setting deploy directory [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.6
+> ### (2021-03-30)
+> 
+> * include: Move include files and entry scripts into its own folder [Alex Gonzalez]
+> * balena-build.sh: Move into build script [Alex Gonzalez]
+> * balena-lib: Set default namespace if not defined [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.5
+> ### (2021-03-30)
+> 
+> * balena-deploy: Shellcheck warnings [Alex Gonzalez]
+> * balena-deploy-block: Adjust variables for common use [Alex Gonzalez]
+> * balena-deploy-block: Fix shellcheck warnings [Alex Gonzalez]
+> * balena-deploy: Adjust balena_deploy_hostapp to new balena_deploy_block entrypoint arguments [Alex Gonzalez]
+> * balena-deploy.inc: Pass API environment to balena_lib_token [Alex Gonzalez]
+> * balena-build: Pass an API environment to balena_lib_token [Alex Gonzalez]
+> * balena-lib: Pass API environment to balena_lib_token [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.4
+> ### (2021-03-29)
+> 
+> * balena-api: Add is_dt_private function [Alex Gonzalez]
+> * balena-lib: Add several function to extract device details from device type JSON file [Alex Gonzalez]
+> * balena-lib: By default only login to BaleneCloud if not token is found [Alex Gonzalez]
+> * balena_deploy: Add functions to deploy Jenkins artifacts to S3 and dockerhub [Alex Gonzalez]
+> * balena-deploy: Fix indentation and shellcheck warnings [Alex Gonzalez]
+> * jenkins_build: Call out to script libraries functions [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.3
+> ### (2021-03-26)
+> 
+> * balena-lib: Fix indentation to tabs [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.2
+> ### (2021-03-26)
+> 
+> * balena-docker: Remove execution trace flag [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.1
+> ### (2021-03-25)
+> 
+> * balena-lib: Add commonly used utility functions [Alex Gonzalez]
+> * jenkins_build-containers: Allow docker login for local development [Alex Gonzalez]
+> * barys: Add bitbake-args argument and make bitbake-target accept multiple arguments [Alex Gonzalez]
+> * jenkins_build: Separate deploy functions [Alex Gonzalez]
+> * jenkins_build: Refactor balena_lib_get_os_version [Alex Gonzalez]
+> * balena-api: Add script library with API calls [Alex Gonzalez]
+> * balena-push-os-version: Rename to balena-deploy-block and set the release version on deploy [Alex Gonzalez]
+> * Dockerfile_balena-push-env: Refactor to use balena-deploy-block [Alex Gonzalez]
+> * balena-build: Split build related functions [Alex Gonzalez]
+> * jenkins_build: Separate barys build functions [Alex Gonzalez]
+> * balena-deploy: Add script library for deploy logic [Alex Gonzalez]
+> * jenkins_build: Use balena_deploy_hostapp from balena-deploy [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.0
+> ### (2021-03-25)
+> 
+> * barys: Improve template layer matching [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.11.2
+> ### (2021-03-22)
+> 
+> * jenkins_build-container: Do not overwrite environment DOCKERFILES variable if provided [Alex Gonzalez]
+> * balena-lib: Rename to balena-lib.inc [Alex Gonzalez]
+> * balena-lib: Rename functions with the balena_lib prefix [Alex Gonzalez]
+> * jenkins_build: Use balena-lib.inc instead of balena-inc.sh [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.11.1
+> ### (2021-03-22)
+> 
+> * balena-docker: Rename manage-docker to balena-docker [Alex Gonzalez]
+> * balena-push-os-version: Refactor to use balena-docker [Alex Gonzalez]
+> * prepare-and-start: Refactor to use balena-lib [Alex Gonzalez]
+> * Dockerfile_yocto_build-env: Refactor to update dockerd and use balena-docker [Alex Gonzalez]
+> * Dockerfile_balena-push-env: Refactor to use balena-docker [Alex Gonzalez]
+> 
+</details>
+
 # v2.72.0+rev9
 ## (2021-07-06)
 
