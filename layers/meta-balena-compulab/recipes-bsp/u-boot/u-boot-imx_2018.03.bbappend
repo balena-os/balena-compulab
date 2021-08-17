@@ -23,9 +23,9 @@ SRC_URI_append_etcher-pro += " \
 	file://0003-Set_device_tree_to_sbc-imx8-no-wp.dtb.patch \
 	file://0005-maxen-mipi-display-gpios-configuration.patch \
 	file://0006-update-gpios-to-epv2_3.patch \
-	file://0007-disable-usb_xhci.patch \
 	file://0008-Set-GPIO5_IO22-to-low.patch \
 	file://0009-Add_EEPROM_EP_versioning_based_on_board_hw_version.patch \
+	file://0010-Fix-crash-when-issuing-usb-reset.patch \
 "
 
 BALENA_UBOOT_DEVICE_TYPES = "mmc"
