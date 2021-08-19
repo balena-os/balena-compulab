@@ -26,6 +26,10 @@ SRC_URI_append_etcher-pro += " \
 	file://0008-Set-GPIO5_IO22-to-low.patch \
 	file://0009-Add_EEPROM_EP_versioning_based_on_board_hw_version.patch \
 	file://0010-Fix-crash-when-issuing-usb-reset.patch \
+	file://0011-Bootcmd-fixes.patch \
 "
 
 BALENA_UBOOT_DEVICE_TYPES = "mmc"
+BALENA_UBOOT_DEVICES = "0 1"
+
+do_compile[nostamp] = "1"
