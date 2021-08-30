@@ -1,4 +1,52 @@
 - commits:
+    - subject: Bootcommand fixes
+      hash: fdd01a018e65b3f8882856641ad7c7afb74315b8
+      body: |
+        The current boot order and bootcommand introduces
+        a bug for the EtcherPro.
+        The rootdev ends up being /dev/sda2, and if that
+        contains a valid balenaOS image, the rootfs from
+        /dev/sda2 is mounted inside the flasher image.
+
+        The current(updated) kernel boot behavior is:
+        only mmc memory, and if ALT_BOOT is ON then boot from
+        mmc device 1, else boot from mmc device 0
+      footer:
+        Changelog-entry: Bootcommand fixes
+        changelog-entry: Bootcommand fixes
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Fix crash during USB reset
+      hash: 42ca09338d22ed2086d3c0b35b95557ec1006520
+      body: >
+        During the USB scannig process we got
+
+
+        Unexpected XHCI event TRB, skipping... (bd8bda70 00000000 13000000
+        07008400)
+
+        BUG at drivers/usb/host/xhci-ring.c:496/abo!
+
+        BUG!
+
+        resetting ...
+
+
+        Issue fixed in patchset for RaspberryPI
+
+        http://u-boot.10912.n7.nabble.com/RFC-PATCH-v2-0-5-Improve-USB-Keyboard-support-for-rpi3-rpi4-td418314.html#a418316
+      footer:
+        Changelog-entry: Fix crash during USB reset
+        changelog-entry: Fix crash during USB reset
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.82.0+rev2
+  date: 2021-08-20T11:11:48.503Z
+- commits:
     - subject: Update meta-balena from v2.72.0 to v2.80.8
       hash: 08fcef58a8c428d16fdf49ad14a4099c487bc62c
       body: |

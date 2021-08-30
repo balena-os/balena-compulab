@@ -1,6 +1,12 @@
 # Change Log
 -----------
 
+# v2.82.0+rev2
+## (2021-08-20)
+
+* Bootcommand fixes [Vicentiu Galanopulo]
+* Fix crash during USB reset [Vicentiu Galanopulo]
+
 # v2.82.0+rev1
 ## (2021-07-12)
 
