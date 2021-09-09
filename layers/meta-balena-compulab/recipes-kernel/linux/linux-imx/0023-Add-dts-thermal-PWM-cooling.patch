@@ -25,8 +25,8 @@ index c7ec0f7..28c543b 100755
 +		cooling-min-state = <0>;
 +		cooling-max-state = <2>;
 +		#cooling-cells = <2>;
-+		pwms = <&pwm2 0 1000000 0>;
-+		cooling-levels = <0 200 255>;
++		pwms = <&pwm2 0 40000 0>;
++		cooling-levels = <0 170 255>;
 +	};
 +
  	thermal-zones {
@@ -39,13 +39,13 @@ index c7ec0f7..28c543b 100755
 -				cpu_crit0: trip1 {
 +
 +				cpu_alert1: trip1 {
-+					temperature = <65000>;
++					temperature = <60000>;
 +					hysteresis = <1000>;
 +					type = "passive";
 +				};
 +
 +				cpu_alert2: trip2 {
-+					temperature = <70000>;
++					temperature = <65000>;
 +					hysteresis = <2000>;
 +					type = "passive";
 +				};
