@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.82.0+rev3
+## (2021-09-13)
+
+* use a forked Poky branch until Dunfell update [Alex Gonzalez]
+
 # v2.82.0+rev2
 ## (2021-08-20)
 
