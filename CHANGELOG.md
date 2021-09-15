@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.82.0+rev3
+## (2021-09-14)
+
+* resin-init: add missing quotes to resin-init-board [Mark Corbin]
+
 # v2.82.0+rev2
 ## (2021-08-20)
 

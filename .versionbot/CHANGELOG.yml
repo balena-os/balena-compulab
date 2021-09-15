@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'resin-init: add missing quotes to resin-init-board'
+      hash: f43d9d5236b6eb5e846b5c03f13e970f078445cd
+      body: |
+        The resin-init-board script fails to run due to missing quotes in
+        the conditional test.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: 'resin-init: add missing quotes to resin-init-board'
+        changelog-entry: 'resin-init: add missing quotes to resin-init-board'
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested: []
+  version: 2.82.0+rev3
+  date: 2021-09-14T12:24:55.369Z
+- commits:
     - subject: Bootcommand fixes
       hash: fdd01a018e65b3f8882856641ad7c7afb74315b8
       body: |
