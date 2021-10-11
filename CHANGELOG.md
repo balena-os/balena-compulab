@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.82.0+rev5
+## (2021-10-11)
+
+* Fix pwms attribute value and temperature tunning [Vicentiu Galanopulo]
+
 # v2.82.0+rev4
 ## (2021-09-24)
 

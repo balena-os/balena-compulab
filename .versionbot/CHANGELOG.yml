@@ -1,4 +1,22 @@
 - commits:
+    - subject: Fix pwms attribute value and temperature tunning
+      hash: 079714c1ad10e22c149b4f5917932a9739e827ff
+      body: |
+        The pwms property has a period attribute which was set to
+        the default value [nanoseconds] from the device tree binding.
+        Set the period value to reflect 25kHz and lower the temperature
+        by 5 degrees Celsius for the CPU FAN thermal active
+        protection intervals
+      footer:
+        Changelog-entry: Fix pwms attribute value and temperature tunning
+        changelog-entry: Fix pwms attribute value and temperature tunning
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.82.0+rev5
+  date: 2021-10-11T08:47:40.276Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.14.7 to v1.14.9
       hash: ca86ca5ad231e37290b13207ce832f503580e582
       body: |
