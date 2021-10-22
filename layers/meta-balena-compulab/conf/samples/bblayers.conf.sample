@@ -27,3 +27,5 @@ BBLAYERS += " ${TOPDIR}/../layers/meta-imx/meta-bsp "
 BBLAYERS += " ${TOPDIR}/../layers/meta-imx/meta-sdk "
 BBLAYERS += " ${TOPDIR}/../layers/meta-imx/meta-ml "
 
+BBLAYERS += " ${TOPDIR}/../layers/meta-python2 "
+
