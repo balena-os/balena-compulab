@@ -19,3 +19,6 @@
 [submodule "layers/poky"]
 	path = layers/poky
 	url = https://github.com/balena-os/poky
+[submodule "layers/meta-freescale-3rdparty"]
+	path = layers/meta-freescale-3rdparty
+	url = git://github.com/Freescale/meta-freescale-3rdparty
