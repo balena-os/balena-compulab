@@ -1,0 +1,37 @@
+From a249dfbfbed8cc0211af7b40731a568f36d939a2 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Thu, 14 Oct 2021 12:08:36 +0200
+Subject: [PATCH] Add RST touchpanel pin GPIO4_IO24
+
+The RST pin is needed to do a hardware reset of the
+touchpanel
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index 33e4337db4a2..50f99a232aa9 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -239,6 +239,7 @@
+ 		esd-recovery-timeout-ms = <2000>;
+ 		interrupts-extended = <&gpio4 26 IRQ_TYPE_LEVEL_HIGH>;
+ 		irq-gpios = <&gpio4 26 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&gpio4 24 GPIO_ACTIVE_LOW>;
+ 		status = "okay";
+ 	};
+ 
+@@ -495,6 +496,7 @@
+ 		pinctrl_i2c4_gt911: i2c4-gt911grp {
+ 			fsl,pins = <
+ 				MX8MQ_IOMUXC_SAI2_TXD0_GPIO4_IO26	0x1D6
++				MX8MQ_IOMUXC_SAI2_TXFS_GPIO4_IO24	0x176
+ 			>;
+ 		};
+ 
+-- 
+2.17.1
+

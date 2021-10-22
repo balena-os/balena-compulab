@@ -1,6 +1,6 @@
-From a94f0a73a8ded69958cf088f0251ad2efffc2f6f Mon Sep 17 00:00:00 2001
-From: Sebastian Panceac <sebastian@balena.io>
-Date: Thu, 28 Nov 2019 22:17:18 +0100
+From f3dd802ff9c514e56739ed38126f773d0c040e19 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Wed, 6 Oct 2021 16:19:23 +0200
 Subject: [PATCH] Let's fix the USB
 
 This patch fixes host USB3 crashing when writing to multiple
@@ -16,46 +16,47 @@ drives. Please see https://community.nxp.com/thread/511218
 
 Upstream-Status: Pending
 Signed-off-by: Li Jun <jun.li@nxp.com>
-Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
 ---
- drivers/usb/dwc3/core.c | 11 +++++++++++
+ drivers/usb/dwc3/core.c | 12 +++++++++++-
  drivers/usb/dwc3/core.h |  1 +
- 2 files changed, 12 insertions(+)
+ 2 files changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index 95b79c7e436f..63f99e8cb272 100644
+index 9ecd2d0f6737..257d87cc86d7 100644
 --- a/drivers/usb/dwc3/core.c
 +++ b/drivers/usb/dwc3/core.c
-@@ -894,6 +894,17 @@ static int dwc3_core_init(struct dwc3 *dwc)
+@@ -1075,7 +1075,17 @@ static int dwc3_core_init(struct dwc3 *dwc)
  
  		if (dwc->dis_tx_ipgap_linecheck_quirk)
  			reg |= DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS;
+-
 +		/*
-+		 * Synopsys STAR:
-+		 * USB3.0 HC died when read and write at the same
-+		 * time with park mode.
-+		 * It has advantage only a single async EP is
-+		 * active, which is meaningless for application;
-+		 * So disable park mode and synopsys will change
-+		 * the default value of park mode to be disabled
-+		 * in next release.
-+		 */
++		* Synopsys STAR:
++		* USB3.0 HC died when read and write at the same
++		* time with park mode.
++		* It has advantage only a single async EP is
++		* active, which is meaningless for application;
++		* So disable park mode and synopsys will change
++		* the default value of park mode to be disabled
++		* in next release.
++		*/
 +		reg |= DWC3_GUCTL1_PARKMODE_DISABLE;
- 
  		dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
  	}
+ 
 diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index 090c8645078d..23149326e8de 100644
+index 26ddb8d65745..69a510967f43 100644
 --- a/drivers/usb/dwc3/core.h
 +++ b/drivers/usb/dwc3/core.h
-@@ -209,6 +209,7 @@
- /* Global User Control 1 Register */
+@@ -269,6 +269,7 @@
  #define DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS	BIT(28)
  #define DWC3_GUCTL1_DEV_L1_EXIT_BY_HW	BIT(24)
-+#define DWC3_GUCTL1_PARKMODE_DISABLE	BIT(17) | BIT(16) | BIT(15)
+ #define DWC3_GUCTL1_PARKMODE_DISABLE_SS	BIT(17)
++#define DWC3_GUCTL1_PARKMODE_DISABLE   BIT(17) | BIT(16) | BIT(15)
  
- /* Global USB2 PHY Configuration Register */
- #define DWC3_GUSB2PHYCFG_PHYSOFTRST	BIT(31)
+ /* Global Status Register */
+ #define DWC3_GSTS_OTG_IP	BIT(10)
 -- 
 2.17.1
 

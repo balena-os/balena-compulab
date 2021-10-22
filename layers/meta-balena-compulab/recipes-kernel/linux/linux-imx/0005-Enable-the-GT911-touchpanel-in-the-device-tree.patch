@@ -1,0 +1,73 @@
+From 86ec11c798523d2423e532500e66e312f20b0979 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Tue, 12 Oct 2021 13:37:54 +0200
+Subject: [PATCH] Enable the GT911 touchpanel in the device tree
+
+The MX8MQ_IOMUXC_SAI2_TXD0 pad was used for SAI and created a conflict
+when the goodix driver was trying to configure it.
+SAI2 has been disabled in the device tree since audio is not necessary
+on the EtcherPro
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 29 +++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index a45512ce76ab..f3001e326cca 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -225,6 +225,21 @@
+ 		#clock-cells = <0>;
+ 		clock-frequency = <100000000>;
+ 	};
++
++	goodix_ts@5d {
++		compatible = "goodix,gt911";
++		reg = <0x5d>;
++
++		pinctrl-names = "default";
++		pinctrl-0 = <&pinctrl_i2c4_gt911>;
++
++		esd-recovery-timeout-ms = <2000>;
++		interrupts-extended = GPIRQ_GT911;
++		irq-gpios = GP_GT911_IRQ;
++		reset-gpios = GP_GT911_RESET;
++		status = "okay";
++	};
++
+ };
+ 
+ &iomuxc {
+@@ -456,6 +471,18 @@
+ 				MX8MQ_IOMUXC_SPDIF_EXT_CLK_PWM1_OUT     0x16
+ 			>;
+ 		};
++
++		pinctrl_i2c4_gt911: i2c4-gt911grp {
++			fsl,pins = <
++				#define GPIRQ_GT911		<&gpio4 26 IRQ_TYPE_LEVEL_HIGH>
++				#define GP_GT911_IRQ		<&gpio4 26 GPIO_ACTIVE_HIGH>
++				MX8MQ_IOMUXC_SAI2_TXD0_GPIO4_IO26	0x1D6
++				/* driver writes levels, instead of active/inactive */
++				#define GP_GT911_RESET			<&gpio4 23 GPIO_ACTIVE_LOW>
++				MX8MQ_IOMUXC_SAI2_RXD0_GPIO4_IO23	0x149
++			>;
++		};
++
+ 	};
+ };
+ 
+@@ -692,7 +719,7 @@
+ 		<&clk IMX8MQ_AUDIO_PLL2_OUT>;
+ 	clock-names = "bus", "mclk0", "mclk1", "mclk2", "mclk3", "pll8k", "pll11k";
+ 	fsl,sai-asynchronous;
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &sai4 {
+-- 
+2.17.1
+

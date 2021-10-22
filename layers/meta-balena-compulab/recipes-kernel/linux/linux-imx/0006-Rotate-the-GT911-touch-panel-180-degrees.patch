@@ -1,6 +1,6 @@
-From 8ecdb2b7391ab3417413f965d8f53183325ac9ba Mon Sep 17 00:00:00 2001
+From 7d9559141cb39f86b31c604c7a1141ab464b8b26 Mon Sep 17 00:00:00 2001
 From: Vicentiu Galanopulo <vicentiu@balena.io>
-Date: Mon, 18 May 2020 16:36:18 +0200
+Date: Tue, 12 Oct 2021 13:55:23 +0200
 Subject: [PATCH] Rotate the GT911 touch panel 180 degrees
 
 The Goodix GT911 touch panel needs to be rotated 180 degrees
@@ -9,22 +9,23 @@ to have it placed correctly over the display
 Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
 ---
- arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
-index 786a1f3beed1..99c0a38de01a 100644
+index f3001e326cca..4a5f98c71ddc 100644
 --- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
 +++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
-@@ -382,6 +382,8 @@
- 
+@@ -233,6 +233,9 @@
  		pinctrl-names = "default";
  		pinctrl-0 = <&pinctrl_i2c4_gt911>;
+ 
 +		touchscreen-inverted-x = "true";
 +		touchscreen-inverted-y = "true";
- 
++
  		esd-recovery-timeout-ms = <2000>;
  		interrupts-extended = GPIRQ_GT911;
+ 		irq-gpios = GP_GT911_IRQ;
 -- 
 2.17.1
 
