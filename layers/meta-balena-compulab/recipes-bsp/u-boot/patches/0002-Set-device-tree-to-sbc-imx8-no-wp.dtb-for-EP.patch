@@ -19,7 +19,7 @@ index 824bed73e6..8f41ee793a 100644
      string "U-Boot Default Device Tree File"
      depends on TARGET_CL_SOM_IMX8
 -    default "sbc-imx8.dtb"
-+    default "sbc-imx8-bluetooth.dtb"
++    default "sbc-imx8-no-wp.dtb"
  
  config SYS_BOARD
  	default "cl-som-imx8"
@@ -32,7 +32,7 @@ index ca1ca6ea48..629fdc2d89 100644
  CONFIG_OF_SYSTEM_SETUP=y
  CONFIG_SYS_EXTRA_OPTIONS="IMX_CONFIG=arch/arm/mach-imx/imx8m/imximage.cfg"
 -CONFIG_DEFAULT_FDT_FILE="sbc-imx8.dtb"
-+CONFIG_DEFAULT_FDT_FILE="sbc-imx8-bluetooth.dtb"
++CONFIG_DEFAULT_FDT_FILE="sbc-imx8-no-wp.dtb"
  CONFIG_BOARD_LATE_INIT=y
  CONFIG_BOARD_EARLY_INIT_F=y
  CONFIG_SPL_BOARD_INIT=y
