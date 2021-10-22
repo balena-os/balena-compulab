@@ -1,0 +1,49 @@
+From 54f98839caa16c3f0a6a892d5ef93b932557680d Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Tue, 12 Oct 2021 16:16:36 +0200
+Subject: [PATCH] Disable internal imx RTC and external i2c RTC
+
+The current hardware setup for the EP does not contain a coin
+battery for the internal RTC on the SoM. The system queries the
+device created by the RTC and the retrieved date and time value
+is used by chronyd. This leads to chronyd using wrong (default)
+date and time value from the RTC. To fix this the internal RTC
+will be disabled.
+
+On the EP board we don't have an external RTC on i2c, so that
+needs to be disabled.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 1 +
+ arch/arm64/boot/dts/freescale/imx8mq.dtsi    | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index dd0e86136681..da3b26d70407 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -662,6 +662,7 @@
+ 	em3027: rtc@56 {
+ 		compatible = "emmicro,em3027";
+ 		reg = <0x56>;
++		status = "disabled";
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+index b961131e070b..183499d5dedd 100755
+--- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+@@ -599,6 +599,7 @@
+ 						<GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>;
+ 					clocks = <&clk IMX8MQ_CLK_SNVS_ROOT>;
+ 					clock-names = "snvs-rtc";
++					status = "disabled";
+ 				};
+ 
+ 				snvs_pwrkey: snvs-powerkey {
+-- 
+2.17.1
+

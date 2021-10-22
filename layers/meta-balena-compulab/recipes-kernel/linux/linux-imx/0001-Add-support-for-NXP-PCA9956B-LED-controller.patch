@@ -1,12 +1,13 @@
-From 4697aa5874e38bd4a82c0f134bedee6c8d2032e4 Mon Sep 17 00:00:00 2001
-From: Sebastian Panceac <sebastian@balena.io>
-Date: Fri, 3 Jan 2020 13:27:16 +0100
+From f7ede8b216d7beef65f170160d4cba654521af02 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Wed, 6 Oct 2021 16:31:55 +0200
 Subject: [PATCH] Add support for NXP PCA9956B LED controller
 
 Driver ported from https://github.com/BeastRoms-Devices/kernel_realme_RMX1927/
 
 Upstream-status: Pending
 Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
 ---
  Documentation/leds/Nxp-ledseg.txt |  55 +++
  drivers/leds/Kconfig              |   9 +
@@ -80,10 +81,10 @@ index 000000000000..c53c3a065822
 +	};
 +};
 diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
-index 52ea34e337cd..981c2b32e7ad 100644
+index 1988de1d64c0..7fda38c76097 100644
 --- a/drivers/leds/Kconfig
 +++ b/drivers/leds/Kconfig
-@@ -240,6 +240,15 @@ config LEDS_PCA9532_GPIO
+@@ -304,6 +304,15 @@ config LEDS_PCA9532_GPIO
  	  To use a pin as gpio pca9532_type in pca9532_platform data needs to
  	  set to PCA9532_TYPE_GPIO.
  
@@ -94,16 +95,16 @@ index 52ea34e337cd..981c2b32e7ad 100644
 +	help
 +	    This option enables support for LEDs connected to the PCA9956B
 +	    LED driver chip accessed via the I2C bus. Supported
-+	     devices include PCA9956B
++	    devices include PCA9956B
 +
  config LEDS_GPIO
  	tristate "LED Support for GPIO connected LEDs"
  	depends on LEDS_CLASS
 diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
-index 35980450db9b..6070c57342e7 100644
+index 41fb073a39c1..79d759b7b125 100644
 --- a/drivers/leds/Makefile
 +++ b/drivers/leds/Makefile
-@@ -46,6 +46,7 @@ obj-$(CONFIG_LEDS_OT200)		+= leds-ot200.o
+@@ -49,6 +49,7 @@ obj-$(CONFIG_LEDS_OT200)		+= leds-ot200.o
  obj-$(CONFIG_LEDS_FSG)			+= leds-fsg.o
  obj-$(CONFIG_LEDS_PCA955X)		+= leds-pca955x.o
  obj-$(CONFIG_LEDS_PCA963X)		+= leds-pca963x.o
@@ -113,7 +114,7 @@ index 35980450db9b..6070c57342e7 100644
  obj-$(CONFIG_LEDS_WM831X_STATUS)	+= leds-wm831x-status.o
 diff --git a/drivers/leds/leds-pca9956b.c b/drivers/leds/leds-pca9956b.c
 new file mode 100644
-index 000000000000..0b23f21e1afb
+index 000000000000..457ab870635b
 --- /dev/null
 +++ b/drivers/leds/leds-pca9956b.c
 @@ -0,0 +1,580 @@

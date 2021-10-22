@@ -1,0 +1,26 @@
+From 6d0499432ac9a26b79c31567c2cddc3dbe290ec4 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Fri, 22 Oct 2021 12:18:37 +0200
+Subject: [PATCH] Add KSZ9893 switch type in compatible
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ drivers/net/dsa/microchip/ksz9477_i2c.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/dsa/microchip/ksz9477_i2c.c b/drivers/net/dsa/microchip/ksz9477_i2c.c
+index fdffd9e0c518..c8b48ea0ade9 100644
+--- a/drivers/net/dsa/microchip/ksz9477_i2c.c
++++ b/drivers/net/dsa/microchip/ksz9477_i2c.c
+@@ -80,6 +80,7 @@ static const struct of_device_id ksz9477_dt_ids[] = {
+ 	{ .compatible = "microchip,ksz9477" },
+ 	{ .compatible = "microchip,ksz9897" },
+ 	{ .compatible = "microchip,ksz9567" },
++	{ .compatible = "microchip,ksz9893" },
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, ksz9477_dt_ids);
+-- 
+2.17.1
+

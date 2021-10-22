@@ -1,23 +1,23 @@
-From c36c5072647d4b88c6e291b5c103b19e40cac4af Mon Sep 17 00:00:00 2001
+From e3da49b66f82b7b97d0b42f8d04b83d0badaa39c Mon Sep 17 00:00:00 2001
 From: Vicentiu Galanopulo <vicentiu@balena.io>
-Date: Thu, 29 Apr 2021 15:53:16 +0200
+Date: Thu, 14 Oct 2021 12:45:46 +0200
 Subject: [PATCH] Update device tree to use thermal cooling with PWM FAN
 
 Add pwm-fan dts node and integrate it in the thermal-zones node.
-Trip values are set for 65 and 70 deg. Celsius
+Trip values are set for 60 and 65 deg. Celsius
 
 Upstream-status: Inappropriate [configuration]
 Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
 ---
- arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi | 35 ++++++++++++++++++++++++++-
- 1 file changed, 34 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/freescale/imx8mq.dtsi | 32 +++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi b/arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi
-index c7ec0f7..28c543b 100755
---- a/arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi
-+++ b/arch/arm64/boot/dts/freescale/fsl-imx8mq.dtsi
-@@ -414,6 +414,15 @@
- 		#thermal-sensor-cells =  <0>;
+diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+index 183499d5dedd..2ac3419fb720 100755
+--- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+@@ -221,6 +221,15 @@
+ 		method = "smc";
  	};
  
 +	fan0: pwm-fan {
@@ -30,14 +30,12 @@ index c7ec0f7..28c543b 100755
 +	};
 +
  	thermal-zones {
- 		/* cpu thermal */
  		cpu-thermal {
-@@ -426,7 +435,20 @@
- 					hysteresis = <2000>;
+ 			polling-delay-passive = <250>;
+@@ -234,6 +243,18 @@
  					type = "passive";
  				};
--				cpu_crit0: trip1 {
-+
+ 
 +				cpu_alert1: trip1 {
 +					temperature = <60000>;
 +					hysteresis = <1000>;
@@ -50,13 +48,12 @@ index c7ec0f7..28c543b 100755
 +					type = "passive";
 +				};
 +
-+				cpu_crit0: trip4 {
- 					temperature = <95000>;
+ 				cpu_crit: cpu-crit {
+ 					temperature = <90000>;
  					hysteresis = <2000>;
- 					type = "critical";
-@@ -439,6 +461,17 @@
- 					cooling-device =
- 					<&A53_0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+@@ -250,6 +271,17 @@
+ 						<&A53_2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+ 						<&A53_3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
  				};
 +
 +				map1 {
@@ -73,5 +70,5 @@ index c7ec0f7..28c543b 100755
  		};
  	};
 -- 
-2.7.4
+2.17.1
 

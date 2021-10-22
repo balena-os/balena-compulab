@@ -1,0 +1,34 @@
+From f03377dcc633becaf610d31b5abca99e43d730cb Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Mon, 18 Oct 2021 10:51:23 +0200
+Subject: [PATCH] Add KS9893 RGMII setup for EtcherPro
+
+Set PORT_RGMII_ID_IG_ENABLE and PORT_RGMII_ID_EG_ENABLE
+in ksz9477_port_setup for the EtcherPro
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ drivers/net/dsa/microchip/ksz9477.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/net/dsa/microchip/ksz9477.c b/drivers/net/dsa/microchip/ksz9477.c
+index 50ffc63d6231..56ea30fb965b 100644
+--- a/drivers/net/dsa/microchip/ksz9477.c
++++ b/drivers/net/dsa/microchip/ksz9477.c
+@@ -1261,6 +1261,12 @@ static void ksz9477_port_setup(struct ksz_device *dev, int port, bool cpu_port)
+ 			    dev->interface == PHY_INTERFACE_MODE_RGMII_TXID)
+ 				data8 |= PORT_RGMII_ID_EG_ENABLE;
+ 			p->phydev.speed = SPEED_1000;
++			/* On KSZ9893, disable RGMII in-band status support */
++			if (dev->features & IS_9893) {
++				data8 &= ~PORT_MII_MAC_MODE;
++				data8 |= PORT_RGMII_ID_IG_ENABLE;
++				data8 |= PORT_RGMII_ID_EG_ENABLE;
++			}
+ 			break;
+ 		}
+ 		ksz_pwrite8(dev, port, REG_PORT_XMII_CTRL_1, data8);
+-- 
+2.17.1
+

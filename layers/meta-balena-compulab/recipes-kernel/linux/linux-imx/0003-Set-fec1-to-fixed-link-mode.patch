@@ -1,6 +1,6 @@
-From 2cb5ab3b56622515e13b066fad607e2c314ee3ed Mon Sep 17 00:00:00 2001
-From: Sebastian Panceac <sebastian@balena.io>
-Date: Mon, 13 Jan 2020 14:32:40 +0100
+From a829cb5f89a1da5fa33f67350fa26267de29f8ec Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Thu, 7 Oct 2021 15:28:30 +0200
 Subject: [PATCH] Set fec1 to fixed-link mode
 
 Set the fec1 ethernet controller into fixed-link mode
@@ -8,23 +8,23 @@ since it will not be connected to a PHY anymore but directly
 to the KSZ9893R switch
 
 Upstream-status: Inappropriate [configuration]
-Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
 ---
- arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
-index b482598a0a63..1647c9e0005c 100644
---- a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
-+++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
-@@ -371,20 +371,11 @@
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index 2afa1fcb8495..bbed1d8399d4 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -482,20 +482,12 @@
  	pinctrl-names = "default";
  	pinctrl-0 = <&pinctrl_fec1>;
  	phy-mode = "rgmii-id";
 -	phy-handle = <&ethphy0>;
  	fsl,magic-packet;
  	status = "okay";
--
+ 
 -	mdio {
 -		#address-cells = <1>;
 -		#size-cells = <0>;
