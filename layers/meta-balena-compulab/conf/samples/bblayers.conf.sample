@@ -29,3 +29,6 @@ BBLAYERS += " ${TOPDIR}/../layers/meta-imx/meta-ml "
 
 BBLAYERS += " ${TOPDIR}/../layers/meta-python2 "
 
+BBLAYERS += " \
+        ${TOPDIR}/../layers/meta-compulab \
+"

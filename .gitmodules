@@ -31,3 +31,6 @@
 [submodule "layers/meta-python2"]
 	path = layers/meta-python2
 	url = git://git.openembedded.org/meta-python2
+[submodule "layers/meta-compulab"]
+	path = layers/meta-compulab
+	url = https://github.com/compulab-yokneam/meta-compulab
