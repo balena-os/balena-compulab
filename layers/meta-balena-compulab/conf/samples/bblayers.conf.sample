@@ -31,4 +31,5 @@ BBLAYERS += " ${TOPDIR}/../layers/meta-python2 "
 
 BBLAYERS += " \
         ${TOPDIR}/../layers/meta-compulab \
+	${TOPDIR}/../layers/meta-compulab-bsp/meta-bsp \
 "
