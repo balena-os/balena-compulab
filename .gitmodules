@@ -22,3 +22,6 @@
 [submodule "layers/meta-freescale-3rdparty"]
 	path = layers/meta-freescale-3rdparty
 	url = git://github.com/Freescale/meta-freescale-3rdparty
+[submodule "layers/meta-freescale-distro"]
+	path = layers/meta-freescale-distro
+	url = git://github.com/Freescale/meta-freescale-distro
