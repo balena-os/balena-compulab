@@ -25,3 +25,6 @@
 [submodule "layers/meta-freescale-distro"]
 	path = layers/meta-freescale-distro
 	url = git://github.com/Freescale/meta-freescale-distro
+[submodule "layers/meta-imx"]
+	path = layers/meta-imx
+	url = https://source.codeaurora.org/external/imx/meta-imx
