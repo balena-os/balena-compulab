@@ -1,23 +1,23 @@
-From 26ce8fc25c002c9184afcf77dbf3bdccde3a8d4e Mon Sep 17 00:00:00 2001
+From 6831a1050179b787e7250adcab3393045f08a495 Mon Sep 17 00:00:00 2001
 From: Vicentiu Galanopulo <vicentiu@balena.io>
-Date: Tue, 28 Apr 2020 13:59:42 +0200
+Date: Fri, 1 Oct 2021 15:27:14 +0200
 Subject: [PATCH] MIPI MAXEN display GPIO configuration
 
 The MIPI MAXEN display needs set these GPIOs to
 have the correct setup
 
 Upstream-Status: Inappropriate [configuration]
-Signed-off-by: Vicentiu Galanopulo  <vicentiu@balena.io>
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
 ---
  board/compulab/cl-som-imx8/cl-som-imx8.c | 15 +++++++++++++++
  1 file changed, 15 insertions(+)
 
 diff --git a/board/compulab/cl-som-imx8/cl-som-imx8.c b/board/compulab/cl-som-imx8/cl-som-imx8.c
-index 4b0c12c2d4..2a14ceb959 100644
+index b19154aad8..c0cd668547 100644
 --- a/board/compulab/cl-som-imx8/cl-som-imx8.c
 +++ b/board/compulab/cl-som-imx8/cl-som-imx8.c
-@@ -332,6 +332,21 @@ int board_init(void)
- 
+@@ -334,6 +334,21 @@ int board_init(void)
+ #endif
  	setup_usbmux();
  
 +	gpio_request(IMX_GPIO_NR(4, 5),"tft_stdby");

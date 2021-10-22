@@ -1,7 +1,8 @@
-From 8e1164b88c69005f6e109fe36b058a6cebe17c2a Mon Sep 17 00:00:00 2001
+From c350b7565b666bd5186cb08f196f83e0737347cd Mon Sep 17 00:00:00 2001
 From: Vicentiu Galanopulo <vicentiu@balena.io>
-Date: Tue, 22 Sep 2020 15:44:40 +0200
-Subject: [PATCH] Update gpios pins to reflect etcher-pro hardware changes in v2_3
+Date: Fri, 1 Oct 2021 15:34:35 +0200
+Subject: [PATCH] Update gpios pins to reflect etcher-pro hardware
+ changes in v2_3
 
  TFT_RST (GPIO3_IO25, pin142) removed
  TFT_SHLR (GPIO4_IO1, pin192) removed
@@ -13,16 +14,15 @@ Subject: [PATCH] Update gpios pins to reflect etcher-pro hardware changes in v2_
  All HDMI signals removed
  LED_RST (GPIO5_IO4, pin198) moved on (GPIO4_IO23,pin203)
  PWM_FAN (GPIO5_IO4) added. Should be configured as PWM out for the FAN Control.
-                   For the time can be set it just as a simple High Level output.
+ For the time can be set it just as a simple High Level output.
  uPCIe_1_RST (GPIO4_IO7, pin139) added. Set it as output and High Level on startup
  SD_WP (GPIO2_IO20, pin67) added.
  INT_IO_EXP (GPIO5_IO28) added
  TFT_BCL_PWM (GPIO5_IO18, pin43), Should be configured as PWM out
                               for the backlight Control.
-                       For the time can be set it just as a simple High Level output.
+ For the time can be set it just as a simple High Level output.
  PWM_LED (GPIO5_IO3), set to low
  RST_LED (GPIO4_IO23), set to high
-
 
 Upstream-status: Inappropriate [configuration]
 Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
@@ -31,10 +31,10 @@ Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
  1 file changed, 10 insertions(+), 7 deletions(-)
 
 diff --git a/board/compulab/cl-som-imx8/cl-som-imx8.c b/board/compulab/cl-som-imx8/cl-som-imx8.c
-index 2a14ceb959..d140176b70 100644
+index c0cd668547..248000a23c 100644
 --- a/board/compulab/cl-som-imx8/cl-som-imx8.c
 +++ b/board/compulab/cl-som-imx8/cl-som-imx8.c
-@@ -336,16 +336,19 @@ int board_init(void)
+@@ -338,16 +338,19 @@ int board_init(void)
  	gpio_direction_output(IMX_GPIO_NR(4, 5), 1);
  
  	gpio_request(IMX_GPIO_NR(5, 18),"tft_bcl_pwm");
@@ -58,7 +58,7 @@ index 2a14ceb959..d140176b70 100644
 +
 +	gpio_request(IMX_GPIO_NR(5, 3),"led_outenable");
 +	gpio_direction_output(IMX_GPIO_NR(5, 3), 0);
-
+ 
  #if defined(CONFIG_USB_DWC3) || defined(CONFIG_USB_XHCI_IMX8M)
  	init_usb_clk();
 -- 
