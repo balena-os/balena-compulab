@@ -40,7 +40,7 @@ module.exports =
                 machine: 'etcher-pro'
                 image: 'balena-image-flasher'
                 fstype: 'balenaos-img'
-                version: 'yocto-sumo'
+                version: 'yocto-dunfell'
                 deployArtifact: 'balena-image-flasher-etcher-pro.balenaos-img'
                 compressed: true
 
