@@ -28,3 +28,6 @@
 [submodule "layers/meta-imx"]
 	path = layers/meta-imx
 	url = https://source.codeaurora.org/external/imx/meta-imx
+[submodule "layers/meta-python2"]
+	path = layers/meta-python2
+	url = git://git.openembedded.org/meta-python2
