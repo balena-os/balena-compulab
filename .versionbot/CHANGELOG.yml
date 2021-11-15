@@ -1,4 +1,108 @@
 - commits:
+    - subject: Integration with new BSP (meta-bsp-imx8mq)
+      hash: 4c22a689c612d6104cb7c2c05e78fdff6c2e8f78
+      body: |
+        All patches needed for the EtcherPro hw have been ported.
+        All recipes dependencies have been satisfied
+      footer:
+        Changelog-entry: Integration with new BSP (meta-bsp-imx8mq)
+        changelog-entry: Integration with new BSP (meta-bsp-imx8mq)
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Integration with new BSP (meta-bsp-imx8mq)
+      hash: 8f89029bf4e2398851cf699cfdbb96e5ba939c64
+      body: |
+        All patches needed for the EtcherPro hw have been ported.
+        All recipes dependencies have been satisfied
+      footer:
+        Changelog-entry: Integration with new BSP (meta-bsp-imx8mq)
+        changelog-entry: Integration with new BSP (meta-bsp-imx8mq)
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Update yocto version from sumo to dunfell
+      hash: 2afb51e2d722b0d3fc691d35ea25543c26bb3878
+      body: |
+        Update yocto version from sumo to dunfell
+      footer:
+        Changelog-entry: Update yocto version from sumo to dunfell
+        changelog-entry: Update yocto version from sumo to dunfell
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Update the yocto version for BSP compatibility
+      hash: e767fff8b10cb7f842641812563aab19a6966218
+      body: |
+        Update the yocto version
+      footer:
+        Changelog-entry: Update the yocto version for BSP compatibility
+        changelog-entry: Update the yocto version for BSP compatibility
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Update the yocto version for BSP compatibility
+      hash: 1f697ad26039b6d9584d74ad75259fe14e8c990f
+      body: |
+        Update the yocto version
+      footer:
+        Changelog-entry: Update the yocto version for BSP compatibility
+        changelog-entry: Update the yocto version for BSP compatibility
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Update the yocto version for BSP compatibility
+      hash: 73ac0028558f94197f717f02bd153d41f76d494f
+      body: |
+        Update the yocto version
+      footer:
+        Changelog-entry: Update the yocto version for BSP compatibility
+        changelog-entry: Update the yocto version for BSP compatibility
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Update the yocto version for BSP compatibility
+      hash: 33ab43dcc97b377e74335a440eabc086688c459d
+      body: |
+        Update the yocto version
+      footer:
+        Changelog-entry: Update the yocto version for BSP compatibility
+        changelog-entry: Update the yocto version for BSP compatibility
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Update the yocto version to zeus
+      hash: 511792006bbc9e69da1eb743dc63eb2c54837a71
+      body: |
+        Update the yocto version to zeus
+      footer:
+        Changelog-entry: Update the yocto version to zeus
+        changelog-entry: Update the yocto version to zeus
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+    - subject: Update the yocto version from warrior to dunfell
+      hash: 5847a3ad832c170880e51f907411c83e2832ee2c
+      body: |
+        Update the yocto version from warrior to dunfell
+      footer:
+        Changelog-entry: Update the yocto version from warrior to dunfell
+        changelog-entry: Update the yocto version from warrior to dunfell
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.82.0+rev8
+  date: 2021-11-15T16:13:53.453Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.15.2 to v1.15.8
       hash: 6c0c58946ccc7d572a5b49fb3ea3fbca630ed177
       body: |
