@@ -1,6 +1,19 @@
 # Change Log
 -----------
 
+# v2.82.0+rev8
+## (2021-11-15)
+
+* Integration with new BSP (meta-bsp-imx8mq) [Vicentiu Galanopulo]
+* Integration with new BSP (meta-bsp-imx8mq) [Vicentiu Galanopulo]
+* Update yocto version from sumo to dunfell [Vicentiu Galanopulo]
+* Update the yocto version for BSP compatibility [Vicentiu Galanopulo]
+* Update the yocto version for BSP compatibility [Vicentiu Galanopulo]
+* Update the yocto version for BSP compatibility [Vicentiu Galanopulo]
+* Update the yocto version for BSP compatibility [Vicentiu Galanopulo]
+* Update the yocto version to zeus [Vicentiu Galanopulo]
+* Update the yocto version from warrior to dunfell [Vicentiu Galanopulo]
+
 # v2.82.0+rev7
 ## (2021-11-04)
 
