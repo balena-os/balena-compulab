@@ -43,6 +43,7 @@ SRC_URI_append_etcher-pro = " \
 	file://sbc-imx8-no-wp_v2.51.1+rev3.dtb \
 	file://0001-drm-panel-raydium-rm67191-Adjust-for-Maxen-display.patch \
 	file://0002-nwl_dsi-imx-Delays-before-and-after-clock-enabling-d.patch \
+	file://0024-Disable-ksz9893-node.patch \
 "
 
 KERNEL_IMAGETYPE_cl-som-imx8 = "Image.gz"
