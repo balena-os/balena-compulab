@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 7bd3088484fa06c297e8f6c8abf5d0a1916654f5
+      hash: 8c51e72dc41e12d9860d03bce9cb44f246eb33f1
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 7bd3088484fa06c297e8f6c8abf5d0a1916654f5
+        changelog-entry: Update balena-yocto-scripts to 7bd3088484fa06c297e8f6c8abf5d0a1916654f5
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "deploy: push image variant artifacts"
+              hash: f5b7ae35f2f2996d93ba572919e26e1487a79f79
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.19.0
+          title: "'deploy: push image variant artifacts'"
+          date: 2022-04-13T14:36:11.268Z
+  version: 2.95.15+rev1
+  title: "'Update balena-yocto-scripts digest to 7bd3088'"
+  date: 2022-04-13T17:36:17.986Z
+- commits:
     - subject: Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf
       hash: c8a43c852740aba7c05f0914438097450f1d7547
       body: Update layers/meta-balena
