@@ -1,0 +1,37 @@
+From 336616e1714d8085b6d075cc3347c0f0266c28f3 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Thu, 2 Sep 2021 13:36:10 +0200
+Subject:  Integrate machine independent resin environment configuration
+
+This patch integrates resin default environment configuration in an u-boot which
+has a version with Kconfig support.
+
+Signed-off-by: Vicentiu Galanpulo <vicentiu@balena.io>
+Upstream-Status: Inappropriate [configuration]
+---
+ include/env_default.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/env_default.h b/include/env_default.h
+index 56a8bae39a..dc2be1e066 100644
+--- a/include/env_default.h
++++ b/include/env_default.h
+@@ -8,6 +8,7 @@
+  */
+ 
+ #include <env_callback.h>
++#include <env_resin.h>
+ 
+ #ifdef DEFAULT_ENV_INSTANCE_EMBEDDED
+ env_t embedded_environment __UBOOT_ENV_SECTION__(environment) = {
+@@ -21,6 +22,7 @@ static char default_environment[] = {
+ #else
+ const uchar default_environment[] = {
+ #endif
++	BALENA_ENV
+ #ifndef CONFIG_USE_DEFAULT_ENV_FILE
+ #ifdef	CONFIG_ENV_CALLBACK_LIST_DEFAULT
+ 	ENV_CALLBACK_VAR "=" CONFIG_ENV_CALLBACK_LIST_DEFAULT "\0"
+-- 
+2.17.1
+

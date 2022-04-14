@@ -1,0 +1,120 @@
+From 0a58b2dd17c070c8d9e7168c6edee5273893f54c Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Tue, 12 Oct 2021 14:42:08 +0200
+Subject: [PATCH] Enable PWM2 and PWM4
+
+These PWMs are need for the backlight control and the fan
+control of the EtcherPro board.
+
+MX8MQ_IOMUXC_I2C4_SCL_PWM2_OUT has been replaced with another
+pad because after enabling PWM2 a kernel error was reported
+describing that the pad is already used. This cascaded to the
+disabling of spdif1 and also spdif2, since none are used
+on the EtcherPro.
+
+GPIO4_IO23 will be controlled from u-boot and it's
+RST_LED so remove it from the pincontroller gt911 group
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 49 +++++++++++++++++---
+ 1 file changed, 42 insertions(+), 7 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index 153e221436ac..dd0e86136681 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -193,7 +193,7 @@
+ 
+ 	pwmleds {
+ 		compatible = "pwm-leds";
+-
++		status = "disabled";
+ 		ledpwm2 {
+ 			label = "PWM2";
+ 			pwms = <&pwm2 0 50000>;
+@@ -306,6 +306,30 @@
+ 			>;
+ 		};
+ 
++		pinctrl_pwm1: pwm1grp {
++			fsl,pins = <
++				MX8MQ_IOMUXC_SPDIF_EXT_CLK_PWM1_OUT     0x16
++			>;
++		};
++
++		pinctrl_pwm2: pwm2grp {
++			fsl,pins = <
++				MX8MQ_IOMUXC_SPDIF_RX_PWM2_OUT          0x16
++			>;
++		};
++
++		pinctrl_pwm3: pwm3grp {
++			fsl,pins = <
++				MX8MQ_IOMUXC_I2C3_SDA_PWM3_OUT          0x16
++			>;
++		};
++
++		pinctrl_pwm4: pwm4grp {
++			fsl,pins = <
++				MX8MQ_IOMUXC_I2C3_SCL_PWM4_OUT          0x16
++			>;
++		};
++
+ 		pinctrl_ecspi1: ecspi1grp {
+ 			fsl,pins = <
+ 				MX8MQ_IOMUXC_ECSPI1_SCLK_ECSPI1_SCLK 	0x82
+@@ -479,9 +503,6 @@
+ 				#define GPIRQ_GT911		<&gpio4 26 IRQ_TYPE_LEVEL_HIGH>
+ 				#define GP_GT911_IRQ		<&gpio4 26 GPIO_ACTIVE_HIGH>
+ 				MX8MQ_IOMUXC_SAI2_TXD0_GPIO4_IO26	0x1D6
+-				/* driver writes levels, instead of active/inactive */
+-				#define GP_GT911_RESET			<&gpio4 23 GPIO_ACTIVE_LOW>
+-				MX8MQ_IOMUXC_SAI2_RXD0_GPIO4_IO23	0x149
+ 			>;
+ 		};
+ 
+@@ -742,14 +763,14 @@
+ 	assigned-clocks = <&clk IMX8MQ_CLK_SPDIF1>;
+ 	assigned-clock-parents = <&clk IMX8MQ_AUDIO_PLL1_OUT>;
+ 	assigned-clock-rates = <24576000>;
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &spdif2 {
+ 	assigned-clocks = <&clk IMX8MQ_CLK_SPDIF2>;
+ 	assigned-clock-parents = <&clk IMX8MQ_AUDIO_PLL1_OUT>;
+ 	assigned-clock-rates = <24576000>;
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &pgc_gpu {
+@@ -815,7 +836,21 @@
+ };
+ 
+ &pwm2 {
+-    status = "disabled";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_pwm2>;
++	status = "okay";
++};
++
++&pwm3 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_pwm3>;
++	status = "disabled";
++};
++
++&pwm4 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_pwm4>;
++	status = "okay";
+ };
+ 
+ &i2c4 {
+-- 
+2.17.1
+

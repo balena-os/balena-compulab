@@ -1,0 +1,634 @@
+From d1c29c5f4e09cb9737ff7dd74aec7a019265fdcc Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Thu, 14 Oct 2021 16:30:51 +0200
+Subject: [PATCH] Add KSZ9893 switch support
+
+Add device tree support for the ethernet switch KSZ9893
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 497 ++++++++++---------
+ arch/arm64/boot/dts/compulab/sb-imx8.dtsi    |   4 +-
+ 2 files changed, 270 insertions(+), 231 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index 50f99a232aa9..2df869dc698f 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -174,6 +174,7 @@
+ 				<48000>,
+ 				<96000>,
+ 				<192000>;
++		status = "disabled";
+ 	};
+ 
+ 	sound-spdif {
+@@ -182,6 +183,7 @@
+ 		spdif-controller = <&spdif1>;
+ 		spdif-out;
+ 		spdif-in;
++		status = "disabled";
+ 	};
+ 
+ 	sound-hdmi-arc {
+@@ -189,6 +191,7 @@
+ 		model = "imx-hdmi-arc";
+ 		spdif-controller = <&spdif2>;
+ 		spdif-in;
++		status = "disabled";
+ 	};
+ 
+ 	pwmleds {
+@@ -226,22 +229,6 @@
+ 		clock-frequency = <100000000>;
+ 	};
+ 
+-	goodix_ts@5d {
+-		compatible = "goodix,gt911";
+-		reg = <0x5d>;
+-
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&pinctrl_i2c4_gt911>;
+-
+-		touchscreen-inverted-x = "true";
+-		touchscreen-inverted-y = "true";
+-
+-		esd-recovery-timeout-ms = <2000>;
+-		interrupts-extended = <&gpio4 26 IRQ_TYPE_LEVEL_HIGH>;
+-		irq-gpios = <&gpio4 26 GPIO_ACTIVE_HIGH>;
+-		reset-gpios = <&gpio4 24 GPIO_ACTIVE_LOW>;
+-		status = "okay";
+-	};
+ 
+ };
+ 
+@@ -499,7 +486,6 @@
+ 				MX8MQ_IOMUXC_SAI2_TXFS_GPIO4_IO24	0x176
+ 			>;
+ 		};
+-
+ 	};
+ };
+ 
+@@ -849,276 +835,329 @@
+ };
+ 
+ &i2c4 {
+-    clock-frequency = <400000>;
+-    pinctrl-names = "default";
+-    pinctrl-0 = <&pinctrl_i2c4>;
+-    status = "okay";
++	clock-frequency = <400000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_i2c4>;
++	status = "okay";
+ 
+-    pca9956b@0x1 {
+-	#address-cells = <1>;
+-	#size-cells = <0>;
+-	reg = <0x01>;
++	pca9956b@0x1 {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		reg = <0x01>;
+ 
+-	compatible    = "nxp,pca9956b";
++		compatible    = "nxp,pca9956b";
+ 
+-	pca9956b,support_initialize = <1>;
+-	pca9956b,mode1 = <0x09>;
+-	pca9956b,mode2 = <0x05>;
++		pca9956b,support_initialize = <1>;
++		pca9956b,mode1 = <0x09>;
++		pca9956b,mode2 = <0x05>;
+ 
+-	pca9956b,defaultiref = <0x2f>;
++		pca9956b,defaultiref = <0x2f>;
+ 
+-	out0@0 {
+-	    label = "led1_r";
+-	    reg = <0x0>;
+-	};
++		out0@0 {
++			label = "led1_r";
++			reg = <0x0>;
++		};
+ 
+-	out1@1 {
+-	    label = "led1_g";
+-	    reg = <0x1>;
+-	};
++		out1@1 {
++			label = "led1_g";
++			reg = <0x1>;
++		};
+ 
+-	out2@2 {
+-	    label = "led1_b";
+-	    reg = <0x2>;
+-	};
++		out2@2 {
++			label = "led1_b";
++			reg = <0x2>;
++		};
+ 
+-	out3@3 {
+-	    label = "led2_r";
+-	    reg = <0x3>;
+-	};
++		out3@3 {
++			label = "led2_r";
++			reg = <0x3>;
++		};
+ 
+-	out4@4 {
+-	    label = "led2_g";
+-	    reg = <0x4>;
+-	};
++		out4@4 {
++			label = "led2_g";
++			reg = <0x4>;
++		};
+ 
+-	out5@5 {
+-	    label = "led2_b";
+-	    reg = <0x5>;
+-	};
++		out5@5 {
++			label = "led2_b";
++			reg = <0x5>;
++		};
+ 
+-	out6@6 {
+-	    label = "led3_r";
+-	    reg = <0x6>;
+-	};
++		out6@6 {
++			label = "led3_r";
++			reg = <0x6>;
++		};
+ 
+-	out7@7 {
+-	    label = "led3_g";
+-	    reg = <0x7>;
+-	};
++		out7@7 {
++			label = "led3_g";
++			reg = <0x7>;
++		};
+ 
+-	out8@8 {
+-	    label = "led3_b";
+-	    reg = <0x8>;
+-	};
++		out8@8 {
++			label = "led3_b";
++			reg = <0x8>;
++		};
+ 
+-	out9@9 {
+-	    label = "led4_r";
+-	    reg = <0x9>;
+-	};
++		out9@9 {
++			label = "led4_r";
++			reg = <0x9>;
++		};
+ 
+-	outa@a {
+-	    label = "led4_g";
+-	    reg = <0xa>;
+-	};
++		outa@a {
++			label = "led4_g";
++			reg = <0xa>;
++		};
+ 
+-	outb@b {
+-	    label = "led4_b";
+-	    reg = <0xb>;
+-	};
++		outb@b {
++			label = "led4_b";
++			reg = <0xb>;
++		};
+ 
+-	outc@c {
+-	    label = "led5_r";
+-	    reg = <0xc>;
+-	};
++		outc@c {
++			label = "led5_r";
++			reg = <0xc>;
++		};
+ 
+-	outd@d {
+-	    label = "led5_g";
+-	    reg = <0xd>;
+-	};
++		outd@d {
++			label = "led5_g";
++			reg = <0xd>;
++		};
+ 
+-	oute@e {
+-	    label = "led5_b";
+-	    reg = <0xe>;
+-	};
++		oute@e {
++			label = "led5_b";
++			reg = <0xe>;
++		};
+ 
+-	outf@f {
+-	    label = "led6_r";
+-	    reg = <0xf>;
+-	};
++		outf@f {
++			label = "led6_r";
++			reg = <0xf>;
++		};
+ 
+-	out10@10 {
+-	    label = "led6_g";
+-	    reg = <0x10>;
+-	};
++		out10@10 {
++			label = "led6_g";
++			reg = <0x10>;
++		};
+ 
+-	out11@11 {
+-	    label = "led6_b";
+-	    reg = <0x11>;
+-	};
++		out11@11 {
++			label = "led6_b";
++			reg = <0x11>;
++		};
+ 
+-	out12@12 {
+-	    label = "led7_r";
+-	    reg = <0x12>;
+-	};
++		out12@12 {
++			label = "led7_r";
++			reg = <0x12>;
++		};
+ 
+-	out13@13 {
+-	    label = "led7_g";
+-	    reg = <0x13>;
+-	};
++		out13@13 {
++			label = "led7_g";
++			reg = <0x13>;
++		};
+ 
+-	out14@14 {
+-	    label = "led7_b";
+-	    reg = <0x14>;
+-	};
++		out14@14 {
++			label = "led7_b";
++			reg = <0x14>;
++		};
+ 
+-	out15@15 {
+-	    label = "led8_r";
+-	    reg = <0x15>;
+-	};
++		out15@15 {
++			label = "led8_r";
++			reg = <0x15>;
++		};
+ 
+-	out16@16 {
+-	    label = "led8_g";
+-	    reg = <0x16>;
+-	};
++		out16@16 {
++			label = "led8_g";
++			reg = <0x16>;
++		};
+ 
+-	out17@17 {
+-	    label = "led8_b";
+-	    reg = <0x17>;
++		out17@17 {
++			label = "led8_b";
++			reg = <0x17>;
++		};
+ 	};
+-    };
+ 
+-    pca9956b@0x5 {
+-	#address-cells = <1>;
+-	#size-cells = <0>;
+-	reg = <0x05>;
++	pca9956b@0x5 {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		reg = <0x05>;
++
++		compatible = "nxp,pca9956b";
+ 
+-	compatible    = "nxp,pca9956b";
++		pca9956b,support_initialize = <1>;
++		pca9956b,mode1 = <0x09>;
++		pca9956b,mode2 = <0x05>;
+ 
+-	pca9956b,support_initialize = <1>;
+-	pca9956b,mode1 = <0x09>;
+-	pca9956b,mode2 = <0x05>;
++		pca9956b,defaultiref = <0x2f>;
+ 
+-	pca9956b,defaultiref = <0x2f>;
++		out0@0 {
++			label = "led9_r";
++			reg = <0x0>;
++		};
+ 
+-	out0@0 {
+-	    label = "led9_r";
+-	    reg = <0x0>;
+-	};
++		out1@1 {
++			label = "led9_g";
++			reg = <0x1>;
++		};
+ 
+-	out1@1 {
+-	    label = "led9_g";
+-	    reg = <0x1>;
+-	};
++		out2@2 {
++			label = "led9_b";
++			reg = <0x2>;
++		};
+ 
+-	out2@2 {
+-	    label = "led9_b";
+-	    reg = <0x2>;
+-	};
++		out3@3 {
++			label = "led10_r";
++			reg = <0x3>;
++		};
+ 
+-	out3@3 {
+-	    label = "led10_r";
+-	    reg = <0x3>;
+-	};
++		out4@4 {
++			label = "led10_g";
++			reg = <0x4>;
++		};
+ 
+-	out4@4 {
+-	    label = "led10_g";
+-	    reg = <0x4>;
+-	};
++		out5@5 {
++			label = "led10_b";
++			reg = <0x5>;
++		};
+ 
+-	out5@5 {
+-	    label = "led10_b";
+-	    reg = <0x5>;
+-	};
++		out6@6 {
++			label = "led11_r";
++			reg = <0x6>;
++		};
+ 
+-	out6@6 {
+-	    label = "led11_r";
+-	    reg = <0x6>;
+-	};
++		out7@7 {
++			label = "led11_g";
++			reg = <0x7>;
++		};
+ 
+-	out7@7 {
+-	    label = "led11_g";
+-	    reg = <0x7>;
+-	};
++		out8@8 {
++			label = "led11_b";
++			reg = <0x8>;
++		};
+ 
+-	out8@8 {
+-	    label = "led11_b";
+-	    reg = <0x8>;
+-	};
++		out9@9 {
++			label = "led12_r";
++			reg = <0x9>;
++		};
+ 
+-	out9@9 {
+-	    label = "led12_r";
+-	    reg = <0x9>;
+-	};
++		outa@a {
++			label = "led12_g";
++			reg = <0xa>;
++		};
+ 
+-	outa@a {
+-	    label = "led12_g";
+-	    reg = <0xa>;
+-	};
++		outb@b {
++			label = "led12_b";
++			reg = <0xb>;
++		};
+ 
+-	outb@b {
+-	    label = "led12_b";
+-	    reg = <0xb>;
+-	};
++		outc@c {
++			label = "led13_r";
++			reg = <0xc>;
++		};
+ 
+-	outc@c {
+-	    label = "led13_r";
+-	    reg = <0xc>;
+-	};
++		outd@d {
++			label = "led13_g";
++			reg = <0xd>;
++		};
+ 
+-	outd@d {
+-	    label = "led13_g";
+-	    reg = <0xd>;
+-	};
++		oute@e {
++			label = "led13_b";
++			reg = <0xe>;
++		};
+ 
+-	oute@e {
+-	    label = "led13_b";
+-	    reg = <0xe>;
+-	};
++		outf@f {
++			label = "led14_r";
++			reg = <0xf>;
++		};
+ 
+-	outf@f {
+-	    label = "led14_r";
+-	    reg = <0xf>;
+-	};
++		out10@10 {
++			label = "led14_g";
++			reg = <0x10>;
++		};
+ 
+-	out10@10 {
+-	    label = "led14_g";
+-	    reg = <0x10>;
+-	};
++		out11@11 {
++			label = "led14_b";
++			reg = <0x11>;
++		};
+ 
+-	out11@11 {
+-	    label = "led14_b";
+-	    reg = <0x11>;
+-	};
++		out12@12 {
++			label = "led15_r";
++			reg = <0x12>;
++		};
+ 
+-	out12@12 {
+-	    label = "led15_r";
+-	    reg = <0x12>;
+-	};
++		out13@13 {
++			label = "led15_g";
++			reg = <0x13>;
++		};
+ 
+-	out13@13 {
+-	    label = "led15_g";
+-	    reg = <0x13>;
+-	};
++		out14@14 {
++			label = "led15_b";
++			reg = <0x14>;
++		};
+ 
+-	out14@14 {
+-	    label = "led15_b";
+-	    reg = <0x14>;
+-	};
++		out15@15 {
++			label = "led16_r";
++			reg = <0x15>;
++		};
++
++		out16@16 {
++			label = "led16_g";
++			reg = <0x16>;
++		};
+ 
+-	out15@15 {
+-	    label = "led16_r";
+-	    reg = <0x15>;
++		out17@17 {
++			label = "led16_b";
++			reg = <0x17>;
++		};
+ 	};
+ 
+-	out16@16 {
+-	    label = "led16_g";
+-	    reg = <0x16>;
++	switch@5f {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		compatible = "microchip,ksz9893"; /* ksz9893 */
++		reset-gpios = <&gpio3 17 GPIO_ACTIVE_LOW>;
++		reg = <0x5f>;
++		status = "okay";
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				reg = <0>;
++				label = "lan1";
++			};
++
++			port@1 {
++				reg = <1>;
++				label = "lan2";
++			};
++
++			port2switch: port@2 {
++				reg = <2>;
++				label = "cpu";
++				ethernet = <&fec1>;
++				fixed-link {
++					speed = <1000>;
++					full-duplex;
++				};
++			};
++		};
+ 	};
+ 
+-	out17@17 {
+-	    label = "led16_b";
+-	    reg = <0x17>;
++
++
++	goodix_ts@5d {
++		compatible = "goodix,gt911";
++		reg = <0x5d>;
++
++		pinctrl-names = "default";
++		pinctrl-0 = <&pinctrl_i2c4_gt911>;
++
++		touchscreen-inverted-x = "true";
++		touchscreen-inverted-y = "true";
++
++		esd-recovery-timeout-ms = <2000>;
++		interrupts-extended = <&gpio4 26 IRQ_TYPE_LEVEL_HIGH>;
++		irq-gpios = <&gpio4 26 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&gpio4 24 GPIO_ACTIVE_LOW>;
++		status = "okay";
+ 	};
+-    };
++
+ };
+diff --git a/arch/arm64/boot/dts/compulab/sb-imx8.dtsi b/arch/arm64/boot/dts/compulab/sb-imx8.dtsi
+index bf043cda6269..2e2b12e03e21 100644
+--- a/arch/arm64/boot/dts/compulab/sb-imx8.dtsi
++++ b/arch/arm64/boot/dts/compulab/sb-imx8.dtsi
+@@ -41,9 +41,9 @@
+ &iomuxc {
+ 	sb-imx8 {
+ 		pinctrl_pca95xx: pca95xx {
+-			fsl,pins = <
++			/*fsl,pins = <
+ 				MX8MQ_IOMUXC_NAND_WE_B_GPIO3_IO17	0xC0
+-			>;
++			>;*/
+ 		};
+ 		pinctrl_uart1_rs485_hdx: uart1rs485hdxgrp {
+ 			fsl,pins = <
+-- 
+2.17.1
+

@@ -29,6 +29,10 @@ IMAGE_INSTALL_append_cl-som-imx8 = " \
 					linux-firmware-ibt \
 "
 
+do_image_create_sdcard_symlink() {
+	echo "Do nothing";
+}
+
 IMAGE_CMD_balenaos-img_append_cl-som-imx8 () {
     dd if=${DEPLOY_DIR_IMAGE}/imx-boot-${MACHINE}-sd.bin-flash_evk of=${BALENA_RAW_IMG} conv=notrunc seek=33 bs=1K
 }

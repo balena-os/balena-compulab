@@ -1,0 +1,30 @@
+From 103edc71ea4b667a43d187e9b757a70cad4459c5 Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Tue, 12 Oct 2021 14:05:37 +0200
+Subject: [PATCH] Remove reset-gpio for pcie0
+
+The FL100EX on the new version (2.3) of the etcher-pro
+is not detected on the PIC bus if the reset-gpio
+is hold ACTIVE_LOW by the GPIO expander
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/sb-imx8.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/sb-imx8.dtsi b/arch/arm64/boot/dts/compulab/sb-imx8.dtsi
+index cd3afbfd5178..bf043cda6269 100644
+--- a/arch/arm64/boot/dts/compulab/sb-imx8.dtsi
++++ b/arch/arm64/boot/dts/compulab/sb-imx8.dtsi
+@@ -160,7 +160,6 @@ sbc_i2c_lvds: &i2c2 {
+ };
+ 
+ &pcie0 {
+-	reset-gpio = <&pca9555 0 GPIO_ACTIVE_LOW>;
+ 	status = "okay";
+ };
+ 
+-- 
+2.17.1
+

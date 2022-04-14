@@ -1,0 +1,47 @@
+From 2c181371a72e9ccc1093ef05af913141a07b48cd Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Fri, 8 Oct 2021 16:50:09 +0200
+Subject: [PATCH] Enable pwm1 interface
+
+Patch enables PWM1 interface to control
+Etcher Pro's buzzer
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ arch/arm64/boot/dts/compulab/cl-som-imx8.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+index bbed1d8399d4..a45512ce76ab 100644
+--- a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
++++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
+@@ -450,6 +450,12 @@
+ 				MX8MQ_IOMUXC_GPIO1_IO00_ANAMIX_REF_CLK_32K 0x16
+ 			>;
+ 		};
++
++		pinctrl_pwm1: pwm1grp {
++			fsl,pins = <
++				MX8MQ_IOMUXC_SPDIF_EXT_CLK_PWM1_OUT     0x16
++			>;
++		};
+ 	};
+ };
+ 
+@@ -773,6 +779,12 @@
+ 	};
+ };
+ 
++&pwm1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_pwm1>;
++	status = "okay";
++};
++
+ &pwm2 {
+     status = "disabled";
+ };
+-- 
+2.17.1
+

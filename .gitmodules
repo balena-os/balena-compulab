@@ -13,12 +13,27 @@
 [submodule "layers/meta-bsp-imx8mq"]
 	path = layers/meta-bsp-imx8mq
 	url = https://github.com/compulab-yokneam/meta-bsp-imx8mq.git
-[submodule "layers/meta-fsl-bsp-release"]
-        path = layers/meta-fsl-bsp-release
-        url = https://source.codeaurora.org/external/imx/meta-fsl-bsp-release
 [submodule "layers/meta-openembedded"]
 	path = layers/meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
 [submodule "layers/poky"]
 	path = layers/poky
 	url = https://github.com/balena-os/poky
+[submodule "layers/meta-freescale-3rdparty"]
+	path = layers/meta-freescale-3rdparty
+	url = git://github.com/Freescale/meta-freescale-3rdparty
+[submodule "layers/meta-freescale-distro"]
+	path = layers/meta-freescale-distro
+	url = git://github.com/Freescale/meta-freescale-distro
+[submodule "layers/meta-imx"]
+	path = layers/meta-imx
+	url = https://source.codeaurora.org/external/imx/meta-imx
+[submodule "layers/meta-python2"]
+	path = layers/meta-python2
+	url = git://git.openembedded.org/meta-python2
+[submodule "layers/meta-compulab"]
+	path = layers/meta-compulab
+	url = https://github.com/compulab-yokneam/meta-compulab
+[submodule "layers/meta-compulab-bsp"]
+	path = layers/meta-compulab-bsp
+	url = https://github.com/compulab-yokneam/meta-compulab-bsp
