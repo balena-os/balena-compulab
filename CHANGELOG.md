@@ -1,6 +1,31 @@
 # Change Log
 -----------
 
+# v2.98.43
+## (2022-06-09)
+
+
+<details>
+<summary> Update layers/meta-balena to fa207fb198e4e4736d3937901b5ef6d25562eb32 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.43
+> ### (2022-06-09)
+> 
+> * tests: cloud: update container names [rcooke-warwick]
+> 
+</details>
+
+
+<details>
+<summary> Update layers/meta-balena to 3a62a83ec12b05377b46d46bee9661b8b6b4a090 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.43
+> ### (2022-06-09)
+> 
+> * tests: cloud: update container names [rcooke-warwick]
+> 
+</details>
+
 # v2.98.41+rev1
 ## (2022-06-07)
 
