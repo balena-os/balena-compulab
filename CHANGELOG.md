@@ -1,6 +1,35 @@
 # Change Log
 -----------
 
+# v2.98.44
+## (2022-06-10)
+
+
+<details>
+<summary> Update layers/meta-balena to 5dcea5e5b39876e832538800441f494ce884e8f9 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.44
+> ### (2022-06-09)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to ea72650 [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.4.1
+>> #### (2022-06-09)
+>> 
+>> * catch error in executeCommandInhostOs [rcooke-warwick]
+>> 
+>> ### leviathan-2.4.0
+>> #### (2022-06-07)
+>> 
+>> * get ssh to work with ed25519 algorithm [rcooke-warwick]
+>> 
+> </details>
+> 
+> 
+</details>
+
 # v2.98.43
 ## (2022-06-09)
 

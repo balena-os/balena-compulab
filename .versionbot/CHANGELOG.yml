@@ -1,4 +1,56 @@
 - commits:
+    - subject: Update layers/meta-balena to 5dcea5e5b39876e832538800441f494ce884e8f9
+      hash: acaac6dd093fc2b211c3af40d4d06cfbfb6b4e43
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 5dcea5e5b39876e832538800441f494ce884e8f9
+        changelog-entry: Update layers/meta-balena to 5dcea5e5b39876e832538800441f494ce884e8f9
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to ea72650
+              hash: 264147110d2517cb7929cdf709de1cd228f20dae
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: catch error in executeCommandInhostOs
+                      hash: db1677995f1cf2f93284dcd35bb173d1cb3e08ca
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.4.1
+                  title: "'catch error in executeCommandInhostOs'"
+                  date: 2022-06-09T13:28:01.544Z
+                - commits:
+                    - subject: get ssh to work with ed25519 algorithm
+                      hash: 6bdaedab27c0a919eddd74cb784bddfd8281d90b
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.4.0
+                  title: "'get ssh to work with ed25519 algorithm'"
+                  date: 2022-06-07T11:26:55.354Z
+          version: meta-balena-2.98.44
+          title: "'Update tests/leviathan digest to ea72650'"
+          date: 2022-06-09T21:46:58.389Z
+  version: 2.98.44
+  title: "'Update layers/meta-balena digest to 5dcea5e'"
+  date: 2022-06-10T01:59:34.193Z
+- commits:
     - subject: Update layers/meta-balena to fa207fb198e4e4736d3937901b5ef6d25562eb32
       hash: db7d33bb6c4b7caa77d3bbb6b79394b6443cadd2
       body: Update layers/meta-balena
