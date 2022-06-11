@@ -1,4 +1,52 @@
 - commits:
+    - subject: Update layers/meta-balena to 1aee182ad517f4dd6f24c643bdee1b4db883ffb3
+      hash: 30517726defc5d3e66bf0ab0c74b668fc8f12f79
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 1aee182ad517f4dd6f24c643bdee1b4db883ffb3
+        changelog-entry: Update layers/meta-balena to 1aee182ad517f4dd6f24c643bdee1b4db883ffb3
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: hup: gzip hostapp before transfer to DUT"
+              hash: cac92a4d5e884110ae5caaf807c2c5685a88237e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.99.1
+          title: "'tests: hup: gzip hostapp before transfer to DUT'"
+          date: 2022-06-11T12:01:27.278Z
+    - subject: Update layers/meta-balena to 202e9c71433434b1f2bd5e658c7f7f216a364ad5
+      hash: 3833bcf01697963f90af9250e7f1279099904459
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 202e9c71433434b1f2bd5e658c7f7f216a364ad5
+        changelog-entry: Update layers/meta-balena to 202e9c71433434b1f2bd5e658c7f7f216a364ad5
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: hup: gzip hostapp before transfer to DUT"
+              hash: cac92a4d5e884110ae5caaf807c2c5685a88237e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.99.1
+          title: "'tests: hup: gzip hostapp before transfer to DUT'"
+          date: 2022-06-11T12:01:27.278Z
+  version: 2.99.1
+  title: "'Update layers/meta-balena digest to 1aee182'"
+  date: 2022-06-11T19:14:13.944Z
+- commits:
     - subject: Update layers/meta-balena to 466c0e3a56da6605f033d8fd1b37c301c96af979
       hash: 06ae7e8929295a3064d9c3b6575f469be927f7d9
       body: Update layers/meta-balena

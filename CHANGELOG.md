@@ -1,6 +1,31 @@
 # Change Log
 -----------
 
+# v2.99.1
+## (2022-06-11)
+
+
+<details>
+<summary> Update layers/meta-balena to 1aee182ad517f4dd6f24c643bdee1b4db883ffb3 [Renovate Bot] </summary>
+
+> ## meta-balena-2.99.1
+> ### (2022-06-11)
+> 
+> * tests: hup: gzip hostapp before transfer to DUT [rcooke-warwick]
+> 
+</details>
+
+
+<details>
+<summary> Update layers/meta-balena to 202e9c71433434b1f2bd5e658c7f7f216a364ad5 [Renovate Bot] </summary>
+
+> ## meta-balena-2.99.1
+> ### (2022-06-11)
+> 
+> * tests: hup: gzip hostapp before transfer to DUT [rcooke-warwick]
+> 
+</details>
+
 # v2.98.45
 ## (2022-06-10)
 
