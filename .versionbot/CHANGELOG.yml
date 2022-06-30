@@ -1,4 +1,105 @@
 - commits:
+    - subject: Update layers/meta-balena to 1f79bcbb751f8715c49b207fdf737a2a089aff4c
+      hash: c48e10e06f73a058dee6a4c019c5e7ee49127421
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 1f79bcbb751f8715c49b207fdf737a2a089aff4c
+        changelog-entry: Update layers/meta-balena to 1f79bcbb751f8715c49b207fdf737a2a089aff4c
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: cloud: Wait for random triggers to be updated"
+              hash: b0223bb3a36ffcbfdf5e306cd9fa88398278a42c
+              body: |
+                This prevents a race condition on slower hardware where
+                the systemd unit does not have a value for Trigger immediately
+                after skewing the clock.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.99.26
+          title: "'tests: cloud: Wait for random triggers to be updated'"
+          date: 2022-06-29T18:46:55.181Z
+        - commits:
+            - subject: Update tests/leviathan digest to 4fe9b19
+              hash: 8d61aa7664fdfb621770fe546d20edd21be9d51c
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "github: Run e2e tests via github actions"
+                      hash: 3ef31444872dc701f0efa23cc0a208f0cbcf5155
+                      body: |
+                        This will replace the Jenkins job for e2e tests
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "make: Clean local volumes before running tests"
+                      hash: 1ff4f9e8bddca3f25d5d260d925448d62ca3be22
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "worker: Pin worker image to latest by default"
+                      hash: 3d8a4d5c57db246c4d4b9b82ae2ec4f5bdc0b081
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "e2e: Update e2e suite config to support testbots"
+                      hash: 46ff1fe17f33dffdacf6bdc923a4f986b16465af
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.5.5
+                  title: "'Run QEMU and testbot e2e tests via github-actions'"
+                  date: 2022-06-24T20:48:38.481Z
+          version: meta-balena-2.99.25
+          title: "'Update tests/leviathan digest to 4fe9b19'"
+          date: 2022-06-28T23:32:06.902Z
+        - commits:
+            - subject: "tests: Increase delay when testing randomized timers"
+              hash: 0163f4b3df5fbe2e49e56b45f5f200b18128417b
+              body: |
+                This should prevent failed tests on slower devices.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.99.24
+          title: "'tests: Increase delay when testing randomized timers'"
+          date: 2022-06-28T14:53:51.098Z
+  version: 2.99.26
+  title: "'Update layers/meta-balena digest to 1f79bcb'"
+  date: 2022-06-29T23:47:14.277Z
+- commits:
     - subject: Update balena-yocto-scripts to 681f0437ba0ede9c310c9c22adf16daad0a29abb
       hash: 7740fee1e1723ed69e6a97a96bfe852a9b7d1489
       body: Update balena-yocto-scripts

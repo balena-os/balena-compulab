@@ -1,6 +1,43 @@
 # Change Log
 -----------
 
+# v2.99.26
+## (2022-06-29)
+
+
+<details>
+<summary> Update layers/meta-balena to 1f79bcbb751f8715c49b207fdf737a2a089aff4c [renovate[bot]] </summary>
+
+> ## meta-balena-2.99.26
+> ### (2022-06-29)
+> 
+> * tests: cloud: Wait for random triggers to be updated [Kyle Harding]
+> 
+> ## meta-balena-2.99.25
+> ### (2022-06-28)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4fe9b19 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.5.5
+>> #### (2022-06-24)
+>> 
+>> * github: Run e2e tests via github actions [Kyle Harding]
+>> * make: Clean local volumes before running tests [Kyle Harding]
+>> * worker: Pin worker image to latest by default [Kyle Harding]
+>> * e2e: Update e2e suite config to support testbots [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.99.24
+> ### (2022-06-28)
+> 
+> * tests: Increase delay when testing randomized timers [Kyle Harding]
+> 
+</details>
+
 # v2.99.23+rev1
 ## (2022-06-28)
 
