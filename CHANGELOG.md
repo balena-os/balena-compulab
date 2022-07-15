@@ -1,6 +1,25 @@
 # Change Log
 -----------
 
+# v2.100.0
+## (2022-07-15)
+
+
+<details>
+<summary> Update contracts to e6f7ecd2977facdc5ee141b4bb7dc2719001df45 [renovate[bot]] </summary>
+
+> ## contracts-2.0.5
+> ### (2022-07-14)
+> 
+> * Add node v18.6.0 [Trong Nghia Nguyen]
+> * Add golang v1.8.4 and v1.17.12 [Trong Nghia Nguyen]
+> * Add node v18.5.0 v16.16.0 and v14.20.0 [Trong Nghia Nguyen]
+> * Remove Debian Stretch as it is EOL [Trong Nghia Nguyen]
+> 
+</details>
+
+* Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca [renovate[bot]]
+
 # v2.99.29
 ## (2022-07-14)
 
