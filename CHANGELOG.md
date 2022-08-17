@@ -1,6 +1,29 @@
 # Change Log
 -----------
 
+# v2.101.7
+## (2022-08-17)
+
+
+<details>
+<summary> Update layers/meta-balena to 61b53fbb8b667de54707cc6aa94fd79674958856 [renovate[bot]] </summary>
+
+> ## meta-balena-2.101.7
+> ### (2022-08-17)
+> 
+> * Add automated tests for the Engine healthcheck [Leandro Motta Barros]
+> * Use a lightweight Engine healthcheck [Leandro Motta Barros]
+> * Make Engine watchdog termination graceful [Leandro Motta Barros]
+> 
+> ## meta-balena-2.101.6
+> ### (2022-08-15)
+> 
+> * tests/cloud: fix ssh prod test for physical duts [rcooke-warwick]
+> 
+</details>
+
+* Modify layer ordering [Alex Gonzalez]
+
 # v2.101.5+rev1
 ## (2022-08-15)
 
