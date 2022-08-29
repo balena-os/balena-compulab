@@ -1,4 +1,36 @@
 - commits:
+    - subject: Update layers/meta-balena to 59f3caaab340bf15bf562b60e1f7315c437e1297
+      hash: 5654157b797cd8a012293f7fc83da77f487b0737
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 59f3caaab340bf15bf562b60e1f7315c437e1297
+        changelog-entry: Update layers/meta-balena to 59f3caaab340bf15bf562b60e1f7315c437e1297
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "meta-balena-thud: initramfs: Fix building with latest meta-balena"
+              hash: 30bc6e7d27fb2ceaff5ea241fdd0e7b8224b84ea
+              body: >
+                The latest meta-balena includes `util-linux-findmnt` as a kexec
+                module
+
+                dependency and this package has not yet been split from `util-linux` in
+
+                thud.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.102.1
+          title: "'meta-balena-thud: initramfs: Fix building with latest meta-balena'"
+          date: 2022-08-29T08:26:13.610Z
+  version: 2.102.1
+  title: "'Update layers/meta-balena digest to 59f3caa'"
+  date: 2022-08-29T14:55:48.122Z
+- commits:
     - subject: Update layers/meta-balena to 09dd67ef6a3abd1e9048bb39a2b9a02dc3af18c3
       hash: 90a5a32d2729eaa70ba64c311363b3b2ed3b7d8b
       body: Update layers/meta-balena
