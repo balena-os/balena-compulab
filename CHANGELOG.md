@@ -1,6 +1,20 @@
 # Change Log
 -----------
 
+# v2.105.11+rev4
+## (2022-10-25)
+
+
+<details>
+<summary> Update contracts to c311e6f8a9832587b3bb687b22a92574b790c688 [renovate[bot]] </summary>
+
+> ## contracts-2.0.23
+> ### (2022-10-25)
+> 
+> * sw.os+hw.device-type: Add distro-config.tpl for jetson-agx-orin-devkit [Alexandru Costache]
+> 
+</details>
+
 # v2.105.11+rev3
 ## (2022-10-24)
 
