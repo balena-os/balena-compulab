@@ -23,20 +23,5 @@ then
   fi
 fi
 
-# Initialize the fan
-if [ -d /sys/class/pwm/pwmchip1 ]
-then
-  echo 0 > /sys/class/pwm/pwmchip1/export
-
-  sleep 1
-
-  if [ -d /sys/class/pwm/pwmchip1/pwm0 ]
-  then
-    echo 40000 > /sys/class/pwm/pwmchip1/pwm0/period
-    echo 40000 > /sys/class/pwm/pwmchip1/pwm0/duty_cycle
-    echo 1 > /sys/class/pwm/pwmchip1/pwm0/enable
-  fi
-fi
-
 exit 0
 

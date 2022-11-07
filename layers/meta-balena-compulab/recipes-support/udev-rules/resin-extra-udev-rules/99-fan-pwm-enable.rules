@@ -1,0 +1,2 @@
+SUBSYSTEM=="pwm", KERNEL=="pwmchip1", ACTION=="add", ATTR{export}="0"
+SUBSYSTEM=="pwm", KERNEL=="pwmchip1", ACTION=="change", ENV{EXPORT}=="pwm0", RUN+="/bin/bash -c \"/bin/echo  40000 | /usr/bin/tee /sys/%p/pwm0/period | /usr/bin/tee /sys/%p/pwm0/duty_cycle && /bin/echo 1 | /usr/bin/tee /sys/%p/pwm0/enable\""
