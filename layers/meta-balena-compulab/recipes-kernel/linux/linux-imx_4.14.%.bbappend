@@ -9,6 +9,7 @@ SRC_URI_append = " \
         file://0006-NFLX-2019-001-Resour-Consump-Low-MSS.patch \
         file://USB3-stability-fix.patch \
         file://0001-Add-support-for-NXP-PCA9956B-LED-controller.patch \
+        file://0024-Send-a-uevent-on-the-pwmchip-device-upon-channel-sysfs-export.patch \
 "
 
 SRC_URI_append_etcher-pro = " \
