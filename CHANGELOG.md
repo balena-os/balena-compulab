@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.105.11+rev9
+## (2022-11-09)
+
+* Exposing FAN PWM to user-space and setting default fan speed to 100% [Aurelien VALADE]
+
 # v2.105.11+rev8
 ## (2022-11-09)
 

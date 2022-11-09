@@ -1,4 +1,20 @@
 - commits:
+    - subject: Exposing FAN PWM to user-space and setting default fan speed to 100%
+      hash: 3d5931ecc7eee531220c9572c25db579c8adb1a0
+      body: ""
+      footer:
+        Changelog-entry: Exposing FAN PWM to user-space and setting default fan speed to 100%
+        changelog-entry: Exposing FAN PWM to user-space and setting default fan speed to 100%
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Aurelien VALADE <aurelien.valade@balena.io>
+        signed-off-by: Aurelien VALADE <aurelien.valade@balena.io>
+      author: Aurelien VALADE
+      nested: []
+  version: 2.105.11+rev9
+  title: ""
+  date: 2022-11-09T15:29:34.504Z
+- commits:
     - subject: Update contracts to b20827d63cbe7b1168f2b63b3bde216231e1b4ba
       hash: 15a4ae2c31f696bba325b09718d0cdd80a48ce46
       body: Update contracts
