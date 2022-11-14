@@ -1,6 +1,20 @@
 # Change Log
 -----------
 
+# v2.105.11+rev10
+## (2022-11-14)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 3fbd0884bd7d599664587d0ab25fea22d77323ba [renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.19.14
+> ### (2022-11-10)
+> 
+> * jenkins_generate_ami: use a different token [Alex Gonzalez]
+> 
+</details>
+
 # v2.105.11+rev9
 ## (2022-11-09)
 
