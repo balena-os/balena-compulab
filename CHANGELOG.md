@@ -1,6 +1,169 @@
 # Change Log
 -----------
 
+# v2.106.6
+## (2022-11-15)
+
+
+<details>
+<summary> Update layers/meta-balena to 0bcd2db1e6e5bf04ad2882028aa26cbab0ee49ea [renovate[bot]] </summary>
+
+> ## meta-balena-2.106.6
+> ### (2022-11-15)
+> 
+> * Update balena-os/balena-supervisor to v14.3.3 [renovate[bot]]
+> 
+> ## meta-balena-2.106.5
+> ### (2022-11-14)
+> 
+> * openvpn: fix a race condition that leaves system with no running supervisor [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.4
+> ### (2022-11-12)
+> 
+> * ssh-auth: setConfig: run synchronously [Alex Gonzalez]
+> * cloud: ssh-auth: use custom path for custom key [Alex Gonzalez]
+> * balena-config-vars: Set permissions for cache file [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.3
+> ### (2022-11-11)
+> 
+> * common: kernel-devsrc: fix pseudo abort [Joseph Kogut]
+> 
+> ## meta-balena-2.106.2
+> ### (2022-11-10)
+> 
+> * flasher: minor formatting [Joseph Kogut]
+> * flasher: fix detection and exclusion of installation media [Joseph Kogut]
+> * flasher: properly expand device_pattern globs [Joseph Kogut]
+> 
+> ## meta-balena-2.106.1
+> ### (2022-11-10)
+> 
+> * tests: cloud: use cloud ssh to avoid race cond [rcooke-warwick]
+> 
+> ## meta-balena-2.106.0
+> ### (2022-11-10)
+> 
+> * Update balena-os/balena-supervisor to v14.3.0 [renovate[bot]]
+> 
+> ## meta-balena-2.105.32
+> ### (2022-11-09)
+> 
+> * Enable network access for tasks talking to the signing service [Michal Toman]
+> 
+> ## meta-balena-2.105.31
+> ### (2022-11-08)
+> 
+> * Add meta-balena-esr workflow [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.30
+> ### (2022-11-08)
+> 
+> * tests: os: ensure by-state links are created [Joseph Kogut]
+> 
+> ## meta-balena-2.105.29
+> ### (2022-11-07)
+> 
+> * prepare-openvpn: do not use cached configuration [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.28
+> ### (2022-11-06)
+> 
+> * patch: Delete conf.js for test suites [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.105.27
+> ### (2022-11-04)
+> 
+> * wpa-supplicant: Sync with v2.10 from upstream [Zahari Petkov]
+> 
+> ## meta-balena-2.105.26
+> ### (2022-11-04)
+> 
+> * patch: Skip HUP suite if no releases found [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.105.25
+> ### (2022-11-04)
+> 
+> * Update balena-os/balena-supervisor to v14.2.20 [renovate[bot]]
+> 
+> ## meta-balena-2.105.24
+> ### (2022-11-03)
+> 
+> * Update balena-os/balena-supervisor to v14.2.18 [renovate[bot]]
+> 
+> ## meta-balena-2.105.23
+> ### (2022-11-01)
+> 
+> * tests: hup: handle exception when unwrapping non-flasher image [Joseph Kogut]
+> 
+> ## meta-balena-2.105.22
+> ### (2022-11-01)
+> 
+> * Update Docs Link Updated the link in the docs to the device-type listings (on hub as SOT) [Ryan H]
+> 
+> ## meta-balena-2.105.21
+> ### (2022-10-27)
+> 
+> * openssh: allow RSA signatures with SHA1 algorithms [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.20
+> ### (2022-10-26)
+> 
+> * meta-resin-sumo: libical: Fix build QA error [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.19
+> ### (2022-10-26)
+> 
+> * meta-resin-sumo: keep tpm2-tools in 5.0 [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.18
+> ### (2022-10-25)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to f83df7d [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.0
+>> #### (2022-10-25)
+>> 
+>> * minor: Add @balena/leviathan-test-helpers package [Vipul Gupta (@vipulgupta2048)]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.105.17
+> ### (2022-10-21)
+> 
+> * tests: hup: reduce num. flashes and  hostapp sends [rcooke-warwick]
+> 
+> ## meta-balena-2.105.16
+> ### (2022-10-20)
+> 
+> * common: openvpn: remove resin.conf [Joseph Kogut]
+> 
+> ## meta-balena-2.105.15
+> ### (2022-10-19)
+> 
+> * Revert "chrony: update to version 4.1 to match kirkstone's version" [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.14
+> ### (2022-10-18)
+> 
+> * patch: Enable RPi3-64 for Device tree tests [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.105.13
+> ### (2022-10-18)
+> 
+> * ntp: Remove race condition from directory creation [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.12
+> ### (2022-10-17)
+> 
+> * classes: kernel-balena: Allow aufs patching to use network [Alex Gonzalez]
+> 
+</details>
+
 # v2.105.11+rev10
 ## (2022-11-14)
 
