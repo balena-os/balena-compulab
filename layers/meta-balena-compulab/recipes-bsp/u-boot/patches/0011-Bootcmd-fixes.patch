@@ -37,7 +37,7 @@ index 8fa6239..64b1867 100644
  	"setenv mmcbootpart ${resin_boot_part};" \
  	"run set_fdt_file;" \
 -	"setenv mmcdev 1; run mmc_boot; run usb_boot; setenv mmcdev 0; run mmc_boot;"
-+	"run mmc_boot; echo ERROR Could not boot from emmc device ${mmcdev};"
++	"setenv mmcdev 1; run mmc_boot; setenv mmcdev 0; run mmc_boot;"
  
  /* Link Definitions */
  #define CONFIG_LOADADDR			0x40480000
