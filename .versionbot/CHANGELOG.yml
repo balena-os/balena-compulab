@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to 57b65123e0804b4447c6808db5780dd26cd31dc0
+      hash: eec6ab823f4ca9c59f9aa1bc03c0bd0fc2fb970a
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 57b65123e0804b4447c6808db5780dd26cd31dc0
+        changelog-entry: Update layers/meta-balena to 57b65123e0804b4447c6808db5780dd26cd31dc0
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Updated CBS Docs Updated link to the CDS Product Repo
+              hash: 8513275e98d0fec277c0b4dd98acc20fa90812f7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Hampton (@rhampt) <rhampt@balena.io>
+                signed-off-by: Ryan Hampton (@rhampt) <rhampt@balena.io>
+              author: Ryan H
+              nested: []
+          version: meta-balena-2.107.15
+          title: ""
+          date: 2022-12-01T16:39:52.944Z
+  version: 2.107.15
+  title: ""
+  date: 2022-12-01T21:05:03.032Z
+- commits:
     - subject: Update layers/meta-balena to 8ea20f929eeb3f52b23874c3bd951c961329ad29
       hash: cbf8860cfc1d03cb9da14131e8a39e72f85f62c2
       body: Update layers/meta-balena
