@@ -1,6 +1,40 @@
 # Change Log
 -----------
 
+# v2.107.38+rev1
+## (2023-01-07)
+
+
+<details>
+<summary> Update contracts to d647331a48dfbc6d398139831054d41fa52f79da [renovate[bot]] </summary>
+
+> ## contracts-2.0.37
+> ### (2023-01-07)
+> 
+> * Add node v18.13.0 and v19.4.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.36
+> ### (2022-12-22)
+> 
+> * Fix owa5x slug [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.35
+> ### (2022-12-20)
+> 
+> * hw.device-type: Add Owasys owa5X device [Alvaro Guzman]
+> 
+> ## contracts-2.0.34
+> ### (2022-12-16)
+> 
+> * Flowzone: Allow external contributions [Florin Sarbu]
+> 
+> ## contracts-2.0.33
+> ### (2022-12-16)
+> 
+> * Flowzone: Use inherited secrets [Florin Sarbu]
+> 
+</details>
+
 # v2.107.38
 ## (2022-12-16)
 

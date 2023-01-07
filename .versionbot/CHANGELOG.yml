@@ -1,4 +1,83 @@
 - commits:
+    - subject: Update contracts to d647331a48dfbc6d398139831054d41fa52f79da
+      hash: dcf2266c72d560271da4734ef8ecf137ab3c0b2a
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to d647331a48dfbc6d398139831054d41fa52f79da
+        changelog-entry: Update contracts to d647331a48dfbc6d398139831054d41fa52f79da
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add node v18.13.0 and v19.4.0
+              hash: 1275cdf7aa7f5a21aeac0edaca9c28906fbc957d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.37
+          title: ""
+          date: 2023-01-07T04:47:17.778Z
+        - commits:
+            - subject: Fix owa5x slug
+              hash: a310eafb4ebf50b4c91f40dca5ba0122e0949949
+              body: |
+                Only use lowercase in slug name
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.36
+          title: ""
+          date: 2022-12-22T11:15:02.988Z
+        - commits:
+            - subject: "hw.device-type: Add Owasys owa5X device"
+              hash: d92fb422d14da698061c53422ae7bfb4fdd64b03
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alvaro Guzman <alvaro.guzman@owasys.com>
+                signed-off-by: Alvaro Guzman <alvaro.guzman@owasys.com>
+              author: Alvaro Guzman
+          version: contracts-2.0.35
+          title: ""
+          date: 2022-12-20T11:53:50.722Z
+        - commits:
+            - subject: "Flowzone: Allow external contributions"
+              hash: bb2226cc9e36d056d33c70cb3926ce58b9e47e28
+              body: |
+                Update the flowzone workflow to allow external PRs from forks
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.34
+          title: ""
+          date: 2022-12-16T15:12:18.550Z
+        - commits:
+            - subject: "Flowzone: Use inherited secrets"
+              hash: 8d5f9d9f28de663b32b58999f076dd7932dbaa3b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.33
+          title: ""
+          date: 2022-12-16T14:46:36.924Z
+  version: 2.107.38+rev1
+  title: ""
+  date: 2023-01-07T06:47:42.007Z
+- commits:
     - subject: Update layers/meta-balena to fb94465957a60691b15731b39b6b22ad616a62d4
       hash: afef296dc34c50e84fc6350d0b09910f1f2b3440
       body: Update layers/meta-balena
