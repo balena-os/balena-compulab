@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.107.38+rev2
+## (2023-01-24)
+
+* remove resin from extra-udev-rules recipe naming [Alex Gonzalez]
+
 # v2.107.38+rev1
 ## (2023-01-20)
 

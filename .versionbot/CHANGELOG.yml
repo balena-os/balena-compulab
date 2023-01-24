@@ -1,4 +1,20 @@
 - commits:
+    - subject: remove resin from extra-udev-rules recipe naming
+      hash: 453ea24b47b2243445651ea9009042054aedc014
+      body: |
+        This recipe has been renamed in meta-balena to get rid of the legacy
+        branding.
+      footer:
+        Changelog-entry: remove resin from extra-udev-rules recipe naming
+        changelog-entry: remove resin from extra-udev-rules recipe naming
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.107.38+rev2
+  title: ""
+  date: 2023-01-24T10:44:04.504Z
+- commits:
     - subject: Add ESR workflow
       hash: 76a11b2b7f9cba2dd3a8614d39695cf0b98114ca
       body: |
