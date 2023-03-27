@@ -1,6 +1,115 @@
 # Change Log
 -----------
 
+# v2.113.29
+## (2023-03-27)
+
+
+<details>
+<summary> Update layers/meta-balena to 5841b817cd3a0f2ffc063e586b7ed215655afb1c [Renovate Bot] </summary>
+
+> ## meta-balena-2.113.29
+> ### (2023-03-27)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.9.8 [Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.9.8
+>> #### (2023-03-27)
+>> 
+>> * Revert "Use multi-arch in dockerfile" [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.113.28
+> ### (2023-03-27)
+> 
+> * README: modify migration documentation to match module [Alex Gonzalez]
+> 
+> ## meta-balena-2.113.27
+> ### (2023-03-24)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.9.7 [Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.9.7
+>> #### (2023-03-23)
+>> 
+>> * Add missing log backend field assignment in logger init [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-14.9.6
+>> #### (2023-03-23)
+>> 
+>> * Update deploy-to-balena action to 0.26.2 [Felipe Lalanne]
+>> * Use multi-arch in dockerfile [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.9.5
+>> #### (2023-03-20)
+>> 
+>> * Use log endpoint subdomain if it exists in config.json [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.113.26
+> ### (2023-03-23)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.32 [Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.32
+>> #### (2023-03-21)
+>> 
+>> * Installer: Make the script POSIX-compliant [Leandro Motta Barros]
+>> * Installer: Improve handling of su/sudo [Leandro Motta Barros]
+>> * Installer: Improve checking for dependencies [Leandro Motta Barros]
+>> * Installer: remove support for the 386 architecture [Leandro Motta Barros]
+>> * Remove the installation script from docs/ [Leandro Motta Barros]
+>> 
+>> ### balena-engine-20.10.31
+>> #### (2023-03-20)
+>> 
+>> * Remove references to deprecated build targets [Kyle Harding]
+>> * Revert "Cross-build the dynbinary target" [Kyle Harding]
+>> 
+>> ### balena-engine-20.10.30
+>> #### (2023-03-13)
+>> 
+>> * Fix typos in the masterclass docs [Leandro Motta Barros]
+>> * patch: Migrate balenaEngine Debugging docs from masterclass [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### balena-engine-20.10.29
+>> #### (2023-02-20)
+>> 
+>> * Rename test functions for better clarity [Leandro Motta Barros]
+>> * Add test case for the delta image store [Leandro Motta Barros]
+>> * Add dev-focused docs on some balenaEngine features [Leandro Motta Barros]
+>> * Simplify test code by using new std lib function [Leandro Motta Barros]
+>> * Set the delta image store, fix delta-based HUPs [Leandro Motta Barros]
+>> 
+>> ### balena-engine-20.10.28
+>> #### (2023-02-20)
+>> 
+>> * Disable builds for linux/386 [Leandro Motta Barros]
+>> 
+>> ### balena-engine-20.10.27
+>> #### (2023-02-07)
+>> 
+>> * Merge upstream v20.10.17 [Leandro Motta Barros]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v2.113.25
 ## (2023-03-23)
 
