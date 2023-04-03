@@ -15,7 +15,7 @@
 	url = https://github.com/compulab-yokneam/meta-bsp-imx8mq.git
 [submodule "layers/meta-fsl-bsp-release"]
         path = layers/meta-fsl-bsp-release
-        url = https://source.codeaurora.org/external/imx/meta-fsl-bsp-release
+        url = https://git.codelinaro.org/clo/imx-support/meta-fsl-bsp-release.git
 [submodule "layers/meta-openembedded"]
 	path = layers/meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
