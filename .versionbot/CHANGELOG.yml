@@ -1,4 +1,32 @@
 - commits:
+    - subject: Update contracts to a7fa4ca620414f2a2742210c5f97e0c207fa660b
+      hash: cf296a773364e568eb06bfff6a72e48873eb87a5
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to a7fa4ca620414f2a2742210c5f97e0c207fa660b
+        changelog-entry: Update contracts to a7fa4ca620414f2a2742210c5f97e0c207fa660b
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "jetson-orin-nx-xavier-nx-devkit: Add contract for device type"
+              hash: ddae0174c36b0893d723308d948d72c276787ed5
+              body: |
+                The provisioning instructions are incomplete at this time, they
+                will be updated once the balenaOS integration is complete. The
+                device needs to be inspected in staging first.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.56
+          title: ""
+          date: 2023-04-04T08:46:42.967Z
+  version: 2.113.33+rev1
+  title: ""
+  date: 2023-04-04T10:14:27.912Z
+- commits:
     - subject: Update layers/meta-balena to 98b6efa43d3d83df72b49b4caed6ade5b5326fa9
       hash: 388cf590aee4ca46b0eeb77f7291cb4e022b76c0
       body: Update layers/meta-balena
