@@ -1,6 +1,12 @@
 # Change Log
 -----------
 
+# v2.113.29+rev1
+## (2023-04-04)
+
+* layers/meta-fsl-bsp: update meta-fsl-bsp module url [rcooke-warwick]
+* Update contracts to fa51fae4b720521334626045c25f754a046f6228 [Renovate Bot]
+
 # v2.113.29
 ## (2023-03-27)
 

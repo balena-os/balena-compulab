@@ -1,4 +1,26 @@
 - commits:
+    - subject: "layers/meta-fsl-bsp: update meta-fsl-bsp module url"
+      hash: 67580e04826ed730b2b238958b48e41372e960b5
+      body: ""
+      footer:
+        Changelog-entry: "layers/meta-fsl-bsp: update meta-fsl-bsp module url"
+        changelog-entry: "layers/meta-fsl-bsp: update meta-fsl-bsp module url"
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: rcooke-warwick
+      nested: []
+    - subject: Update contracts to fa51fae4b720521334626045c25f754a046f6228
+      hash: 40f5223051309eb4d7fa8d1336ea1ad99275a150
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to fa51fae4b720521334626045c25f754a046f6228
+        changelog-entry: Update contracts to fa51fae4b720521334626045c25f754a046f6228
+      author: Renovate Bot
+      nested: []
+  version: 2.113.29+rev1
+  title: ""
+  date: 2023-04-04T07:21:07.531Z
+- commits:
     - subject: Update layers/meta-balena to 5841b817cd3a0f2ffc063e586b7ed215655afb1c
       hash: b7db000a647276497c1ee05c3b3d4c6d0d37dff1
       body: Update layers/meta-balena
