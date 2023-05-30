@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.115.3+rev2
+## (2023-05-30)
+
+* Update layers/meta-freescale to 4b77020881dc8f885c41d9744a4eb994024018c4 [Self-hosted Renovate Bot]
+
 # v2.115.3+rev1
 ## (2023-05-30)
 

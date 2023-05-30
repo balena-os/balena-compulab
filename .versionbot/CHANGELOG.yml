@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update layers/meta-freescale to 4b77020881dc8f885c41d9744a4eb994024018c4
+      hash: f8e81b891b469556f8c85bf8a496ecae06dd7415
+      body: Update layers/meta-freescale
+      footer:
+        Changelog-entry: Update layers/meta-freescale to
+          4b77020881dc8f885c41d9744a4eb994024018c4
+        changelog-entry: Update layers/meta-freescale to
+          4b77020881dc8f885c41d9744a4eb994024018c4
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 2.115.3+rev2
+  title: ""
+  date: 2023-05-30T18:20:32.998Z
+- commits:
     - subject: Update layers/meta-bsp-imx8mq to 65f4a493a0a7b2315822e1a5b31ac639b64c74e2
       hash: d7239934d583a8f0516825b585791d9c8ea4367a
       body: Update layers/meta-bsp-imx8mq
