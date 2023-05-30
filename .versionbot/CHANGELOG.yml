@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update layers/meta-rust to e3082dc0728023b121d648da4c5c856943b5e425
+      hash: e9167acab3d0a847c36ab48fd8bd8bae6a6d7909
+      body: Update layers/meta-rust
+      footer:
+        Changelog-entry: Update layers/meta-rust to e3082dc0728023b121d648da4c5c856943b5e425
+        changelog-entry: Update layers/meta-rust to e3082dc0728023b121d648da4c5c856943b5e425
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 2.115.3+rev5
+  title: ""
+  date: 2023-05-30T21:21:51.458Z
+- commits:
     - subject: Update layers/poky to f79046d082f3a7752e6780b2990470dcd36cbba4
       hash: c2f62a401e720118f4abcaeea074e83b859f0345
       body: Update layers/poky
