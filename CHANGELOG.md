@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v2.115.3+rev1
+## (2023-05-30)
+
+* Update layers/meta-bsp-imx8mq to 65f4a493a0a7b2315822e1a5b31ac639b64c74e2 [Self-hosted Renovate Bot]
+
 # v2.115.3
 ## (2023-05-29)
 
