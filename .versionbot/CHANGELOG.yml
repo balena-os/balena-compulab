@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update layers/poky to f79046d082f3a7752e6780b2990470dcd36cbba4
+      hash: c2f62a401e720118f4abcaeea074e83b859f0345
+      body: Update layers/poky
+      footer:
+        Changelog-entry: Update layers/poky to f79046d082f3a7752e6780b2990470dcd36cbba4
+        changelog-entry: Update layers/poky to f79046d082f3a7752e6780b2990470dcd36cbba4
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 2.115.3+rev4
+  title: ""
+  date: 2023-05-30T20:21:11.021Z
+- commits:
     - subject: Update layers/meta-freescale to a846b664842f5903248a4269b6b82f8d0fcbbe7b
       hash: 686550c66cc6934db2942501c73a49a11876fac6
       body: Update layers/meta-freescale
