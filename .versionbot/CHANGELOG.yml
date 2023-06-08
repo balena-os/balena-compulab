@@ -1,4 +1,73 @@
 - commits:
+    - subject: Update layers/meta-balena to f06ec1fc32f6c5baa0c734eaf9e94ee88f7993bb
+      hash: c2f875d9e883b178dc14a48cb054abbefbeab6e0
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f06ec1fc32f6c5baa0c734eaf9e94ee88f7993bb
+        changelog-entry: Update layers/meta-balena to f06ec1fc32f6c5baa0c734eaf9e94ee88f7993bb
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "docs: Make secure boot docs more detailed"
+              hash: 96ec764b245197380d58a556949011ab444ce96e
+              body: >
+                This patch extends secure boot documentation with more details
+                about
+
+                how the feature works and tries to explain why some decisions were made.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.115.4
+          title: ""
+          date: 2023-06-01T09:37:58.007Z
+    - subject: Update balena-yocto-scripts to e9f9ef5b729ac01f0b8efe0a16187fbb00d0bf54
+      hash: 2ca7c2a485ae8d719c106852efcb7705a6d6115d
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to e9f9ef5b729ac01f0b8efe0a16187fbb00d0bf54
+        changelog-entry: Update balena-yocto-scripts to e9f9ef5b729ac01f0b8efe0a16187fbb00d0bf54
+      author: Self-hosted Renovate Bot
+      nested: []
+    - subject: Remove pull_request_target event run for ESR targets
+      hash: cd38d5ed3e5d6b9235f920d89f80fbe40684f13e
+      body: >
+        Backporting to ESR branches hits a flowzone error as both pull_request
+
+        and pull_request_target run and this only works for master.
+
+
+        Removing the pull_request_target run for ESR branches fixes this, but
+
+        also removes the possibility of external pull requests into ESR branches,
+
+        which we don't actually need.
+
+
+        [skip ci]
+      footer:
+        Changelog-entry: Remove pull_request_target event run for ESR targets
+        changelog-entry: Remove pull_request_target event run for ESR targets
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Update balena-os/github-workflows to
+      hash: ea86fee620571c23b3f3e6f7a8f241e5481938ea
+      body: Update balena-os/github-workflows
+      footer:
+        Changelog-entry: Update balena-os/github-workflows to
+        changelog-entry: Update balena-os/github-workflows to
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 2.115.4
+  title: ""
+  date: 2023-06-08T10:06:39.467Z
+- commits:
     - subject: Update balena-yocto-scripts to e9f9ef5b729ac01f0b8efe0a16187fbb00d0bf54
       hash: 2ca7c2a485ae8d719c106852efcb7705a6d6115d
       body: Update balena-yocto-scripts

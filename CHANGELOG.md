@@ -1,6 +1,25 @@
 # Change Log
 -----------
 
+# v2.115.4
+## (2023-06-08)
+
+
+<details>
+<summary> Update layers/meta-balena to f06ec1fc32f6c5baa0c734eaf9e94ee88f7993bb [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-2.115.4
+> ### (2023-06-01)
+> 
+> * docs: Make secure boot docs more detailed [Michal Toman]
+> 
+
+</details>
+
+* Update balena-yocto-scripts to e9f9ef5b729ac01f0b8efe0a16187fbb00d0bf54 [Self-hosted Renovate Bot]
+* Remove pull_request_target event run for ESR targets [Alex Gonzalez]
+* Update balena-os/github-workflows to [Self-hosted Renovate Bot]
+
 # v2.115.3+rev2
 ## (2023-06-08)
 
