@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v3.0.8+rev2
+## (2023-07-13)
+
+* conf/layer: Pin to older ModemManager version [Alexandru Costache]
+
 # v3.0.8+rev1
 ## (2023-07-12)
 

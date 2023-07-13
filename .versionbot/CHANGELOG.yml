@@ -1,4 +1,23 @@
 - commits:
+    - subject: "conf/layer: Pin to older ModemManager version"
+      hash: 6488122bedb02d9701249bd7b3e55b0ecfc66364
+      body: |
+        and do the same for libmbim and libqmi, because
+        the MM update in meta-balena won't work with
+        Meson older than 0.53.0
+
+        Connects-to: https://github.com/balena-os/meta-balena/pull/3184
+      footer:
+        Changelog-entry: "conf/layer: Pin to older ModemManager version"
+        changelog-entry: "conf/layer: Pin to older ModemManager version"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 3.0.8+rev2
+  title: ""
+  date: 2023-07-13T12:31:43.423Z
+- commits:
     - subject: Update balena-yocto-scripts to 45e32821ac6e3efba81e24a21e417a375da5e154
       hash: 80adc8882ba34fe4fa9de4a0823fdb8cc4f1ce43
       body: Update balena-yocto-scripts
