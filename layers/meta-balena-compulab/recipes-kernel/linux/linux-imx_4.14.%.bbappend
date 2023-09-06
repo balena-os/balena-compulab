@@ -10,6 +10,7 @@ SRC_URI_append = " \
         file://USB3-stability-fix.patch \
         file://0001-Add-support-for-NXP-PCA9956B-LED-controller.patch \
         file://0024-Send-a-uevent-on-the-pwmchip-device-upon-channel-sysfs-export.patch \
+        file://0001-scripts-dtc-Remove-redundant-YYLOC-global-declaratio.patch \
 "
 
 SRC_URI_append_etcher-pro = " \
