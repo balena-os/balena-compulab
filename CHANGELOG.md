@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v3.2.11+rev2
+## (2023-09-06)
+
+* fix linux-imx compilation for gcc-10 [Alex Gonzalez]
+
 # v3.2.11+rev1
 ## (2023-09-04)
 

@@ -1,4 +1,20 @@
 - commits:
+    - subject: fix linux-imx compilation for gcc-10
+      hash: 9c59ebb3fd89cb5e50e6c1790f6e5e45692240b7
+      body: |
+        Newer gcc versions are used when building the kernel for the
+        kernel-header-test packages in newer meta-balena versions.
+      footer:
+        Changelog-entry: fix linux-imx compilation for gcc-10
+        changelog-entry: fix linux-imx compilation for gcc-10
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 3.2.11+rev2
+  title: ""
+  date: 2023-09-06T09:51:43.085Z
+- commits:
     - subject: Update contracts to 518a1d424f09a11dc1b60a16026bfe8ffe07ca78
       hash: 21813dc5ae5962508aad80ef9605ab3670266917
       body: Update contracts
