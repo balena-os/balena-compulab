@@ -1,6 +1,21 @@
 # Change Log
 -----------
 
+# v5.1.21+rev1
+## (2024-02-02)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 24b1d6737c8a0159da6d28f5a6afe50ed5080ab8 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.20.0
+> ### (2024-02-02)
+> 
+> * Remove unused block-build functions [Kyle Harding]
+> 
+
+</details>
+
 # v5.1.21
 ## (2024-02-01)
 
