@@ -1,4 +1,32 @@
 - commits:
+    - subject: Update layers/meta-balena to b551e7d7a37d040165676862dba5a29ff1109b13
+      hash: 6d8018e06103bfbbc2c4106b21bcffe68f39603d
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to b551e7d7a37d040165676862dba5a29ff1109b13
+        changelog-entry: Update layers/meta-balena to b551e7d7a37d040165676862dba5a29ff1109b13
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update contributing-device-support with balena-info documentation
+              hash: a42c71a14701a2d06d3025abfbbbc869c52b062d
+              body: |
+                Info on the ascii art for consoles was missing, so we add that
+                in this commit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru
+              nested: []
+          version: meta-balena-5.2.2
+          title: ""
+          date: 2024-03-20T03:17:05.884Z
+  version: 5.2.2
+  title: ""
+  date: 2024-03-20T06:18:09.867Z
+- commits:
     - subject: Update layers/meta-balena to 74e89b4f4904b418882cb3dd9ef2c0bd360d8713
       hash: 0235312a58378cfbf9f634495f45990bf1aa00d6
       body: Update layers/meta-balena
