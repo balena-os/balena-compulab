@@ -1,4 +1,42 @@
 - commits:
+    - subject: Update contracts to d06ad25196f67c4d20ad309941192fdddf80e307
+      hash: 76a9c8c7a4f9ed16bfe1ec7a4ec43fa01402ea69
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to d06ad25196f67c4d20ad309941192fdddf80e307
+        changelog-entry: Update contracts to d06ad25196f67c4d20ad309941192fdddf80e307
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Remove Ubuntu Lunar 23.04 since it's EOL
+              hash: cac2042866f3e93d46b16a3e62cb65aeec43fac9
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                See: https://endoflife.date/ubuntu
+                see: https://endoflife.date/ubuntu
+              author: Thodoris Greasidis
+          version: contracts-2.0.103
+          title: ""
+          date: 2024-04-11T12:22:51.474Z
+        - commits:
+            - subject: Remove Fedora 36 since it's EOL
+              hash: 6c404c7f3e623650beb5c74ec0a4e31e9cac9c48
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                See: https://endoflife.date/fedora
+                see: https://endoflife.date/fedora
+              author: Thodoris Greasidis
+          version: contracts-2.0.102
+          title: ""
+          date: 2024-04-11T10:44:54.487Z
+  version: 5.2.4+rev3
+  title: ""
+  date: 2024-04-11T16:46:43.521Z
+- commits:
     - subject: Update contracts to 619554d6126d299a8349a065e49bcdbe855f3293
       hash: fe0f007179a493640e9ee5d9a2023e1e9b5f222c
       body: Update contracts
