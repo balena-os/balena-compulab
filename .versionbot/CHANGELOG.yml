@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update layers/meta-balena to f212a46b75701da1ad174eaca183c5b9f55075ec
+      hash: 6404c429f4b98316967708c2d6e018815128a4da
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f212a46b75701da1ad174eaca183c5b9f55075ec
+        changelog-entry: Update layers/meta-balena to f212a46b75701da1ad174eaca183c5b9f55075ec
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "contributing-device-support.md: Rework repo transfer and autokit
+                requirement steps"
+              hash: d9b9d5e0f084ab9370ff69468f8a14b25148fb47
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-5.3.2
+          title: ""
+          date: 2024-04-25T00:38:23.057Z
+  version: 5.3.2
+  title: ""
+  date: 2024-04-25T03:37:10.648Z
+- commits:
     - subject: Update layers/meta-balena to 2e58bc5bb95af8ab7f27a3943ebb34761424445c
       hash: a4389a471565a656a0f49e5b9223426f6ea735d6
       body: Update layers/meta-balena
