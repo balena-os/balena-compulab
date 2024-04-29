@@ -1,4 +1,38 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 9467c78fa81511321fe952477b316e830742760c
+      hash: c27111ff3f40e2a883767a7f89004a3f3e009694
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 9467c78fa81511321fe952477b316e830742760c
+        changelog-entry: Update balena-yocto-scripts to 9467c78fa81511321fe952477b316e830742760c
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Support commit tags when extracting version tag from git
+              hash: 98fec51fae4721224e64cfec52480a5f17b8e271
+              body: >
+                Git describe does not include commit tags by default, and only
+                annotated tags are shown.
+
+
+                This behaviour was fine until a recent CI issue changed the
+                types of tags used to version the repositories.
+
+
+                This commit allows supporting of both types while the CI issue
+                is investigated.
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.21.8
+          title: ""
+          date: 2024-04-29T17:17:30.203Z
+  version: 5.3.2+rev1
+  title: ""
+  date: 2024-04-29T19:55:48.454Z
+- commits:
     - subject: Update layers/meta-balena to f212a46b75701da1ad174eaca183c5b9f55075ec
       hash: 6404c429f4b98316967708c2d6e018815128a4da
       body: Update layers/meta-balena
