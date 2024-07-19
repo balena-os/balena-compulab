@@ -2,31 +2,39 @@
 	path = balena-yocto-scripts
 	url = https://github.com/balena-os/balena-yocto-scripts.git
 	branch = master
+
 [submodule "layers/meta-rust"]
 	path = layers/meta-rust
 	url = https://github.com/meta-rust/meta-rust.git
+
 [submodule "layers/meta-balena"]
 	path = layers/meta-balena
 	url = https://github.com/balena-os/meta-balena.git
 	branch = master
+
 [submodule "layers/meta-freescale"]
 	path = layers/meta-freescale
 	url = https://github.com/Freescale/meta-freescale.git
 	branch = warrior
+
 [submodule "layers/meta-bsp-imx8mq"]
 	path = layers/meta-bsp-imx8mq
 	url = https://github.com/compulab-yokneam/meta-bsp-imx8mq.git
+
 [submodule "layers/meta-fsl-bsp-release"]
-        path = layers/meta-fsl-bsp-release
-        url = https://git.codelinaro.org/clo/imx-support/meta-fsl-bsp-release.git
+	path = layers/meta-fsl-bsp-release
+	url = https://git.codelinaro.org/clo/imx-support/meta-fsl-bsp-release.git
+
 [submodule "layers/meta-openembedded"]
 	path = layers/meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
 	branch = warrior
+
 [submodule "layers/poky"]
 	path = layers/poky
 	url = https://github.com/balena-os/poky
 	branch = warrior
+
 [submodule "contracts"]
 	path = contracts
 	url = https://github.com/balena-io/contracts.git
