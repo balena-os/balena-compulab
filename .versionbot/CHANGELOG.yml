@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update layers/meta-rust to a5136be2ba408af1cc8afcde1c8e3d787dadd934
+      hash: 8675d7e814a029fb077b4334a7d68ab4233b07e3
+      body: Update layers/meta-rust
+      footer:
+        Changelog-entry: Update layers/meta-rust to a5136be2ba408af1cc8afcde1c8e3d787dadd934
+        changelog-entry: Update layers/meta-rust to a5136be2ba408af1cc8afcde1c8e3d787dadd934
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.0.1+rev1
+  title: ""
+  date: 2024-07-25T17:47:48.433Z
+- commits:
     - subject: Update layers/meta-balena to 477bcf8a89128df43feca7e201bb4a5aac0e4dae
       hash: 3e0e73f086fcb87d0f9d444bdd7be2028313e1d9
       body: Update layers/meta-balena
