@@ -2,9 +2,6 @@
 	path = balena-yocto-scripts
 	url = https://github.com/balena-os/balena-yocto-scripts.git
 	branch = master
-[submodule "layers/meta-rust"]
-	path = layers/meta-rust
-	url = https://github.com/meta-rust/meta-rust.git
 [submodule "layers/meta-balena"]
 	path = layers/meta-balena
 	url = https://github.com/balena-os/meta-balena.git
