@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v6.0.1+rev2
+## (2024-08-08)
+
+* Migrate from codeaurora to nxp-github for u-boot-imx_2018.03 [Florin Sarbu]
+
 # v6.0.1+rev1
 ## (2024-07-25)
 

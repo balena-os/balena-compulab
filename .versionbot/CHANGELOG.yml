@@ -1,4 +1,19 @@
 - commits:
+    - subject: Migrate from codeaurora to nxp-github for u-boot-imx_2018.03
+      hash: 8f52b8aa7eef742dfa2f6a9c279cae9b9a334fdb
+      body: |
+        Codeaurora has been shutdown for a while
+      footer:
+        Changelog-entry: Migrate from codeaurora to nxp-github for u-boot-imx_2018.03
+        changelog-entry: Migrate from codeaurora to nxp-github for u-boot-imx_2018.03
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.0.1+rev2
+  title: ""
+  date: 2024-08-08T10:26:49.910Z
+- commits:
     - subject: Update layers/meta-rust to a5136be2ba408af1cc8afcde1c8e3d787dadd934
       hash: 8675d7e814a029fb077b4334a7d68ab4233b07e3
       body: Update layers/meta-rust
