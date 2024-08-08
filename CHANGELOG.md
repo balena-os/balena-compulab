@@ -1,6 +1,21 @@
 # Change Log
 -----------
 
+# v6.0.1+rev4
+## (2024-08-08)
+
+
+<details>
+<summary> Update contracts to bb77690aa0498f1060b64bebc183aea4fafb57e7 [balena-renovate[bot]] </summary>
+
+> ## contracts-2.0.111
+> ### (2024-08-08)
+> 
+> * patch: Add versionList to OpenJDK [Vipul Gupta (@vipulgupta2048)]
+> 
+
+</details>
+
 # v6.0.1+rev3
 ## (2024-08-08)
 
