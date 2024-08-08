@@ -1,6 +1,31 @@
 # Change Log
 -----------
 
+# v6.0.1+rev3
+## (2024-08-08)
+
+
+<details>
+<summary> Update contracts to 1663445fde467777e3d878e76193ea6fe9c1aefe [balena-renovate[bot]] </summary>
+
+> ## contracts-2.0.110
+> ### (2024-08-07)
+> 
+> * Add CompuLab iotdin-imx8p to harware contract. [Valentin Raevsky]
+> 
+> ## contracts-2.0.109
+> ### (2024-08-06)
+> 
+> * hw.device-type: Update provisioning instructions for AGX Orin 64GB [Alexandru]
+> 
+> ## contracts-2.0.108
+> ### (2024-07-25)
+> 
+> * hw.device-type: Add new device-type Jetson AGX Orin 64GB Devkit [Alexandru Costache]
+> 
+
+</details>
+
 # v6.0.1+rev2
 ## (2024-08-08)
 
