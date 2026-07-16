@@ -33,3 +33,9 @@ IMAGE_CMD_balenaos-img_append_cl-som-imx8 () {
     dd if=${DEPLOY_DIR_IMAGE}/imx-boot-${MACHINE}-sd.bin-flash_evk of=${BALENA_RAW_IMG} conv=notrunc seek=33 bs=1K
 }
 
+IMAGE_ROOTFS_SIZE_cl-som-imx8 = "327680"
+BALENA_BOOT_SIZE_cl-som-imx8 = "40960"
+BALENA_STATE_SIZE_cl-som-imx8 = "20480"
+IMAGE_ROOTFS_SIZE_etcher-pro = "327680"
+BALENA_BOOT_SIZE_etcher-pro = "40960"
+BALENA_STATE_SIZE_etcher-pro = "20480"
