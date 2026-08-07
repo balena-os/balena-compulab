@@ -1,7 +1,7 @@
 [submodule "balena-yocto-scripts"]
 	path = balena-yocto-scripts
 	url = https://github.com/balena-os/balena-yocto-scripts.git
-	branch = master
+	branch = bionic-warrior-compat
 [submodule "layers/meta-balena"]
 	path = layers/meta-balena
 	url = https://github.com/balena-os/meta-balena.git
