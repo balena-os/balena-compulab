@@ -67,3 +67,5 @@ HOSTTOOLS += "docker iptables"
 
 ACCEPT_FSL_EULA = "1"
 
+FETCHCMD_wget = "/usr/bin/env wget -t 2 -T 30 --passive-ftp --no-check-certificate --user-agent='bitbake/2.0'"
+
