@@ -1,6 +1,16 @@
 # Change Log
 -----------
 
+# v6.0.1+rev6
+## (2026-08-11)
+
+* fix kernel-headers-test build [guille-vega]
+* meta-balena-compulab: fix SRC_URIs for old packages [guille-vega]
+* Update balena-yocto-scripts to db82a52a9a971ed7819d842684486d92763df49f [guille-vega]
+* .github: update workflow [guille-vega]
+* Update balena-yocto-scripts to 8aa037bbf693fcebce7a7e4e219c6d75d2dead22 [balena-renovate[bot]]
+* Set explicit partition size overrides for each machine [guille-vega]
+
 # v6.0.1+rev5
 ## (2024-08-09)
 
