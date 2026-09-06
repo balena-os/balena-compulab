@@ -1,4 +1,38 @@
 - commits:
+    - subject: "kernel-headers-test: Replace deprecated balenalib base with
+        debian:bullseye"
+      hash: f8845ed003e991202fd5b3de03d4b6c0a1614f32
+      body: >
+        The balenalib base images were deprecated some time ago, and this one
+        also
+
+        pinned a dated tag from 2023 that no longer receives updates. Use the
+
+        upstream debian image instead, pinned to bullseye-20260824. The recipe
+
+        installs everything it needs with apt, so nothing from the balenalib
+        layer
+
+        was being used.
+
+
+        This layer overrides meta-balena's copy to pass HOSTCFLAGS=-fcommon,
+        which
+
+        is unchanged here.
+      footer:
+        Changelog-entry: "kernel-headers-test: Replace deprecated balenalib base with
+          debian:bullseye"
+        changelog-entry: "kernel-headers-test: Replace deprecated balenalib base with
+          debian:bullseye"
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 6.0.1+rev10
+  title: ""
+  date: 2026-09-06T16:13:17.061Z
+- commits:
     - subject: Update contracts to 93b30010e7441051d361fa319a6e395f5a3c94f4
       hash: 7c176ea30db1ed6cf520b0fa176b5fedbadc7928
       body: Update contracts

@@ -1,6 +1,11 @@
 # Change Log
 -----------
 
+# v6.0.1+rev10
+## (2026-09-06)
+
+* kernel-headers-test: Replace deprecated balenalib base with debian:bullseye [Kyle Harding]
+
 # v6.0.1+rev9
 ## (2026-08-28)
 
