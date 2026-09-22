@@ -1,0 +1,29 @@
+From 302dc689d1ef4e71a59d8bc682ade7e00c3f467f Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Wed, 12 Jan 2022 14:30:51 +0100
+Subject: [PATCH] compulab-imx8mq.dtsi: Disable eth node
+
+This is done as a test for the EP team
+
+Upstream-status: Inappropriate [testing]
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+index e9db68b..fb95bb7 100644
+--- a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
++++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+@@ -410,7 +410,7 @@
+ 	pinctrl-0 = <&pinctrl_fec1>;
+ 	phy-mode = "rgmii-id";
+ 	fsl,magic-packet;
+-	status = "okay";
++	status = "disabled";
+ 	fixed-link {
+ 		speed = <1000>;
+ 		full-duplex;
+-- 
+2.7.4
+
